@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        tools:context=".MainActivity">
+
+
+        <TextView
+            android:id="@+id/instruction1"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/please_choose_the_workout_type"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/tip_options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/instruction1">
+
+            <RadioButton
+                android:id="@+id/jogging_opt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/jogging" />
+
+            <RadioButton
+                android:id="@+id/walking_opt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/string_walking" />
+
+            <RadioButton
+                android:id="@+id/cycling_opt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cycling" />
+        </RadioGroup>
+
+
+        <Button
+            android:id="@+id/start_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tip_options" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

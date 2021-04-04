@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:context=".ui.profile.ProfileFragment">
+
+    <data>
+        <variable
+            name="profileViewModel"
+            type="com.example.tryonlysports.ui.profile.ProfileViewModel" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="-20dp"
+        android:padding="20dp">
+        <TextView
+            android:id="@+id/username_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{profileViewModel.name}"
+            android:layout_marginStart="16dp"
+            android:textSize="24sp"/>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/purple_200"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight ="16dp"
+        >
+
+        <TextView
+            android:id="@+id/healthHistory_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/health_history"
+            android:textSize="24sp"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintStart_toStartOf="@+id/layout1"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintTop_toTopOf="@+id/layout1"
+            tools:text="Health History" />
+
+        <TextView
+            android:id="@+id/healthHistory_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="..."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@+id/healthHistory_header"
+            app:layout_constraintTop_toBottomOf="@+id/healthHistory_header"
+            tools:text="timestamp" />
+
+            <TextView
+                android:id="@+id/healthHistory_weight_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="..."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@+id/healthHistory_header"
+                app:layout_constraintLeft_toRightOf="@+id/healthHistory_text"
+                app:layout_constraintTop_toBottomOf="@+id/healthHistory_text"
+                tools:text="weight" />
+
+        <Button
+            android:id="@+id/healthMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="More"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/layout1"
+            app:layout_constraintRight_toRightOf="@id/layout1"
+            tools:layout_editor_absoluteX="227dp"
+            tools:layout_editor_absoluteY="65dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout2"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/purple_200"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight ="16dp"
+        >
+
+
+        <TextView
+            android:id="@+id/workoutHistory_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/workout_history"
+            android:textSize="24sp"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintStart_toStartOf="@+id/layout2"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Workout History" />
+
+        <TextView
+            android:id="@+id/workoutHistory_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="..."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@+id/workoutHistory_header"
+            app:layout_constraintTop_toBottomOf="@+id/workoutHistory_header"
+            tools:text="datetime" />
+
+        <TextView
+            android:id="@+id/workoutHistory_type_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="..."
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@+id/workoutHistory_header"
+            app:layout_constraintTop_toBottomOf="@+id/workoutHistory_time_text"
+            tools:text="type" />
+
+        <TextView
+            android:id="@+id/workoutHistory_duration_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="..."
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@+id/workoutHistory_header"
+            app:layout_constraintTop_toBottomOf="@+id/workoutHistory_type_text"
+            tools:text="duration" />
+
+        <TextView
+            android:id="@+id/workoutHistory_calories_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="..."
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@+id/workoutHistory_header"
+            app:layout_constraintTop_toBottomOf="@+id/workoutHistory_duration_text"
+            tools:text="calories" />
+
+        <Button
+            android:id="@+id/workoutMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="More"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/layout2"
+            app:layout_constraintRight_toRightOf="@id/layout2"
+            tools:layout_editor_absoluteX="228dp"
+            tools:layout_editor_absoluteY="59dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout3"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/purple_200"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight ="16dp"
+        >
+
+
+        <TextView
+            android:id="@+id/scheduleHistory_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/schedule_history"
+            android:textSize="24sp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="@+id/layout3"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Schedule History" />
+
+        <TextView
+            android:id="@+id/scheduleHistory_startDate_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="..."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@+id/scheduleHistory_header"
+            app:layout_constraintTop_toBottomOf="@+id/scheduleHistory_header"
+            tools:text="startDate" />
+
+        <TextView
+            android:id="@+id/scheduleHistory_endDate_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="..."
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@+id/scheduleHistory_header"
+            app:layout_constraintTop_toBottomOf="@+id/scheduleHistory_startDate_text"
+            tools:text="endDate" />
+
+        <TextView
+            android:id="@+id/scheduleHistory_location_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="..."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@+id/scheduleHistory_header"
+            app:layout_constraintTop_toBottomOf="@+id/scheduleHistory_endDate_text"
+            tools:text="location" />
+
+        <TextView
+            android:id="@+id/scheduleHistory_description_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="..."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@+id/scheduleHistory_header"
+            app:layout_constraintTop_toBottomOf="@+id/scheduleHistory_location_text"
+            tools:text="description" />
+
+        <Button
+            android:id="@+id/scheduleMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="More"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/layout3"
+            app:layout_constraintRight_toRightOf="@id/layout3"
+            tools:layout_editor_absoluteX="227dp"
+            tools:layout_editor_absoluteY="61dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+
+</layout>

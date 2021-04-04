@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AddActivityActivity">
+
+        <Button
+            android:id="@+id/selectStartDateButton"
+            android:layout_width="187dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="16dp"
+            
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="302dp"
+            
+            android:hint="@string/select_date_button"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:backgroundTint="#DA4F55"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/startAtText" />
+
+        <Button
+            android:id="@+id/selectEndDateButton"
+            android:layout_width="187dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="16dp"
+            
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="302dp"
+            
+            android:hint="@string/select_date_button"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:backgroundTint="#DA4F55"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/endAtText" />
+
+        <Button
+            android:id="@+id/selectStartTimeButton"
+            android:layout_width="176dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="72dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:hint="@string/select_time_button"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:backgroundTint="#DA4F55"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/selectStartDateButton"
+            app:layout_constraintTop_toBottomOf="@+id/locationText" />
+
+        <Button
+            android:id="@+id/selectEndTimeButton"
+            android:layout_width="176dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="54dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:hint="@string/select_time_button"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:backgroundTint="#DA4F55"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/selectEndDateButton"
+            app:layout_constraintTop_toBottomOf="@+id/selectStartTimeButton" />
+
+        <CheckBox
+            android:id="@+id/indoor"
+            android:layout_width="41dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            
+            android:layout_marginTop="28dp"
+            app:layout_constraintEnd_toStartOf="@+id/isOutdoorText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selectEndDateButton" />
+
+        <TextView
+            android:id="@+id/isOutdoorText"
+            android:layout_width="166dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="38dp"
+            android:text="@string/indoor_text"
+            app:layout_constraintStart_toEndOf="@+id/indoor"
+            app:layout_constraintTop_toBottomOf="@+id/selectEndDateButton" />
+
+        <TextView
+            android:id="@+id/startAtText"
+            android:layout_width="191dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="16dp"
+            
+            android:layout_marginTop="44dp"
+            android:text="@string/start_time_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/locationText" />
+
+        <TextView
+            android:id="@+id/endAtText"
+            android:layout_width="191dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="16dp"
+            
+            android:layout_marginTop="28dp"
+            android:text="@string/end_time_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selectStartDateButton" />
+
+        <EditText
+            android:id="@+id/descriptionText"
+            android:layout_width="384dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:hint="@string/description_field"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/locationText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/locationText"
+            android:layout_width="384dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:ems="10"
+            android:hint="@string/location"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionText" />
+
+        <Button
+            android:id="@+id/saveActivityButton"
+            android:layout_width="170dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="16dp"
+            
+            android:layout_marginBottom="50dp"
+            android:text="@string/save_activity"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="184dp"
+            android:layout_height="39dp"
+            android:layout_marginEnd="16dp"
+            
+            android:layout_marginBottom="50dp"
+            android:text="@string/cancel_button"
+            app:layout_constraintBaseline_toBaselineOf="@+id/saveActivityButton"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

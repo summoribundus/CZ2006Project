@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="doingSportsViewModel"
+            type="com.example.tryonlysports.ui.sports.DoingSportsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.sports.DoingSportsFragment">
+
+        <!-- TODO: Update blank fragment layout -->
+
+
+        <TextView
+            android:id="@+id/type_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:text="@{doingSportsViewModel.typeStr}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/mapView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Cycling"/>
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/startTime_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/type_text" />
+
+        <TextView
+            android:id="@+id/startTime_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{doingSportsViewModel.startTime}"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/mapView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/timePassed_text"
+            tools:text="Cycling"/>
+
+        <TextView
+            android:id="@+id/timePassed_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{doingSportsViewModel.timePassed}"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@+id/startTime_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/speed_text"
+            tools:text="Cycling"
+            />
+
+        <TextView
+            android:id="@+id/speed_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{doingSportsViewModel.speed}"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@+id/timePassed_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/distance_text"
+            tools:text="Cycling"
+            />
+
+        <TextView
+            android:id="@+id/distance_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{doingSportsViewModel.totalDistance}"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@+id/speed_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Cycling"
+            />
+
+
+        <Button
+            android:id="@+id/terminate_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/distance_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="50dp"
+            android:text="Terminate"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

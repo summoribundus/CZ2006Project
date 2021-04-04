@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/personalInfoFragment">
+
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_home"-->
+<!--        android:name="com.example.tryonlysports.ui.home.HomeFragment"-->
+<!--        android:label="@string/title_home"-->
+<!--        tools:layout="@layout/fragment_home" />-->
+
+    <fragment
+        android:id="@+id/navigation_facility"
+        android:name="com.example.tryonlysports.ui.facility.SportsFacilityFragment"
+        android:label="Facility Map"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_weather"
+        android:name="com.example.tryonlysports.ui.weather.WeatherFragment"
+        android:label="@string/title_weather"/>
+
+    <fragment
+        android:id="@+id/navigation_sports"
+        android:name="com.example.tryonlysports.ui.notifications.SportsNotificationsFragment"
+        android:label="Let's Do Sports!"
+        tools:layout="@layout/fragment_notifications">
+        <action
+            android:id="@+id/action_navigation_notifications_to_doingActivity"
+            app:destination="@id/doingActivity"
+            app:popUpTo="@id/navigation_sports"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/doingActivity"
+        android:name="com.example.tryonlysports.ui.sports.DoingSportsFragment"
+        tools:layout="@layout/fragment_doing_activity">
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_doingActivity_to_sportsResultFragment"
+            app:destination="@id/sportsResultFragment"
+            app:popUpTo="@id/navigation_sports" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/sportsResultFragment"
+        android:name="com.example.tryonlysports.ui.sportsResult.SportsResultFragment"
+        android:label="Summary">
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="timePassed"
+            app:argType="long" />
+        <argument
+            android:name="totalDistance"
+            app:argType="float" />
+    </fragment>
+    <fragment
+        android:id="@+id/activityListFragment"
+        android:name="com.example.tryonlysports.ui.schedule.ActivityListFragment"
+        android:label="ActivityList"
+        tools:layout="@layout/activity_list">
+        <action
+            android:id="@+id/to_addActivityFragment"
+            app:destination="@id/addActivityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addActivityFragment"
+        android:name="com.example.tryonlysports.ui.schedule.AddActivityFragment"
+        android:label="Add Activity"
+        tools:layout="@layout/activity_add_activity">
+        <action
+            android:id="@+id/to_activityListFragment"
+            app:destination="@id/activityListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.tryonlysports.ui.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile">
+
+        <action
+            android:id="@+id/action_navigation_profile_to_scheduleHistoryFragment"
+            app:destination="@id/scheduleHistoryFragment" />
+        <action
+            android:id="@+id/action_navigation_profile_to_workoutHistoryFragment"
+            app:destination="@id/workoutHistoryFragment" />
+        <action
+            android:id="@+id/action_navigation_profile_to_healthInfoHistoryFragment"
+            app:destination="@id/healthInfoHistoryFragment" />
+        <action
+            android:id="@+id/action_navigation_profile_to_healthInfoHistoryFragment2"
+            app:destination="@id/healthInfoHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workoutHistoryFragment"
+        android:name="com.example.tryonlysports.ui.profile.WorkoutHistoryFragment"
+        android:label="Workout History" />
+    <fragment
+        android:id="@+id/scheduleHistoryFragment"
+        android:name="com.example.tryonlysports.ui.profile.ScheduleHistoryFragment"
+        android:label="Schedule History" />
+    <fragment
+        android:id="@+id/healthInfoHistoryFragment"
+        android:name="com.example.tryonlysports.ui.profile.HealthInfoHistoryFragment"
+        android:label="Health Info History">
+        <action
+            android:id="@+id/action_healthInfoHistoryFragment_to_healthInfoRecordFragment"
+            app:destination="@id/healthInfoRecordFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/healthInfoRecordFragment"
+        android:name="com.example.tryonlysports.ui.profile.HealthInfoRecordFragment"
+        android:label="Record New Weight">
+        <action
+            android:id="@+id/action_healthInfoRecordFragment_to_healthInfoHistoryFragment"
+            app:destination="@id/healthInfoHistoryFragment"
+            app:popUpTo="@id/healthInfoHistoryFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalInfoFragment"
+        android:name="com.example.tryonlysports.ui.profile.PersonalInfoFragment"
+        android:label="PersonalInfoFragment" >
+        <action
+            android:id="@+id/action_personalInfoFragment_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
+    </fragment>
+
+
+</navigation>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="weatherViewModel"
+            type="com.example.tryonlysports.ui.weather.WeatherViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.weather.weathersFragment"
+        android:id="@+id/weather_page">
+
+
+        <ImageView
+            android:id="@+id/weather_icon"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/temperature"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@{weatherViewModel.weatherIcon}"
+            tools:src="@drawable/ic_cloud_sun" />
+
+        <TextView
+            android:id="@+id/temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="28dp"
+            android:text="@{@string/temperature(weatherViewModel.temperature)}"
+            android:textSize="80sp"
+            app:layout_constraintEnd_toStartOf="@+id/weather_icon"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="24 C" />
+
+        <TextView
+            android:id="@+id/weather_condition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{weatherViewModel.forecast}"
+            app:layout_constraintEnd_toEndOf="@+id/weather_icon"
+            app:layout_constraintTop_toBottomOf="@+id/weather_icon"
+            tools:text="Cloudy" />
+
+        <TextView
+            android:id="@+id/PM_reading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@{@string/pm(weatherViewModel.pm25)}"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/UV_index"
+            app:layout_constraintTop_toBottomOf="@+id/weather_condition"
+            tools:text="PM2.5: 130" />
+
+        <TextView
+            android:id="@+id/UV_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="28dp"
+            android:text="@{@string/uvi( weatherViewModel.uvi)}"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/PM_reading"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/temperature"
+            tools:text="UV Index: 7" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PM_reading">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/purple_200">
+
+                    <ImageView
+                        android:id="@+id/sun_protection_icon"
+                        android:layout_width="60dp"
+                        android:layout_height="75dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/ic_uvi"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:srcCompat="@drawable/ic_heat" />
+
+                    <TextView
+                        android:id="@+id/sun_protection_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:text="@string/sun_protection"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.2"
+                        app:layout_constraintStart_toEndOf="@+id/sun_protection_icon"
+                        app:layout_constraintTop_toTopOf="@+id/sun_protection_icon"
+                        tools:text="Heat waring" />
+
+                    <TextView
+                        android:id="@+id/sun_protection_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@{weatherViewModel.sunProtectionSuggestion}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="@+id/sun_protection_header"
+                        app:layout_constraintTop_toBottomOf="@+id/sun_protection_header"
+                        tools:text="Please wear sunglasses" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/purple_200">
+
+                    <ImageView
+                        android:id="@+id/outdoor_activity_icon"
+                        android:layout_width="60dp"
+                        android:layout_height="75dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/ic_sports"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:srcCompat="@drawable/ic_heat" />
+
+                    <TextView
+                        android:id="@+id/outdoor_activity_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:text="@string/outdoor_activity"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.2"
+                        app:layout_constraintStart_toEndOf="@+id/outdoor_activity_icon"
+                        app:layout_constraintTop_toTopOf="@+id/outdoor_activity_icon"
+                        tools:text="Heat waring" />
+
+                    <TextView
+                        android:id="@+id/outdoor_activity_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@{weatherViewModel.outdoorActivitySuggestion}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="@+id/outdoor_activity_header"
+                        app:layout_constraintTop_toBottomOf="@+id/outdoor_activity_header"
+                        tools:text="Please wear sunglasses" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/purple_200">
+
+                    <ImageView
+                        android:id="@+id/activity_duration_icon"
+                        android:layout_width="60dp"
+                        android:layout_height="75dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/ic_pm25"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:srcCompat="@drawable/ic_heat" />
+
+                    <TextView
+                        android:id="@+id/activity_duration_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:text="@string/activity_duration"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.2"
+                        app:layout_constraintStart_toEndOf="@+id/activity_duration_icon"
+                        app:layout_constraintTop_toTopOf="@+id/activity_duration_icon"
+                        tools:text="Heat waring" />
+
+                    <TextView
+                        android:id="@+id/activity_duration_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@{weatherViewModel.activityDurationSuggestion}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="@+id/activity_duration_header"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_duration_header"
+                        tools:text="Please wear sunglasses" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/purple_200">
+
+                    <ImageView
+                        android:id="@+id/heat_waring_icon"
+                        android:layout_width="60dp"
+                        android:layout_height="75dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/ic_heat"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:srcCompat="@drawable/ic_heat" />
+
+                    <TextView
+                        android:id="@+id/heat_waring_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:text="@string/heat_warning"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.2"
+                        app:layout_constraintStart_toEndOf="@+id/heat_waring_icon"
+                        app:layout_constraintTop_toTopOf="@+id/heat_waring_icon"
+                        tools:text="Heat waring" />
+
+                    <TextView
+                        android:id="@+id/heat_waring_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@{weatherViewModel.heatWarningSuggestion}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="@+id/heat_waring_header"
+                        app:layout_constraintTop_toBottomOf="@+id/heat_waring_header"
+                        tools:text="Please wear sunglasses" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

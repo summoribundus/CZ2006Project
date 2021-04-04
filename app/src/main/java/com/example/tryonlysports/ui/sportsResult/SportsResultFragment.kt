@@ -1,0 +1,54 @@
+package com.example.tryonlysports.ui.sportsResult
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
+import com.example.tryonlysports.MainActivity
+import com.example.tryonlysports.R
+import com.example.tryonlysports.databinding.FragmentResultBinding
+
+class SportsResultFragment: Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val binding : FragmentResultBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_result,
+            container, false
+        )
+        val arguments = SportsResultFragmentArgs.fromBundle(requireArguments())
+        val activity: MainActivity = requireActivity() as MainActivity
+        val viewModelFactory = SportsResultViewModelFactory(
+            arguments.type,
+            arguments.timePassed,
+            arguments.totalDistance.toDouble(),
+            activity.db,
+            activity.emailId
+        )
+        val viewModel = ViewModelProvider(this, viewModelFactory).get(SportsResultViewModel::class.java)
+        // Create the observer which updates the UI.
+
+        binding.sportsResultViewModel = viewModel
+        viewModel.weight.observe(viewLifecycleOwner, {
+            viewModel.calculateCalories()
+            binding.caloriesText.text = viewModel.calories.value
+            binding.imageLoading.visibility = View.GONE
+            binding.caloriesText.visibility = View.VISIBLE
+            binding.avgSpeedText.visibility = View.VISIBLE
+            binding.distanceText.visibility = View.VISIBLE
+            binding.timeDurationText.visibility = View.VISIBLE
+            binding.textCongratulation.visibility = View.VISIBLE
+            viewModel.saveToFirebase()
+        })
+
+        return binding.root
+    }
+}

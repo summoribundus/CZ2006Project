@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="workout"
+            type="com.example.tryonlysports.ui.profile.WorkoutHistory" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/dateWorkoutHistoryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/typeWorkoutHistoryText"
+            app:dateWorkoutHistoryText="@{workout}"
+            tools:text="25/01/2021" />
+
+        <TextView
+            android:id="@+id/typeWorkoutHistoryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:typeWorkoutHistoryText="@{workout}"
+            tools:text="Running" />
+
+        <TextView
+            android:id="@+id/speedWorkoutHistoryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/distanceWorkoutHistoryText"
+            app:layout_constraintTop_toBottomOf="@+id/caloriesWorkHistoryText"
+            app:speedWorkoutHistoryText="@{workout}"
+            app:layout_constraintVertical_bias="0.058"
+            tools:text="7.8km/h" />
+
+        <TextView
+            android:id="@+id/durationWorkoutHistoryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/caloriesWorkHistoryText"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:durationWorkoutHistoryText="@{workout}"
+            app:layout_constraintTop_toBottomOf="@+id/dateWorkoutHistoryText"
+            tools:text="30min" />
+
+        <TextView
+            android:id="@+id/caloriesWorkHistoryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/durationWorkoutHistoryText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:caloriesWorkoutHistoryText="@{workout}"
+            app:layout_constraintStart_toEndOf="@+id/durationWorkoutHistoryText"
+            app:layout_constraintTop_toBottomOf="@+id/dateWorkoutHistoryText"
+            tools:text="100kCal" />
+
+        <TextView
+            android:id="@+id/distanceWorkoutHistoryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/speedWorkoutHistoryText"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/durationWorkoutHistoryText"
+            app:distanceWorkoutHistoryText="@{workout}"
+            tools:text="5km" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

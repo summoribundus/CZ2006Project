@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="sportsResultViewModel"
+            type="com.example.tryonlysports.ui.sportsResult.SportsResultViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/image_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_loading"/>
+
+        <TextView
+            android:id="@+id/text_congratulation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/congratulations"
+            app:layout_constraintBottom_toTopOf="@id/timeDuration_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"
+            tools:layout_editor_absoluteY="194dp"
+            tools:text="congratulations" />
+
+        <TextView
+            android:id="@+id/timeDuration_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{sportsResultViewModel.passed_Time}"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/text_congratulation"
+            tools:text="timeDuration" />
+
+        <TextView
+            android:id="@+id/avgSpeed_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{sportsResultViewModel.avgspeed}"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/timeDuration_text"
+            tools:text="avgSpeed" />
+
+        <TextView
+            android:id="@+id/distance_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{sportsResultViewModel.total_Distance}"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/avgSpeed_text"
+            tools:text="dis" />
+
+        <TextView
+            android:id="@+id/calories_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{sportsResultViewModel.calories}"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/distance_text"
+            tools:text="cal" />
+
+
+    </LinearLayout>
+</layout>

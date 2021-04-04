@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_man"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/usernameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Welcome ..."
+            android:textColor="#664A99"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profileImage" />
+
+        <TextView
+            android:id="@+id/welcomeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="Play like a Champion Today!"
+            android:textColor="#0D4A52"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/usernameText" />
+
+        <TextView
+            android:id="@+id/emailLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email:"
+            android:textColor="#664A99"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/birthdayLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
+
+        <TextView
+            android:id="@+id/birthdayLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Birthday:"
+            android:textColor="#664A99"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/MobileLabel"
+            app:layout_constraintStart_toStartOf="@+id/emailLabel"
+            app:layout_constraintTop_toBottomOf="@+id/emailLabel" />
+
+        <TextView
+            android:id="@+id/MobileLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mobile No:"
+            android:textColor="#664A99"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/regionLabel"
+            app:layout_constraintStart_toStartOf="@+id/birthdayLabel"
+            app:layout_constraintTop_toBottomOf="@+id/birthdayLabel" />
+
+        <TextView
+            android:id="@+id/regionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Region:"
+            android:textColor="#664A99"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/viewHistoryButton"
+            app:layout_constraintStart_toStartOf="@+id/MobileLabel"
+            app:layout_constraintTop_toBottomOf="@+id/MobileLabel" />
+
+        <TextView
+            android:id="@+id/emailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="..."
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/birthdayText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
+
+        <TextView
+            android:id="@+id/birthdayText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="..."
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/mobileText"
+            app:layout_constraintStart_toStartOf="@+id/emailText"
+            app:layout_constraintTop_toBottomOf="@+id/emailText" />
+
+        <TextView
+            android:id="@+id/mobileText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="..."
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/regionText"
+            app:layout_constraintStart_toStartOf="@+id/birthdayText"
+            app:layout_constraintTop_toBottomOf="@+id/birthdayText" />
+
+        <TextView
+            android:id="@+id/regionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="..."
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/viewHistoryButton"
+            app:layout_constraintStart_toStartOf="@+id/mobileText"
+            app:layout_constraintTop_toBottomOf="@+id/mobileText" />
+
+        <Button
+            android:id="@+id/viewHistoryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:backgroundTint="#664A99"
+            android:paddingHorizontal="80dp"
+            android:text="View History"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

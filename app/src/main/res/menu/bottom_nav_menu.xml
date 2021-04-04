@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/personalInfoFragment"
+        android:icon="@drawable/ic_profile_user"
+        android:title="@string/profile" />
+
+    <item
+        android:id="@+id/navigation_facility"
+        android:icon="@drawable/ic_map"
+        android:title="@string/title_facility" />
+
+    <item
+        android:id="@+id/navigation_sports"
+        android:icon="@drawable/ic_running"
+        android:title="@string/title_sports" />
+
+    <item
+        android:id="@+id/navigation_weather"
+        android:icon="@drawable/ic_weather"
+        android:title="@string/title_weather" />
+
+    <item
+        android:id="@+id/activityListFragment"
+        android:icon="@drawable/ic_calendar"
+        android:title="@string/title_schedule" />
+
+
+</menu>
