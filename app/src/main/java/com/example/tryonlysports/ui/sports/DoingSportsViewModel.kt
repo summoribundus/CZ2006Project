@@ -12,7 +12,11 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.math.floor
 
-
+/**
+ * This is the ViewModel that stores and manages UI related data in the lifecycle of the Doing Sports fragment.
+ *
+ * @property type type of the workout (e.g. cycling/jogging/walking)
+ */
 class DoingSportsViewModel(val type:String): ViewModel() {
     private val _typeStr =  MutableLiveData<String>()
     val typeStr : LiveData<String> get() = _typeStr
@@ -40,13 +44,16 @@ class DoingSportsViewModel(val type:String): ViewModel() {
 
     private var tStart = System.currentTimeMillis()
 
-
     init {
         _typeStr.value = type
         Log.i("SportsViewModel", _typeStr.value.toString())
         initProperty()
     }
 
+    /**
+     * Manages the initial properties, Record start time & speed & total distance.
+     *
+     */
     private fun initProperty() {
         _startTime.value = LocalDateTime.now().toString()
         updateTimePassed()
@@ -54,7 +61,10 @@ class DoingSportsViewModel(val type:String): ViewModel() {
         _totalDistance.value = "0 km"
     }
 
-
+    /**
+     * Updates the sports duration by retrieving the current time and comparing it with the start time.
+     *
+     */
     fun updateTimePassed() {
         val tPassed: Long = System.currentTimeMillis() - tStart
         _passedTimeValue.value = tPassed
@@ -63,11 +73,21 @@ class DoingSportsViewModel(val type:String): ViewModel() {
                     TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(tPassed)))
     }
 
+    /**
+     * Updates the real time speed display.
+     *
+     * @param location the current location of the user given by android platform.
+     */
     fun updateSpeed(location: Location) {
         val speed = floor(location.speed * 2.23694)
         _speed.value = String.format("%.0f mph", speed)
     }
 
+    /**
+     * Calculates the spherical route length and updates the display.
+     *
+     * @param route the Polyline that draws the user's sports route.
+     */
     fun updateRouteLength(route: Polyline){
         val totLength = SphericalUtil.computeLength(route.points)
         val distance = totLength/1000

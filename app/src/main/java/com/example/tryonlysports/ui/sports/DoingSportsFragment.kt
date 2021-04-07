@@ -26,10 +26,13 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
 
-
+/**
+ * This is the Fragment for the doing sports function.
+ */
 class DoingSportsFragment : Fragment(),OnMapReadyCallback,GoogleApiClient.ConnectionCallbacks,
     GoogleApiClient.OnConnectionFailedListener,
     com.google.android.gms.location.LocationListener {
+
     var mMapView: MapView? = null
     private var googleMap: GoogleMap? = null
 
@@ -42,6 +45,14 @@ class DoingSportsFragment : Fragment(),OnMapReadyCallback,GoogleApiClient.Connec
     private lateinit var binding: FragmentDoingActivityBinding
     private var type: String = ""
 
+    /**
+     * Creates the fragment's portion of the view hierarchy and initializes Map view and GoogleMap API client.
+     *
+     * @param inflater converts the xml file fragment_doing_sports into View objects.
+     * @param container a special view to contain other views (e.g. MapView).
+     * @param savedInstanceState a reference to a Bundle object that is passed into the onCreate method of MainActivity.
+     * @return a View to display on the Doing Sports page.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -83,6 +94,10 @@ class DoingSportsFragment : Fragment(),OnMapReadyCallback,GoogleApiClient.Connec
         return binding.root
     }
 
+    /**
+     * Terminates the Map tracking and navigates to the result summary page.
+     *
+     */
     private fun terminate() {
         stopLocationUpdates()
         this.findNavController().navigate(DoingSportsFragmentDirections.actionDoingActivityToSportsResultFragment(type,
@@ -90,16 +105,28 @@ class DoingSportsFragment : Fragment(),OnMapReadyCallback,GoogleApiClient.Connec
         ))
     }
 
+    /**
+     * Connects to Google API Client once the fragment starts.
+     *
+     */
     override fun onStart() {
         googleApiClient!!.connect()
         super.onStart()
     }
 
+    /**
+     * Disconnects the Google API Client once the fragment stops.
+     *
+     */
     override fun onStop() {
         googleApiClient!!.disconnect()
         super.onStop()
     }
 
+    /**
+     * Continues the map tracking once the fragment resumes.
+     *
+     */
     override fun onResume() {
         super.onResume()
         if (googleApiClient?.isConnected() == true) {
@@ -108,30 +135,62 @@ class DoingSportsFragment : Fragment(),OnMapReadyCallback,GoogleApiClient.Connec
         mMapView?.onResume()
     }
 
+    /**
+     * Pauses the Map tracking once the fragment pauses.
+     *
+     */
     override fun onPause() {
         super.onPause()
         stopLocationUpdates()
         mMapView?.onPause()
     }
 
+    /**
+     * Destroy the Map tracking  once the fragment is destroyed
+     *
+     */
     override fun onDestroy() {
         super.onDestroy()
         mMapView?.onDestroy()
     }
 
+    /**
+     * Operates when the fragment is on low memory.
+     *
+     */
     override fun onLowMemory() {
         super.onLowMemory()
         mMapView?.onLowMemory()
     }
 
+    /**
+     * Starts location updates once the fragment is connected to the location service.
+     *
+     * @param bundle passes data between fragments and activities.
+     */
     override fun onConnected(@Nullable bundle: Bundle?) {
         startLocationUpdates()
     }
 
+    /**
+     * Operates when the connection is suspended.
+     *
+     * @param i passed to the location service for checking.
+     */
     override fun onConnectionSuspended(i: Int) {}
 
+    /**
+     * Operates when the connection is failed.
+     *
+     * @param connectionResult the result of connection.
+     */
     override fun onConnectionFailed(connectionResult: ConnectionResult) {}
 
+    /**
+     * Updates and display Map tracking once the location of the user changed.
+     *
+     * @param location the current location of the user fetched by Android OS.
+     */
     override fun onLocationChanged(location: Location) {
         lastKnownLatLng = LatLng(location.getLatitude(), location.getLongitude())
         updateTrack()
@@ -156,6 +215,10 @@ class DoingSportsFragment : Fragment(),OnMapReadyCallback,GoogleApiClient.Connec
 
     }
 
+    /**
+     * Starts location updates and connects to location service.
+     *
+     */
     protected fun startLocationUpdates() {
         val locationRequest = LocationRequest()
         locationRequest.interval = 5000
@@ -184,12 +247,21 @@ class DoingSportsFragment : Fragment(),OnMapReadyCallback,GoogleApiClient.Connec
             this
         )
     }
+
+    /**
+     * Stops location updates.
+     *
+     */
     protected fun stopLocationUpdates() {
         LocationServices.FusedLocationApi.removeLocationUpdates(
             googleApiClient, this
         )
     }
 
+    /**
+     * Draws updates track on map.
+     *
+     */
     private fun updateTrack() {
         val points = gpsTrack!!.points
         points.add(lastKnownLatLng!!)
@@ -197,6 +269,11 @@ class DoingSportsFragment : Fragment(),OnMapReadyCallback,GoogleApiClient.Connec
 
     }
 
+    /**
+     * Prepares the map and tracking route once the fragment is ready.
+     *
+     * @param p0 the GoogleMap object to update the track.
+     */
     override fun onMapReady(p0: GoogleMap?) {
         googleMap = p0
 
