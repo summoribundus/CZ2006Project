@@ -17,6 +17,7 @@ import com.example.tryonlysports.databinding.FragmentResultBinding
 /**
  * This is the Fragment for the displaying sports results summary function.
  *
+ * @author Ye Ziyuan
  */
 class SportsResultFragment: Fragment() {
 

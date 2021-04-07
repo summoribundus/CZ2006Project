@@ -2,6 +2,8 @@ package com.example.tryonlysports.ui.sportsResult
 
 /**
  * This is a util class that checks the type of workout and the avg speed, and returns the MET.
+ *
+ * @author Ye Ziyuan
  */
 internal object SportsResultsUtil{
 

@@ -22,6 +22,8 @@ import java.util.concurrent.TimeUnit
  * @property totalDistance the total distance of the user workout route.
  * @property db the firebase database.
  * @property username the user name to get information from firebase database.
+ *
+ * @author Ye Ziyuan
  */
 class SportsResultViewModel(
     val type: String,
