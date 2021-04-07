@@ -6,6 +6,15 @@ import com.example.tryonlysports.ui.sports.DoingSportsViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import java.lang.IllegalArgumentException
 
+/**
+ * This is the Sports Result ViewModelFactory which instantiates and returns the ViewModel object that survives configuration changes of Sports Results fragment.
+ *
+ * @property type workout type. (e.g. walking/jogging/cycling)
+ * @property passedTime the time duration of the workout.
+ * @property totalDistance the total distance of the workout.
+ * @property db the firebase database instance.
+ * @property username the username.
+ */
 class SportsResultViewModelFactory(val type: String,
                                    val passedTime: Long,
                                    val totalDistance: Double,

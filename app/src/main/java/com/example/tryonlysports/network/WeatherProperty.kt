@@ -1,5 +1,6 @@
 package com.example.tryonlysports.network
 
+
 // Common
 data class LocationProperty(val latitude: Double,
                             val longitude: Double)
