@@ -20,13 +20,28 @@ import androidx.navigation.fragment.findNavController
 import com.example.tryonlysports.R
 import com.example.tryonlysports.databinding.ActivityListBinding
 
-
+/**
+ * This class controls the functions of ActivityList fragment, including list all the
+ * existing activity, modifying existing activities and navigation
+ * to the fragment AddActivity for adding new activities.
+ *
+ * @property listView the view displaying the existing activities
+ * @property activityData the viewModel used to store existing activities
+ * @property adapter the custom adapter to display the list of activities.
+ * @see ActivityListAdapter
+ * @property binding the UI binding for ActivityList UI, used to access UI widgets.
+ * @author Wang Qiaochu
+ */
 class ActivityListFragment:Fragment(){
     private lateinit var listView: ListView
     private val activityData:ActivityList by activityViewModels()
     private lateinit var adapter: ActivityListAdapter
     private lateinit var binding: ActivityListBinding
 
+    /**
+     * This function initialises the binding and add the adapter as an
+     * observer of the activityData.
+     */
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View?{
@@ -46,6 +61,11 @@ class ActivityListFragment:Fragment(){
         return binding.root
     }
 
+    /**
+     * This function gets the login user id, which is used to retrieve activities stored
+     * in the database. The listView is initialised and on click listener of list entries
+     * are set.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val user=requireActivity().intent.extras?.getString("user_id")
         if(!user.isNullOrEmpty() && activityData.emptyUser()){
@@ -58,6 +78,7 @@ class ActivityListFragment:Fragment(){
                 requireActivity().applicationContext)
         listView = binding.activityList
         listView.adapter = adapter
+        listView.setEmptyView(binding.empty)
         listView.setOnItemClickListener { parent, view, position, id ->
             val element = parent.getItemAtPosition(position) as Activity
             val popupMenu = PopupMenu(requireActivity().applicationContext, view)

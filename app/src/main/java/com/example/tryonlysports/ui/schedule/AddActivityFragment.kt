@@ -19,6 +19,17 @@ import com.example.tryonlysports.R
 import com.example.tryonlysports.databinding.ActivityAddActivityBinding
 import java.util.*
 enum class State{EDIT,ADD}
+
+/**
+ * This class controls the function of fragment AddActivity. It displays the UI for
+ * inputting a new activity to the schedule or editing an existing activity.
+ *
+ * @property activityData the viewModel used for storing created activities
+ * @property newActivity the object created by the user
+ * @property state indicating whether the page is adding a new activity or editing an existing activity
+ * @property binding UI binding of the fragment, used for accessing the UI widgets.
+ * @author Wang Qiaochu
+ */
 class AddActivityFragment: Fragment(){
     private val activityData:ActivityList by activityViewModels()
     private lateinit var newActivity:Activity
@@ -26,6 +37,11 @@ class AddActivityFragment: Fragment(){
     lateinit var binding: ActivityAddActivityBinding
 
 
+    /**
+     * The function that instantiates the UI interface
+     *
+     * @return the view of AddActivityFragment
+     */
     override fun onCreateView(inflater: LayoutInflater,
                              container: ViewGroup?,
                              savedInstanceState: Bundle?): View?{
@@ -38,6 +54,10 @@ class AddActivityFragment: Fragment(){
 
     }
 
+    /**
+     * The function that gets the activity data from the view model, set listeners for buttons,
+     * initializing field values if the the fragment is in EDIT state
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         state=State.ADD
         if(activityData.selected.value!=-1){

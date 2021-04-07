@@ -7,7 +7,7 @@ plugins {
     id 'com.google.secrets_gradle_plugin' version '0.5'
     id 'kotlin-android-extensions'
 }
-
+apply plugin: 'org.jetbrains.dokka-android'
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -45,6 +45,10 @@ android {
     }
     lintOptions {
         abortOnError false
+    }
+    dokka {
+        outputFormat = 'html'
+        outputDirectory = "$buildDir/javadoc"
     }
 }
 
