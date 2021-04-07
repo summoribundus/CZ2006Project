@@ -33,22 +33,64 @@ class SportsResultViewModel(
     val username: String
 ): ViewModel() {
 
+    /**
+     * The avg speed string as mutable live private data.
+     */
     private val _avgSpeed = MutableLiveData<String>()
+
+    /**
+     * The avg speed string as live data.
+     */
     val avgspeed : LiveData<String> get() = _avgSpeed
 
+    /**
+     * The time duration string as mutable live private data.
+     */
     private val _passed_Time = MutableLiveData<String>()
+
+    /**
+     * The time duration string as live data.
+     */
     val passed_Time: LiveData<String> get() = _passed_Time
 
+    /**
+     * The total calories burned string as mutable live private data.
+     */
     private val _calories = MutableLiveData<String>()
+
+    /**
+     * The total calories burned string as live data.
+     */
     val calories : LiveData<String> get() = _calories
 
+    /**
+     * The total distance string as mutable live private data.
+     */
     private val _total_Distance = MutableLiveData<String>()
+
+    /**
+     * The total distance string as live data.
+     */
     val total_Distance : LiveData<String> get() = _total_Distance
 
+    /**
+     * The loading status boolean as mutable live private data.
+     */
     private val _loading = MutableLiveData<Boolean>()
+
+    /**
+     * The loading status boolean as live data.
+     */
     val loading : LiveData<Boolean> get() = _loading
 
+    /**
+     * The numerical weight value as mutable live private data.
+     */
     private val _weight = MutableLiveData<Long>()
+
+    /**
+     * The numerical weight value as live data.
+     */
     val weight : LiveData<Long> get() = _weight
 
 
@@ -57,10 +99,15 @@ class SportsResultViewModel(
         initProperty()
     }
 
+    /**
+     * Speed value of the workout(temporary).
+     */
     private var speed = 0.0
+
+    /**
+     * Calories burned from the workout(temporary).
+     */
     private var cal = 0.0
-    //private val _weight = MutableLiveData<Long>()
-    //val weight : LiveData<Long> get() = _weight
 
     /**
      * Manages the initial properties, Formats the data to display once the data is ready from firebase.

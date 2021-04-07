@@ -20,32 +20,94 @@ import kotlin.math.floor
  * @author Ye Ziyuan
  */
 class DoingSportsViewModel(val type:String): ViewModel() {
+
+    /**
+     * The workout type string as mutable live private data.
+     */
     private val _typeStr =  MutableLiveData<String>()
+
+    /**
+     * The workout type string as live data.
+     */
     val typeStr : LiveData<String> get() = _typeStr
 
+    /**
+     * The start time of workout string as mutable live private data.
+     */
     private val _startTime = MutableLiveData<String>()
+
+    /**
+     * The start time of workout string as live data.
+     */
     val startTime : LiveData<String> get() = _startTime
 
+    /**
+     * The time duration of workout string as mutable live private data.
+     */
     private val _timePassed = MutableLiveData<String>()
+
+    /**
+     * The time duration of workout string as live data.
+     */
     val timePassed : LiveData<String> get() = _timePassed
 
+    /**
+     * The speed of workout string as mutable live private data.
+     */
     private val _speed = MutableLiveData<String>()
+    /**
+     * The speed of workout string as live data.
+     */
     val speed : LiveData<String> get() = _speed
 
+    /**
+     * The total distance of workout string as mutable live private data.
+     */
     private val _totalDistance = MutableLiveData<String>()
+
+    /**
+     * The total distance of workout string as live data.
+     */
     val totalDistance : LiveData<String> get() = _totalDistance
 
+    /**
+     * The total calories burned of workout string as mutable live private data.
+     */
     private val _calories = MutableLiveData<Double>()
+
+    /**
+     * The total calories burned of workout string as live data.
+     */
     val calories : LiveData<Double> get() = _calories
 
+    /**
+     * The total time duration of workout string as mutable live private data.
+     */
     private val _passedTimeValue = MutableLiveData<Long>()
+
+    /**
+     * The total time duration of workout string as live data.
+     */
     val passedTimeValue: LiveData<Long> get() = _passedTimeValue
 
+    /**
+     * The total distance of workout string as mutable live private data.
+     */
     private val _totalDistanceValue = MutableLiveData<Double>()
+
+    /**
+     * The total distance of workout string as live data.
+     */
     val totalDistanceValue : LiveData<Double> get() = _totalDistanceValue
 
+    /**
+     * The current time in milliseconds.
+     */
     private var tStart = System.currentTimeMillis()
 
+    /**
+     * Initial value assignments.
+     */
     init {
         _typeStr.value = type
         Log.i("SportsViewModel", _typeStr.value.toString())
