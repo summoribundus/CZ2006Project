@@ -6,7 +6,13 @@ import androidx.core.content.edit
 import com.example.tryonlysports.R
 
 /**
- * Returns the `location` object as a human readable string.
+ * Utilities used for location service
+ *
+ * @author Li Rui
+ */
+
+/**
+ * Returns the location object as a human readable string.
  */
 fun Location?.toText(): String {
     return if (this != null) {

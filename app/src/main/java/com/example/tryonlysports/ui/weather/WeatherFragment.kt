@@ -11,12 +11,27 @@ import com.example.tryonlysports.MainActivity
 import com.example.tryonlysports.R
 import com.example.tryonlysports.databinding.FragmentWeatherBinding
 
-
+/**
+ * The class controlling the inflate of weather fragment xml file
+ * @author Li Rui
+ */
 class WeatherFragment : Fragment() {
 
+    /**
+     * The weather fragment data binding.
+     */
     private lateinit var binding: FragmentWeatherBinding
 
-
+    /**
+     * The function called at view creation time.
+     *
+     * Inflate the weather fragment layout and create view model.
+     *
+     * @param inflater The layout inflater passed automatically.
+     * @param container The container passed in automatically.
+     * @param savedInstanceState The resources passed in when creating the view.
+     * @return The view created by this function.
+     */
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -39,8 +54,4 @@ class WeatherFragment : Fragment() {
 
         return binding.root
     }
-
-
-
-
 }

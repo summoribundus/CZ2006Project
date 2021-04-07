@@ -15,9 +15,21 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
+/**
+ * The TAG used for debugging.
+ */
 private const val TAG = "WeatherViewModel"
 
-class WeatherViewModel(application: Application, location: Location) : AndroidViewModel(application) {
+/**
+ * Weather view model class.
+ *
+ * This class containing data and processing logic for weather view.
+ *
+ * @property application The application who creating this viewmodel.
+ * @property location Location of the user.
+ * @author Li Rui
+ */
+class WeatherViewModel(application: Application, val location: Location) : AndroidViewModel(application) {
     enum class WeatherCondition {
         THUNDERY_SHOWER,
         SHOWER,
@@ -31,46 +43,117 @@ class WeatherViewModel(application: Application, location: Location) : AndroidVi
         UNKNOWN
     }
 
+    /**
+     * The current temperature as mutable live private data
+     */
     private val _temperature = MutableLiveData<Double>()
+
+    /**
+     * The current temperature as public data that cannot be modified.
+     */
     val temperature: LiveData<Double> get() = _temperature
 
-    val location = location
-
+    /**
+     * The current PM2.5 value as mutable live private data
+     */
     private val _pm25 = MutableLiveData<Double>()
+    /**
+     * The current PM2.5 value as public data that cannot be modified.
+     */
     val pm25 : LiveData<Double> get() = _pm25
 
+    /**
+     * The current UV index as mutable live private data
+     */
     private val _uvi = MutableLiveData<Double>()
+    /**
+     * The current UV index as public data that cannot be modified.
+     */
     val uvi : LiveData<Double> get() = _uvi
 
+    /**
+     * The current weather forecast as mutable live private data
+     */
     private val _forecast = MutableLiveData<String>()
+    /**
+     * The current weather forecast as public data that cannot be modified.
+     */
     val forecast: LiveData<String> get() = _forecast
 
+    /**
+     * The failure message from Internet as mutable live private data
+     */
     private val _response = MutableLiveData<String>()
+    /**
+     * The failure message from Internet as public data that cannot be modified.
+     */
     val response : LiveData<String> get() = _response
 
+    /**
+     * The current temperature as mutable live private data
+     */
     private val _sunProtectionSuggestion = MutableLiveData<String>()
+    /**
+     * The current temperature as public data that cannot be modified.
+     */
     val sunProtectionSuggestion : LiveData<String> get() = _sunProtectionSuggestion
 
+    /**
+     * The outdoor activity suggestion as mutable live private data
+     */
     private val _outdoorActivitySuggestion = MutableLiveData<String>()
+    /**
+     * The outdoor activity suggestion as public data that cannot be modified.
+     */
     val outdoorActivitySuggestion : LiveData<String> get() = _outdoorActivitySuggestion
 
+    /**
+     * The activity duration suggestion as mutable live private data
+     */
     private val _activityDurationSuggestion = MutableLiveData<String>()
+    /**
+     * The activity duration suggestion as public data that cannot be modified.
+     */
     val activityDurationSuggestion : LiveData<String> get() = _activityDurationSuggestion
 
+    /**
+     * The heat warning suggestion as mutable live private data
+     */
     private val _heatWarningSuggestion = MutableLiveData<String>()
+    /**
+     * The heat warning suggestion as public data that cannot be modified.
+     */
     val heatWarningSuggestion : LiveData<String> get() = _heatWarningSuggestion
 
+    /**
+     * The weather icon to display given weather forecast as mutable live private data
+     */
     private val _weatherIcon = MutableLiveData<Drawable>()
+    /**
+     * The weather icon to display given weather forecast as public data that cannot be modified.
+     */
     val weatherIcon : LiveData<Drawable> get() = _weatherIcon
 
+    /**
+     * Earth radius
+     */
     private val Radius = 6371
 
+    /**
+     * The current weather condition
+     */
     private lateinit var weatherCondition : WeatherCondition
 
+    /**
+     * The method called at the view model creation time
+     */
     init {
         weatherProperty()
     }
 
+    /**
+     * Start the function for API data fetch from main thread as coroutine
+     */
     private fun weatherProperty() {
         viewModelScope.launch (Dispatchers.Main) {
             getForecastProperty()
@@ -80,11 +163,30 @@ class WeatherViewModel(application: Application, location: Location) : AndroidVi
         }
     }
 
+    /**
+     * The temperature property fetched back from temperature API
+     */
     private lateinit var temperatureProperty: TemperatureProperty
+
+    /**
+     * The PM2.5 property fetched back from PM2.5 API
+     */
     private lateinit var pmProperty: PMProperty
+
+    /**
+     * The forecast property fetched back from weather forecast API
+     */
     private lateinit var forecastProperty: ForecastProperty
+
+    /**
+     * The UV index property fetched back from UV index API
+     */
     private lateinit var uviProperty: UVIProperty
 
+    /**
+     * Fetch a weather forecast as forecast property in a difference thread.
+     * Await for return and then map property to weather condition. Find the weather icon and produce outdoor activity suggestion accordingly.
+     */
     private suspend fun getForecastProperty() {
         val value = viewModelScope.async {
             try {
@@ -106,6 +208,10 @@ class WeatherViewModel(application: Application, location: Location) : AndroidVi
         getOutdoorActivitySuggestion()
     }
 
+    /**
+     * Fetch temperature information as temperature property in a difference thread.
+     * Await for return and then find the temperature of the nearest temperature station . Produce outdoor activity suggestion accordingly.
+     */
     private suspend fun getTemperatureProperty() {
         val value = viewModelScope.async {
             try {
@@ -123,6 +229,10 @@ class WeatherViewModel(application: Application, location: Location) : AndroidVi
         getHeatWarningSuggestion()
     }
 
+    /**
+     * Fetch PM2.5 information as pmproperty in a difference thread.
+     * Await for return and then find the PM2.5 of nearest region . Produce activity duration suggestion accordingly.
+     */
     private suspend fun getPMProperty() {
         val value = viewModelScope.async {
             try {
@@ -144,6 +254,10 @@ class WeatherViewModel(application: Application, location: Location) : AndroidVi
         getActivityDurationSuggestion()
     }
 
+    /**
+     * Fetch UV index as uviproperty in a difference thread.
+     * Await for return and then find the uv index of nearest timestamp . Produce sun protection suggestion accordingly.
+     */
     private suspend fun getUVIProperty() {
         val value = viewModelScope.async {
             try {
@@ -159,7 +273,9 @@ class WeatherViewModel(application: Application, location: Location) : AndroidVi
         getSunProtectionSuggestion()
     }
 
-
+    /**
+     * Map weather forecast string to weather condition
+     */
     private fun mapToWeatherCondition() {
         if (_forecast.value!!.contains("fair", true))
             weatherCondition = WeatherCondition.FAIR
@@ -188,6 +304,9 @@ class WeatherViewModel(application: Application, location: Location) : AndroidVi
         else weatherCondition = WeatherCondition.UNKNOWN
     }
 
+    /**
+     * Using weather condition to find the most suitable weather icon
+     */
     private fun getWeatherIcon() {
         val context = getApplication<Application>().applicationContext
         when (weatherCondition) {
@@ -215,7 +334,9 @@ class WeatherViewModel(application: Application, location: Location) : AndroidVi
         }
     }
 
-
+    /**
+     * Produce sun protection suggestion based on uv index
+     */
     private fun getSunProtectionSuggestion() {
         if (_uvi.value!! in 0.0..0.9) {
             _sunProtectionSuggestion.value = "No precaution needed."
@@ -232,6 +353,9 @@ class WeatherViewModel(application: Application, location: Location) : AndroidVi
         }
     }
 
+    /**
+     * Produce outdoor activity suggestion based on weather condition.
+     */
     private fun getOutdoorActivitySuggestion() {
         when (weatherCondition) {
             WeatherCondition.FAIR -> _outdoorActivitySuggestion.value = "Nice day for outdoor activities."
@@ -243,6 +367,9 @@ class WeatherViewModel(application: Application, location: Location) : AndroidVi
         }
     }
 
+    /**
+     * Produce activity duration suggestion based on pm2.5
+     */
     private fun getActivityDurationSuggestion() {
         if (_pm25.value!! in 0.0..55.0) {
             _activityDurationSuggestion.value = "Continue with normal activities."
@@ -255,18 +382,22 @@ class WeatherViewModel(application: Application, location: Location) : AndroidVi
         }
     }
 
+    /**
+     * Produce heat warning suggestion based on temperature
+     */
     private fun getHeatWarningSuggestion() {
         if (_temperature.value!! in 27.0..32.0) {
-            _heatWarningSuggestion.value = "Fatigue possible with prolonged " +
-                    "exposure and/or physical activity."
+            _heatWarningSuggestion.value = "Fatigue possible with prolonged activity."
         } else if (_temperature.value!! in 33.0..39.9) {
-            _heatWarningSuggestion.value = "Heatstroke, heat cramps, or heat " +
-                    "exhaustion possible with prolonged exposure and/or physical activity."
+            _heatWarningSuggestion.value = "Heatstroke possible with prolonged activity."
         } else {
             _heatWarningSuggestion.value = "Not specific suggestion"
         }
     }
 
+    /**
+     * Find out the forecast location name based on user's current location
+     */
     private fun getForecastLocationName(
         latitude: Double,
         longitude: Double,
@@ -276,6 +407,9 @@ class WeatherViewModel(application: Application, location: Location) : AndroidVi
         return areaMetadata[index!!].name
     }
 
+    /**
+     * Find out the nearest region based on user's current location
+     */
     private fun getPM25Region(
         latitude: Double,
         longitude: Double,
@@ -285,6 +419,9 @@ class WeatherViewModel(application: Application, location: Location) : AndroidVi
         return regionMetadata[index!!].name
     }
 
+    /**
+     * Find out the nearest temperature location based on user's current location
+     */
     private fun getTempStationId(
         latitude: Double,
         longitude: Double,
@@ -296,6 +433,9 @@ class WeatherViewModel(application: Application, location: Location) : AndroidVi
         return stations[index!!].id
     }
 
+    /**
+     * Compute distance between two location in the map
+     */
     private fun getDistance (
         latitude: Double,
         longitude: Double,
@@ -310,6 +450,9 @@ class WeatherViewModel(application: Application, location: Location) : AndroidVi
         return Radius * c
     }
 
+    /**
+     * Convert degree to radian
+     */
     private fun deg2rad(deg: Double): Double {
         return deg * (Math.PI/180)
     }

@@ -21,10 +21,11 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_marginTop="16dp"
+            android:src="@{weatherViewModel.weatherIcon}"
+            app:tint="#664A99"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/temperature"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@{weatherViewModel.weatherIcon}"
             tools:src="@drawable/ic_cloud_sun" />
 
         <TextView
@@ -34,6 +35,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="28dp"
             android:text="@{@string/temperature(weatherViewModel.temperature)}"
+            android:textColor="#664A99"
             android:textSize="80sp"
             app:layout_constraintEnd_toStartOf="@+id/weather_icon"
             app:layout_constraintHorizontal_bias="0.5"
@@ -46,6 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{weatherViewModel.forecast}"
+            android:textColor="#664A99"
             app:layout_constraintEnd_toEndOf="@+id/weather_icon"
             app:layout_constraintTop_toBottomOf="@+id/weather_icon"
             tools:text="Cloudy" />
@@ -56,6 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:text="@{@string/pm(weatherViewModel.pm25)}"
+            android:textColor="#664A99"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -70,6 +74,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="28dp"
             android:text="@{@string/uvi( weatherViewModel.uvi)}"
+            android:textColor="#664A99"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/PM_reading"
             app:layout_constraintHorizontal_bias="0.5"
@@ -96,7 +101,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="8dp"
-                    android:background="@color/purple_200">
+                    android:background="@drawable/border">
 
                     <ImageView
                         android:id="@+id/sun_protection_icon"
@@ -106,6 +111,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         android:src="@drawable/ic_uvi"
+                        app:tint="#664A99"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -115,8 +121,9 @@
                         android:id="@+id/sun_protection_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="24sp"
                         android:text="@string/sun_protection"
+                        android:textColor="#664A99"
+                        android:textSize="24sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.2"
                         app:layout_constraintStart_toEndOf="@+id/sun_protection_icon"
@@ -129,6 +136,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:text="@{weatherViewModel.sunProtectionSuggestion}"
+                        android:textColor="#9E9A9A"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0"
                         app:layout_constraintStart_toStartOf="@+id/sun_protection_header"
@@ -140,7 +148,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="8dp"
-                    android:background="@color/purple_200">
+                    android:background="@drawable/border">
 
                     <ImageView
                         android:id="@+id/outdoor_activity_icon"
@@ -150,6 +158,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         android:src="@drawable/ic_sports"
+                        app:tint="#664A99"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -159,8 +168,9 @@
                         android:id="@+id/outdoor_activity_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="24sp"
                         android:text="@string/outdoor_activity"
+                        android:textColor="#664A99"
+                        android:textSize="24sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.2"
                         app:layout_constraintStart_toEndOf="@+id/outdoor_activity_icon"
@@ -173,6 +183,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:text="@{weatherViewModel.outdoorActivitySuggestion}"
+                        android:textColor="#9E9A9A"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0"
                         app:layout_constraintStart_toStartOf="@+id/outdoor_activity_header"
@@ -184,7 +195,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="8dp"
-                    android:background="@color/purple_200">
+                    android:background="@drawable/border">
 
                     <ImageView
                         android:id="@+id/activity_duration_icon"
@@ -194,6 +205,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         android:src="@drawable/ic_pm25"
+                        app:tint="#664A99"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -203,8 +215,9 @@
                         android:id="@+id/activity_duration_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="24sp"
                         android:text="@string/activity_duration"
+                        android:textColor="#664A99"
+                        android:textSize="24sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.2"
                         app:layout_constraintStart_toEndOf="@+id/activity_duration_icon"
@@ -227,7 +240,8 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/purple_200">
+                    android:layout_marginBottom="50dp"
+                    android:background="@drawable/border">
 
                     <ImageView
                         android:id="@+id/heat_waring_icon"
@@ -237,6 +251,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         android:src="@drawable/ic_heat"
+                        app:tint="#664A99"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -246,8 +261,9 @@
                         android:id="@+id/heat_waring_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="24sp"
                         android:text="@string/heat_warning"
+                        android:textColor="#664A99"
+                        android:textSize="24sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.2"
                         app:layout_constraintStart_toEndOf="@+id/heat_waring_icon"
@@ -260,6 +276,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:text="@{weatherViewModel.heatWarningSuggestion}"
+                        android:textColor="#9E9A9A"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0"
                         app:layout_constraintStart_toStartOf="@+id/heat_waring_header"
