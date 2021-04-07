@@ -14,7 +14,17 @@ import com.google.type.Date
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-
+/**
+ * This is the ViewModel that stores and manages UI related data in the lifecycle of the Sports Result fragment.
+ *
+ * @property type the workout type. (e.g. walking/jogging/cycling)
+ * @property passedTime the time duration of workout.
+ * @property totalDistance the total distance of the user workout route.
+ * @property db the firebase database.
+ * @property username the user name to get information from firebase database.
+ *
+ * @author Ye Ziyuan
+ */
 class SportsResultViewModel(
     val type: String,
     val passedTime: Long,
@@ -23,22 +33,64 @@ class SportsResultViewModel(
     val username: String
 ): ViewModel() {
 
+    /**
+     * The avg speed string as mutable live private data.
+     */
     private val _avgSpeed = MutableLiveData<String>()
+
+    /**
+     * The avg speed string as live data.
+     */
     val avgspeed : LiveData<String> get() = _avgSpeed
 
+    /**
+     * The time duration string as mutable live private data.
+     */
     private val _passed_Time = MutableLiveData<String>()
+
+    /**
+     * The time duration string as live data.
+     */
     val passed_Time: LiveData<String> get() = _passed_Time
 
+    /**
+     * The total calories burned string as mutable live private data.
+     */
     private val _calories = MutableLiveData<String>()
+
+    /**
+     * The total calories burned string as live data.
+     */
     val calories : LiveData<String> get() = _calories
 
+    /**
+     * The total distance string as mutable live private data.
+     */
     private val _total_Distance = MutableLiveData<String>()
+
+    /**
+     * The total distance string as live data.
+     */
     val total_Distance : LiveData<String> get() = _total_Distance
 
+    /**
+     * The loading status boolean as mutable live private data.
+     */
     private val _loading = MutableLiveData<Boolean>()
+
+    /**
+     * The loading status boolean as live data.
+     */
     val loading : LiveData<Boolean> get() = _loading
 
+    /**
+     * The numerical weight value as mutable live private data.
+     */
     private val _weight = MutableLiveData<Long>()
+
+    /**
+     * The numerical weight value as live data.
+     */
     val weight : LiveData<Long> get() = _weight
 
 
@@ -47,11 +99,20 @@ class SportsResultViewModel(
         initProperty()
     }
 
+    /**
+     * Speed value of the workout(temporary).
+     */
     private var speed = 0.0
-    private var cal = 0.0
-    //private val _weight = MutableLiveData<Long>()
-    //val weight : LiveData<Long> get() = _weight
 
+    /**
+     * Calories burned from the workout(temporary).
+     */
+    private var cal = 0.0
+
+    /**
+     * Manages the initial properties, Formats the data to display once the data is ready from firebase.
+     *
+     */
     private fun initProperty() {
 
         speed = totalDistance * 1000 / TimeUnit.MILLISECONDS.toSeconds(passedTime)*2.23694
@@ -69,11 +130,18 @@ class SportsResultViewModel(
 
     }
 
+    /**
+     * Sets loading status to be false.
+     *
+     */
     fun setLoadingFalse() {
         _loading.value = false
     }
 
-
+    /**
+     * Calculates the calories burned from this workout.
+     *
+     */
     fun calculateCalories() {
         //METs x 3.5 x (your body weight in kilograms) / 200 =
         val MET = SportsResultsUtil.checkMETs(type, speed) * TimeUnit.MILLISECONDS.toMinutes(
@@ -92,7 +160,11 @@ class SportsResultViewModel(
     }
 
 
-
+    /**
+     * Gets weight from firebase for calories calculation.
+     *
+     * @param User the username to look for in database when fetching information.
+     */
     private fun getWeight(name: String){
 //        var  weight_retrieved: Long = 0
         db.collection("healthInfo").whereEqualTo("userName", name).
@@ -110,11 +182,20 @@ class SportsResultViewModel(
 //        return weight_retrieved
     }
 
+    /**
+     * Formats the total length to display as a string.
+     *
+     * @param totalDistance the numerical value of total distance of the workout.
+     */
     fun formatRouteLength(totalDistance: Double){
         _total_Distance.value = String.format("Total Distance: %.3f km", totalDistance)
         //divided by 1000 to get the distance in km
     }
 
+    /**
+     * Saves the workout history to firebase data store.
+     *
+     */
     fun saveToFirebase(){
         val workoutHistory: CollectionReference = db.collection("workoutHistory")
 
@@ -128,6 +209,17 @@ class SportsResultViewModel(
 
     }
 
+    /**
+     * The data model class to save to firebase as a WorkoutHistory object.
+     *
+     * @property date the date of the workout.
+     * @property avgSpeed the avg speed of the workout.
+     * @property duration the time duration of the workout.
+     * @property userName the information of user name.
+     * @property distance the total distance of the workout.
+     * @property calories the total calories burned in this workout.
+     * @property workoutType the workout type of this workout. (e.g. jogging/walking/cycling)
+     */
     inner class WorkoutHistory(
         val date: Timestamp,
         val avgSpeed: String,

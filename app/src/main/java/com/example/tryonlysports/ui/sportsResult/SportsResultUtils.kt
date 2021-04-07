@@ -1,6 +1,19 @@
 package com.example.tryonlysports.ui.sportsResult
 
+/**
+ * This is a util class that checks the type of workout and the avg speed, and returns the MET.
+ *
+ * @author Ye Ziyuan
+ */
 internal object SportsResultsUtil{
+
+    /**
+     * Calculates MET per minutes based on type of workout and average speed.
+     *
+     * @param type the workout type (e.g. jogging/walking/cycling).
+     * @param avgSpeed the average speed of the user workout.
+     * @return MET value per minute.
+     */
     fun checkMETs(type: String, avgSpeed: Double): Double{
         val speed = kotlin.math.floor(avgSpeed)
         if (type == "jogging"){
