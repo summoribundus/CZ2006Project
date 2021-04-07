@@ -35,16 +35,54 @@ class DoingSportsFragment : Fragment(),OnMapReadyCallback,GoogleApiClient.Connec
     GoogleApiClient.OnConnectionFailedListener,
     com.google.android.gms.location.LocationListener {
 
+    /**
+     * The MapView to display GoogleMap on doing sports fragment.
+     */
     var mMapView: MapView? = null
+
+    /**
+     * The GoogleMap object to display the route and location.
+     */
     private var googleMap: GoogleMap? = null
 
+    /**
+     * The polyline as the user workout route.
+     */
     private var gpsTrack: Polyline? = null
+
+    /**
+     * The map Fragment.
+     */
     private val mapFragment: SupportMapFragment? = null
+
+    /**
+     * The Google API client to handle the GoogleMap activities.
+     */
     private var googleApiClient: GoogleApiClient? = null
+
+    /**
+     * The last known latitude and longtitude to update to the user track polyline.
+     */
     private var lastKnownLatLng: LatLng? = null
+
+    /**
+     * The location obtained by Android OS.
+     */
     private lateinit var location : Location
+
+    /**
+     * The DoingSportsViewModel.
+     */
     private lateinit var viewModel: DoingSportsViewModel
+
+    /**
+     * The DoingSports data binding.
+     */
     private lateinit var binding: FragmentDoingActivityBinding
+
+    /**
+     * the workout type. (cycling/walking/jogging)
+     */
     private var type: String = ""
 
     /**

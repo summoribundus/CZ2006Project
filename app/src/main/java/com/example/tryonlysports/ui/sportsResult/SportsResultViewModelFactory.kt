@@ -21,6 +21,13 @@ class SportsResultViewModelFactory(val type: String,
                                    val passedTime: Long,
                                    val totalDistance: Double,
 val db: FirebaseFirestore, val username: String): ViewModelProvider.Factory {
+    /**
+     * Creates ViewModel for Sports Results Fragment and passes the type & time duration & total distance.
+     *
+     * @param T ViewModel type.
+     * @param modelClass general type of model class that we are going to assign.
+     * @return the created SportsResultViewModel given the workout type.
+     */
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SportsResultViewModel::class.java)) {
             return SportsResultViewModel(type, passedTime, totalDistance, db, username) as T
