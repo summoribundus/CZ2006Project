@@ -9,6 +9,8 @@ import java.lang.IllegalArgumentException
  * This is the Doing Sports ViewModelFactory which instantiates and returns the ViewModel object that survives configuration changes of Doing Sports fragment.
  *
  * @property type the type of workout (e.g. cycling/jogging/walking)
+ *
+ * @author Ye Ziyuan
  */
 class DoingSportsViewModelFactory(val type:String): ViewModelProvider.Factory {
     /**

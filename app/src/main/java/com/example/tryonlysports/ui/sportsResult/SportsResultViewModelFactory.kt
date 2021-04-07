@@ -14,6 +14,8 @@ import java.lang.IllegalArgumentException
  * @property totalDistance the total distance of the workout.
  * @property db the firebase database instance.
  * @property username the username.
+ *
+ * @author Ye Ziyuan
  */
 class SportsResultViewModelFactory(val type: String,
                                    val passedTime: Long,

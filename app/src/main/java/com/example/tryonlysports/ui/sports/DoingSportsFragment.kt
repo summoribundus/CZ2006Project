@@ -28,6 +28,8 @@ import com.google.android.gms.maps.model.*
 
 /**
  * This is the Fragment for the doing sports function.
+ *
+ * @author Ye Ziyuan
  */
 class DoingSportsFragment : Fragment(),OnMapReadyCallback,GoogleApiClient.ConnectionCallbacks,
     GoogleApiClient.OnConnectionFailedListener,

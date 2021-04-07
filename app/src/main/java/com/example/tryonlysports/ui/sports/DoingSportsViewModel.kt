@@ -16,6 +16,8 @@ import kotlin.math.floor
  * This is the ViewModel that stores and manages UI related data in the lifecycle of the Doing Sports fragment.
  *
  * @property type type of the workout (e.g. cycling/jogging/walking)
+ *
+ * @author Ye Ziyuan
  */
 class DoingSportsViewModel(val type:String): ViewModel() {
     private val _typeStr =  MutableLiveData<String>()
