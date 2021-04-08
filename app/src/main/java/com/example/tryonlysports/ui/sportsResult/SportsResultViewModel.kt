@@ -179,7 +179,6 @@ class SportsResultViewModel(
             Log.d("DAO", "Why failed?")
         }
 
-//        return weight_retrieved
     }
 
     /**
