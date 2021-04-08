@@ -93,8 +93,9 @@ class SportsResultViewModel(
      */
     val weight : LiveData<Long> get() = _weight
 
-
-
+    /**
+     * Will be called when initialized.
+     */
     init {
         initProperty()
     }
