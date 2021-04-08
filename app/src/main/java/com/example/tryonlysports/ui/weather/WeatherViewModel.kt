@@ -30,6 +30,9 @@ private const val TAG = "WeatherViewModel"
  * @author Li Rui
  */
 class WeatherViewModel(application: Application, val location: Location) : AndroidViewModel(application) {
+    /**
+     * The enumeration class representation the weather condition
+     */
     enum class WeatherCondition {
         THUNDERY_SHOWER,
         SHOWER,
@@ -398,6 +401,14 @@ class WeatherViewModel(application: Application, val location: Location) : Andro
     /**
      * Find out the forecast location name based on user's current location
      */
+    /**
+     * Find out the forecast location name based on user's current location
+     *
+     * @param latitude User latitude
+     * @param longitude User longitude
+     * @param areaMetadata List of forecast locational information
+     * @return nearest location name
+     */
     private fun getForecastLocationName(
         latitude: Double,
         longitude: Double,
@@ -409,6 +420,11 @@ class WeatherViewModel(application: Application, val location: Location) : Andro
 
     /**
      * Find out the nearest region based on user's current location
+     *
+     * @param latitude user latitude
+     * @param longitude user longitude
+     * @param regionMetadata list of region location data used by PM2.5
+     * @return nearest region
      */
     private fun getPM25Region(
         latitude: Double,
@@ -421,6 +437,11 @@ class WeatherViewModel(application: Application, val location: Location) : Andro
 
     /**
      * Find out the nearest temperature location based on user's current location
+     *
+     * @param latitude user latitude
+     * @param longitude user longitude
+     * @param stations list of temperature stations
+     * @return nearest temperature station id
      */
     private fun getTempStationId(
         latitude: Double,
@@ -435,6 +456,11 @@ class WeatherViewModel(application: Application, val location: Location) : Andro
 
     /**
      * Compute distance between two location in the map
+     *
+     * @param latitude user latitude
+     * @param longitude user longitude
+     * @param locationProperty Weather info location
+     * @return distance between two points
      */
     private fun getDistance (
         latitude: Double,
@@ -452,6 +478,9 @@ class WeatherViewModel(application: Application, val location: Location) : Andro
 
     /**
      * Convert degree to radian
+     *
+     * @param deg Degree
+     * @return Radian
      */
     private fun deg2rad(deg: Double): Double {
         return deg * (Math.PI/180)

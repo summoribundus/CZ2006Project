@@ -109,6 +109,11 @@ class ForegroundLocationService: Service(){
 
     /**
      * If location tracking is canceled.
+     *
+     * @param intent The intent passed in.
+     * @param flags Additional data about this start request.
+     * @param startId A unique integer representing this specific request to start.
+     * @return The return value indicates what semantics the system should use for the service's current started state.
      */
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         Log.d(TAG, "onStartCommand()")
@@ -124,8 +129,12 @@ class ForegroundLocationService: Service(){
         return START_NOT_STICKY
     }
 
+
     /**
      * Client comes into foreground and binds to service, so the service can become a background services.
+     *
+     * @param intent The Intent that was used to bind to this service
+     * @return Return an IBinder through which clients can call on to the service.
      */
     override fun onBind(intent: Intent): IBinder? {
         Log.d(TAG, "onBind()")
@@ -137,6 +146,8 @@ class ForegroundLocationService: Service(){
 
     /**
      * Client returns to the foreground and rebinds to service, so the service can become a background services.
+     *
+     * @param intent The Intent that was used to bind to this service
      */
     override fun onRebind(intent: Intent) {
         Log.d(TAG, "onRebind()")
@@ -146,8 +157,12 @@ class ForegroundLocationService: Service(){
         super.onRebind(intent)
     }
 
+
     /**
      * Client leaves foreground, so service needs to become a foreground service to maintain the 'while-in-use' label.
+     *
+     * @param intent The Intent that was used to bind to this service
+     * @return Return true if you would like to have the service's onRebind(Intent) method later called when new clients bind to it.
      */
     override fun onUnbind(intent: Intent): Boolean {
         Log.d(TAG, "onUnbind()")
@@ -162,6 +177,8 @@ class ForegroundLocationService: Service(){
 
     /**
      * Set variable to true if the configuration has changed
+     *
+     * @param newConfig The new configuration
      */
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
@@ -188,7 +205,7 @@ class ForegroundLocationService: Service(){
     }
 
     /**
-     * For client to unsubsctibe location updates
+     * For client to unsubscribe location updates
      */
     fun unsubscribeToLocationUpdates() {
         Log.d(TAG, "unsubscribeToLocationUpdates()")
@@ -210,8 +227,11 @@ class ForegroundLocationService: Service(){
         }
     }
 
-    /*
+    /**
      * Generates a notification that represent latest location.
+     *
+     * @param location The location just obtained
+     * @return The generated notification
      */
     private fun generateNotification(location: Location?): Notification {
         Log.d(TAG, "generateNotification()")
