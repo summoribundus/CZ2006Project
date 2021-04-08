@@ -15,6 +15,8 @@ internal object SportsResultsUtil{
      * @return MET value per minute.
      */
     fun checkMETs(type: String, avgSpeed: Double): Double{
+        if (type != "jogging"  && type != "walking" && type!="cycling")
+            return -1.0
         if (avgSpeed>=0){
             val speed = kotlin.math.floor(avgSpeed)
             if (type == "jogging"){
