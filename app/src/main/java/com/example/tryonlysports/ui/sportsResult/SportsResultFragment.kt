@@ -14,7 +14,21 @@ import com.example.tryonlysports.MainActivity
 import com.example.tryonlysports.R
 import com.example.tryonlysports.databinding.FragmentResultBinding
 
+/**
+ * This is the Fragment for the displaying sports results summary function.
+ *
+ * @author Ye Ziyuan
+ */
 class SportsResultFragment: Fragment() {
+
+    /**
+     * Creates the fragment's portion of the view hierarchy and initializes ViewModelFactory and then ViewModel.
+     *
+     * @param inflater converts the xml file fragment_sports_results into View objects.
+     * @param container a special view to contain other views.
+     * @param savedInstanceState a reference to a Bundle object that is passed into the onCreate method of MainActivity.
+     * @return a View to display on the Sports Result page.
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
