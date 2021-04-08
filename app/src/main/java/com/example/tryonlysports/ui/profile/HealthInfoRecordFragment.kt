@@ -14,11 +14,29 @@ import com.example.tryonlysports.MainActivity
 import com.example.tryonlysports.R
 import com.example.tryonlysports.databinding.FragmentHealthInfoRecordBinding
 
+/**
+ * This is the Fragment for the recording health info function.
+ *
+ */
 class HealthInfoRecordFragment: Fragment() {
-
+    /**
+     * The healthInfoRecord fragment data binding.
+     */
     lateinit var binding: FragmentHealthInfoRecordBinding
+
+    /**
+     * The HealthInfoRecordViewModel
+     */
     lateinit var healthInfoRecordViewModel: HealthInfoRecordViewModel
 
+    /**
+     * Creates the fragment's portion of the view hierarchy and initializes viewModelFactory and viewModel.
+     *
+     * @param inflater converts the xml file fragment_health_info_record into View objects.
+     * @param container a special view to contain other views.
+     * @param savedInstanceState a reference to a Bundle object that is passed into the onCreate method of MainActivity.
+     * @return a View to display on the page to record health info.
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,10 +65,18 @@ class HealthInfoRecordFragment: Fragment() {
         return binding.root
     }
 
+    /**
+     * Stores the user input of health info to Firebase.
+     *
+     */
     fun saveWeight() {
         healthInfoRecordViewModel.saveToFirestore(binding.recorder.text.toString().toInt())
     }
 
+    /**
+     * Hide the keyboard
+     *
+     */
     fun hideKeyboard() {
         val imm: InputMethodManager =
             requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager

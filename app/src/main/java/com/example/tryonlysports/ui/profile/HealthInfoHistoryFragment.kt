@@ -17,12 +17,18 @@ import com.example.tryonlysports.databinding.FragmentWeightHistoryBinding
 
 
 /**
- * A simple [Fragment] subclass.
- * Use the [HealthInfoHistoryFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * This is the Fragment for the displaying health info history function.
  */
-class HealthInfoHistoryFragment : Fragment() {
 
+class HealthInfoHistoryFragment : Fragment() {
+    /**
+     * Creates the fragment's portion of the view hierarchy and initializes viewModelFactory, viewModel and adapter.
+     *
+     * @param inflater converts the xml file fragment_weight_history into View objects.
+     * @param container a special view to contain other views.
+     * @param savedInstanceState a reference to a Bundle object that is passed into the onCreate method of MainActivity.
+     * @return a View to display on the Health Info History page.
+     */
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,

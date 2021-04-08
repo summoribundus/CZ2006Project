@@ -3,6 +3,11 @@ package com.example.tryonlysports.ui.profile
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 
+/**
+ * TODO
+ *
+ * @param item
+ */
 @BindingAdapter("dateWorkoutHistoryText")
 fun TextView.setDateWorkoutHistoryText(item: WorkoutHistory) {
     text = item.date?.toDate().toString()

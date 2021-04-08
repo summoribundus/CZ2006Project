@@ -7,16 +7,31 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tryonlysports.databinding.ListWorkoutHistroyBinding
 
+/**
+ * TODO
+ *
+ */
 class WorkoutHistoryAdapter: ListAdapter<WorkoutHistory, WorkoutHistoryAdapter.ViewHolder>(WorkoutHistoryDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkoutHistoryAdapter.ViewHolder {
         return ViewHolder.from(parent)
     }
 
+    /**
+     * TODO
+     *
+     * @param holder
+     * @param position
+     */
     override fun onBindViewHolder(holder: WorkoutHistoryAdapter.ViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
     }
 
+    /**
+     * TODO
+     *
+     * @property binding
+     */
     class ViewHolder private constructor(val binding: ListWorkoutHistroyBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: WorkoutHistory) {
             binding.workout = item
@@ -35,6 +50,10 @@ class WorkoutHistoryAdapter: ListAdapter<WorkoutHistory, WorkoutHistoryAdapter.V
 
 }
 
+/**
+ * TODO
+ *
+ */
 class  WorkoutHistoryDiffCallback : DiffUtil.ItemCallback<WorkoutHistory>() {
 
     override fun areItemsTheSame(oldItem: WorkoutHistory, newItem: WorkoutHistory): Boolean {

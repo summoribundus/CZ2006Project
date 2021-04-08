@@ -12,7 +12,19 @@ import com.example.tryonlysports.MainActivity
 import com.example.tryonlysports.R
 import com.example.tryonlysports.databinding.FragmentPersonalInfoBinding
 
+/**
+ * This is the Fragment for the displaying personal info function.
+ *
+ */
 class PersonalInfoFragment: Fragment() {
+    /**
+     * Creates the fragment's portion of the view hierarchy and initializes viewModelFactory and viewModel.
+     *
+     * @param inflater converts the xml file fragment_personal_info into View objects.
+     * @param container a special view to contain other views.
+     * @param savedInstanceState a reference to a Bundle object that is passed into the onCreate method of MainActivity.
+     * @return a View to display on the profile page.
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding: FragmentPersonalInfoBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_personal_info, container, false)
 

@@ -12,8 +12,19 @@ import com.example.tryonlysports.MainActivity
 import com.example.tryonlysports.R
 import com.example.tryonlysports.databinding.FragmentScheduleHistoryBinding
 
-
+/**
+ * This is the Fragment for the displaying schedule history function.
+ *
+ */
 class ScheduleHistoryFragment: Fragment() {
+    /**
+     * Creates the fragment's portion of the view hierarchy and initializes viewModelFactory, viewModel and adapter.
+     *
+     * @param inflater converts the xml file fragment_schedule_history into View objects.
+     * @param container a special view to contain other views.
+     * @param savedInstanceState a reference to a Bundle object that is passed into the onCreate method of MainActivity.
+     * @return a View to display on the Schedule History page.
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

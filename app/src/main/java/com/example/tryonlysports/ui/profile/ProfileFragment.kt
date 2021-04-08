@@ -14,17 +14,28 @@ import com.example.tryonlysports.MainActivity
 import com.example.tryonlysports.R
 import com.example.tryonlysports.databinding.FragmentProfileBinding
 
-
 /**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * This is the Fragment for displaying the profile page
  */
 class ProfileFragment : Fragment() {
-
+    /**
+     * The ProfileViewModel.
+     */
     private lateinit var viewModel: ProfileViewModel
+
+    /**
+     * The Main Activity.
+     */
     lateinit var mainActivity: MainActivity
 
+    /**
+     * Creates the fragment's portion of the view hierarchy and initializes viewModelFactory and viewModel.
+     *
+     * @param inflater converts the xml file fragment_profile into View objects.
+     * @param container a special view to contain other views.
+     * @param savedInstanceState a reference to a Bundle object that is passed into the onCreate method of MainActivity.
+     * @return a View to display on the profile-View History Page
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -77,6 +88,10 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * TODO
+     *
+     */
     override fun onStart() {
         super.onStart()
         Log.i("MainActivity", "subscribeToService")
