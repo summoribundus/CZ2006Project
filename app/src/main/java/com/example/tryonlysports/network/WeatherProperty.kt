@@ -10,8 +10,8 @@ package com.example.tryonlysports.network
 /**
  * Location property containing latitude and longitude
  *
- * @param latitude Latitude
- * @param longitude Longitude
+ * @property latitude Latitude
+ * @property longitude Longitude
  */
 data class LocationProperty(val latitude: Double,
                             val longitude: Double)
@@ -19,7 +19,7 @@ data class LocationProperty(val latitude: Double,
 /**
  * API property containing the status of response
  *
- * @param status The status of api
+ * @property status The status of api
  */
 data class APIInfoProperty(val status: String)
 
@@ -28,9 +28,9 @@ data class APIInfoProperty(val status: String)
 /**
  * Containing information on temperature
  *
- * @param metadata Metadata on temperature
- * @param items List of temperature
- * @param api_info Information about API
+ * @property metadata Metadata on temperature
+ * @property items List of temperature
+ * @property api_info Information about API
  */
 data class TemperatureProperty(val metadata: TemperatureMetadataProperty,
                                val items: List<TemperatureItemProperty>,
@@ -39,9 +39,9 @@ data class TemperatureProperty(val metadata: TemperatureMetadataProperty,
 /**
  * Metadata on temperature
  *
- * @param stations List of information on temperature stations
- * @param reading_type Type of data retrieval
- * @param reading_unit The unit for temperature
+ * @property stations List of information on temperature stations
+ * @property reading_type Type of data retrieval
+ * @property reading_unit The unit for temperature
  */
 data class TemperatureMetadataProperty(val stations: List<TemperatureStationProperty>,
                                        val reading_type: String,
@@ -50,10 +50,10 @@ data class TemperatureMetadataProperty(val stations: List<TemperatureStationProp
 /**
  * Information on temperature stations
  *
- * @param id Station id
- * @param device_id Station device id
- * @param name Name of the station
- * @param location Location information of the station
+ * @property id Station id
+ * @property device_id Station device id
+ * @property name Name of the station
+ * @property location Location information of the station
  */
 data class TemperatureStationProperty(val id: String,
                                       val device_id: String,
@@ -63,8 +63,8 @@ data class TemperatureStationProperty(val id: String,
 /**
  * Temperature item
  *
- * @param timestamp Timestamp of the creation of temperature reading
- * @param readings Temperature reading
+ * @property timestamp Timestamp of the creation of temperature reading
+ * @property readings Temperature reading
  */
 data class TemperatureItemProperty(val timestamp: String,
                                    val readings: List<TemperatureReadingProperty>)
@@ -72,8 +72,8 @@ data class TemperatureItemProperty(val timestamp: String,
 /**
  * Temperature reading
  *
- * @param station_id Id of temperature station id
- * @param value Temperature
+ * @property station_id Id of temperature station id
+ * @property value Temperature
  */
 data class TemperatureReadingProperty(val station_id: String,
                                       val value: Double)
@@ -83,8 +83,8 @@ data class TemperatureReadingProperty(val station_id: String,
 /**
  * UV index property
  *
- * @param api_info Information on API
- * @param items List of uv index item
+ * @property api_info Information on API
+ * @property items List of uv index item
  */
 data class UVIProperty(val api_info: APIInfoProperty,
                        val items: List<UVIItemProperty>)
@@ -92,9 +92,9 @@ data class UVIProperty(val api_info: APIInfoProperty,
 /**
  * UV index item
  *
- * @param timestamp Timestamp of data generation
- * @param update_timestamp Time the data is updated
- * @param index List of uvi index
+ * @property timestamp Timestamp of data generation
+ * @property update_timestamp Time the data is updated
+ * @property index List of uvi index
  */
 data class UVIItemProperty(val timestamp: String,
                            val update_timestamp: String,
@@ -103,8 +103,8 @@ data class UVIItemProperty(val timestamp: String,
 /**
  * UV index
  *
- * @param value UV index
- * @param timestamp Timestamp of data generation
+ * @property value UV index
+ * @property timestamp Timestamp of data generation
  */
 data class UVIIndexProperty(val value: Double,
                             val timestamp: String)
@@ -114,9 +114,9 @@ data class UVIIndexProperty(val value: Double,
 /**
  * PM2.5 Property
  *
- * @param api_info Information on API status
- * @param region_metadata PM2.5 metadata on different region
- * @param items List of PM2.5 item
+ * @property api_info Information on API status
+ * @property region_metadata PM2.5 metadata on different region
+ * @property items List of PM2.5 item
  */
 data class PMProperty(val api_info: APIInfoProperty,
                       val region_metadata: List<PMMetadataProperty>,
@@ -125,8 +125,8 @@ data class PMProperty(val api_info: APIInfoProperty,
 /**
  * Meta region data on PM2.5 information
  *
- * @param name Name of region
- * @param label_location Location of region
+ * @property name Name of region
+ * @property label_location Location of region
  */
 data class PMMetadataProperty(val name: String,
                               val label_location: LocationProperty)
@@ -134,9 +134,9 @@ data class PMMetadataProperty(val name: String,
 /**
  * PM2.5 item property
  *
- * @param timestamp Data generation timestamp
- * @param update_timestamp When the data is updated
- * @param readings PM2.5 readinng
+ * @property timestamp Data generation timestamp
+ * @property update_timestamp When the data is updated
+ * @property readings PM2.5 readinng
  */
 data class PMItemProperty(val timestamp: String,
                           val update_timestamp: String,
@@ -145,18 +145,18 @@ data class PMItemProperty(val timestamp: String,
 /**
  * PM2.5 reading (hour based)
  *
- * @param pm25_one_hourly The hour this PM2.5 reading belongs
+ * @property pm25_one_hourly The hour this PM2.5 reading belongs
  */
 data class PMReadingProperty(val pm25_one_hourly: PMHourProperty)
 
 /**
  * PM2.5 value of each location
  *
- * @param west PM2.5 of the west
- * @param east PM2.5 of the east
- * @param central PM2.5 of the central
- * @param south PM2.5 of the south
- * @param north PM2.5 of the north
+ * @property west PM2.5 of the west
+ * @property east PM2.5 of the east
+ * @property central PM2.5 of the central
+ * @property south PM2.5 of the south
+ * @property north PM2.5 of the north
  */
 data class PMHourProperty(val west: Double,
                           val east: Double,
@@ -169,9 +169,9 @@ data class PMHourProperty(val west: Double,
 /**
  * Forecast property
  *
- * @param area_metadata List of meta data on area forecast belongs
- * @param items List of forecast
- * @param api_info Information on api
+ * @property area_metadata List of meta data on area forecast belongs
+ * @property items List of forecast
+ * @property api_info Information on api
  */
 data class ForecastProperty(val area_metadata: List<ForecastMetadataProperty>,
                             val items: List<ForecastItemProperty>,
@@ -180,8 +180,8 @@ data class ForecastProperty(val area_metadata: List<ForecastMetadataProperty>,
 /**
  * Meta data on weather forecast
  *
- * @param name Name of area this forecast belongs
- * @param label_location Location information of this area
+ * @property name Name of area this forecast belongs
+ * @property label_location Location information of this area
  */
 data class ForecastMetadataProperty(val name: String,
                                     val label_location: LocationProperty)
@@ -189,10 +189,10 @@ data class ForecastMetadataProperty(val name: String,
 /**
  * Forecast item property
  *
- * @param update_timestamp Timestamp of the update of this timestamp
- * @param timestamp Data generation time stamp
- * @param valid_period Period when the data is valid
- * @param forecasts List of weather forecast
+ * @property update_timestamp Timestamp of the update of this timestamp
+ * @property timestamp Data generation time stamp
+ * @property valid_period Period when the data is valid
+ * @property forecasts List of weather forecast
  */
 data class ForecastItemProperty(val update_timestamp: String,
                                 val timestamp: String,
@@ -202,8 +202,8 @@ data class ForecastItemProperty(val update_timestamp: String,
 /**
  * Valid period of weather forecast
  *
- * @param start The start of valid period
- * @param end The end of valud period
+ * @property start The start of valid period
+ * @property end The end of valud period
  */
 data class ForecastValidProperty(val start: String,
                                  val end: String)
@@ -211,8 +211,8 @@ data class ForecastValidProperty(val start: String,
 /**
  * Weather forecast
  *
- * @param area The location this forecast belongs
- * @param forecast Weather forecast
+ * @property area The location this forecast belongs
+ * @property forecast Weather forecast
  */
 data class ForecastForecastProperty(val area: String,
                                     val forecast: String)
