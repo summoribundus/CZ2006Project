@@ -22,86 +22,141 @@
             android:id="@+id/type_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:text="@{doingSportsViewModel.typeStr}"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/mapView"
+            android:text="Cycling"
+            android:textColor="#664A99"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/terminate_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="Cycling"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.75"
+            tools:text="Cycling" />
 
         <com.google.android.gms.maps.MapView
             android:id="@+id/mapView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/startTime_text"
+            app:layout_constraintBottom_toTopOf="@+id/type_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/type_text" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/startTime_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{doingSportsViewModel.startTime}"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/mapView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/timePassed_text"
-            tools:text="Cycling"/>
+            android:textColor="#9E9A9A"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/timePassed_text"
+            app:layout_constraintStart_toStartOf="@+id/timePassed_text"
+            app:layout_constraintTop_toBottomOf="@+id/type_text"
+            tools:text="12:30" />
 
         <TextView
             android:id="@+id/timePassed_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{doingSportsViewModel.timePassed}"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@+id/startTime_text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="#9E9A9A"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/speed_text"
-            tools:text="Cycling"
-            />
+            app:layout_constraintStart_toStartOf="@+id/speed_text"
+            app:layout_constraintTop_toBottomOf="@+id/startTime_text"
+            tools:text="20min" />
 
         <TextView
             android:id="@+id/speed_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{doingSportsViewModel.speed}"
-            android:textSize="14sp"
+            android:textColor="#9E9A9A"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/distance_text"
+            app:layout_constraintStart_toStartOf="@+id/distance_text"
             app:layout_constraintTop_toBottomOf="@+id/timePassed_text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/distance_text"
-            tools:text="Cycling"
-            />
+            tools:text="30kmp" />
+
 
         <TextView
             android:id="@+id/distance_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{doingSportsViewModel.totalDistance}"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@+id/speed_text"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="#9E9A9A"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/terminate_button"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Cycling"
-            />
-
+            app:layout_constraintHorizontal_bias="0.67"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/speed_text"
+            tools:text="30km" />
 
         <Button
             android:id="@+id/terminate_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/distance_text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="50dp"
+            android:backgroundTint="#664A99"
             android:text="Terminate"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Duration:"
+            android:textColor="#664A99"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
+            app:layout_constraintStart_toStartOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Avg speed:"
+            android:textColor="#664A99"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total distance:"
+            android:textColor="#664A99"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/terminate_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.28"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start time:"
+            android:textColor="#664A99"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/type_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

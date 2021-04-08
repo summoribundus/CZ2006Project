@@ -4,7 +4,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_sports">Sports</string>
     <string name="title_weather">Weather</string>
-    <string name="please_choose_the_workout_type">Please choose the workout type.&#10;The default is cycling.</string>
+    <string name="please_choose_the_workout_type">Please choose the workout type.</string>
     <string name="jogging">Jogging</string>
     <string name="walking">Walking</string>
     <string name="string_walking">Walking</string>

@@ -50,6 +50,12 @@ class SportsResultFragment: Fragment() {
         val viewModel = ViewModelProvider(this, viewModelFactory).get(SportsResultViewModel::class.java)
         // Create the observer which updates the UI.
 
+        when(arguments.type) {
+            "jogging" -> binding.imageView4.setImageResource(R.drawable.jogging)
+            "walking" -> binding.imageView4.setImageResource(R.drawable.walking)
+            "cycling" -> binding.imageView4.setImageResource(R.drawable.cycling)
+        }
+
         binding.sportsResultViewModel = viewModel
         viewModel.weight.observe(viewLifecycleOwner, {
             viewModel.calculateCalories()
@@ -60,6 +66,13 @@ class SportsResultFragment: Fragment() {
             binding.distanceText.visibility = View.VISIBLE
             binding.timeDurationText.visibility = View.VISIBLE
             binding.textCongratulation.visibility = View.VISIBLE
+            binding.imageView4.visibility = View.VISIBLE
+            binding.textView10.visibility = View.VISIBLE
+            binding.textView11.visibility = View.VISIBLE
+            binding.textView5.visibility = View.VISIBLE
+            binding.textView6.visibility = View.VISIBLE
+            binding.textView7.visibility = View.VISIBLE
+            binding.textView9.visibility = View.VISIBLE
             viewModel.saveToFirebase()
         })
 

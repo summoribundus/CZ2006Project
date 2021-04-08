@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -29,6 +30,14 @@ class SportsNotificationsFragment : Fragment() {
         binding.startButton.setOnClickListener{
             val str:String = proceed()
             this.findNavController().navigate(SportsNotificationsFragmentDirections.actionNavigationNotificationsToDoingActivity(str))
+        }
+
+        binding.tipOptions.setOnCheckedChangeListener { radioGroup: RadioGroup, i: Int ->
+            when(i) {
+                R.id.jogging_opt -> binding.imageView2.setImageResource(R.drawable.jogging)
+                R.id.walking_opt -> binding.imageView2.setImageResource(R.drawable.walking)
+                R.id.cycling_opt -> binding.imageView2.setImageResource(R.drawable.cycling)
+            }
         }
 
         Log.i("Notification", "binding finished")
