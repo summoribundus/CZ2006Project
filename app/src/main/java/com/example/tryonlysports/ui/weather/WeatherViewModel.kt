@@ -341,7 +341,9 @@ class WeatherViewModel(application: Application, val location: Location) : Andro
      * Produce sun protection suggestion based on uv index
      */
     private fun getSunProtectionSuggestion() {
-        if (_uvi.value!! in 0.0..0.9) {
+        if (_uvi.value!! < 0.0) {
+            _sunProtectionSuggestion.value = "Invalid value."
+        } else if (_uvi.value!! in 0.0..0.9) {
             _sunProtectionSuggestion.value = "No precaution needed."
         } else if (_uvi.value!! in 1.0..2.0) {
             _sunProtectionSuggestion.value = "Wear sunglasses on bright days."
@@ -374,7 +376,9 @@ class WeatherViewModel(application: Application, val location: Location) : Andro
      * Produce activity duration suggestion based on pm2.5
      */
     private fun getActivityDurationSuggestion() {
-        if (_pm25.value!! in 0.0..55.0) {
+        if (_pm25.value!! < 0.0) {
+            _activityDurationSuggestion.value = "Invalid value."
+        } else if (_pm25.value!! in 0.0..55.0) {
             _activityDurationSuggestion.value = "Continue with normal activities."
         } else if (_pm25.value!! in 56.0..150.0) {
             _activityDurationSuggestion.value = "Reduce strenuous outdoor activity."
@@ -391,7 +395,7 @@ class WeatherViewModel(application: Application, val location: Location) : Andro
     private fun getHeatWarningSuggestion() {
         if (_temperature.value!! in 27.0..32.0) {
             _heatWarningSuggestion.value = "Fatigue possible with prolonged activity."
-        } else if (_temperature.value!! in 33.0..39.9) {
+        } else if (_temperature.value!! in 33.0..40.0) {
             _heatWarningSuggestion.value = "Heatstroke possible with prolonged activity."
         } else {
             _heatWarningSuggestion.value = "Not specific suggestion"
