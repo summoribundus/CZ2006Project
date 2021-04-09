@@ -41,9 +41,23 @@ import com.google.maps.android.data.kml.KmlLayer
 
 import org.json.JSONObject
 
-
+/**
+ * This is the Fragment for the displaying sports facility on a google map
+ *
+ * @author Wan Qian
+ */
 class SportsFacilityFragment : Fragment(), GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener,
 GoogleMap.OnInfoWindowLongClickListener, GoogleMap.OnInfoWindowCloseListener{
+
+    /**
+     * Creates fragment portion of the view hierarchy that initiates the SportsFacilityViewModel
+     *
+     * @param inflater converts xml file fragment_sportsfacility into viewobjects
+     * @param container a view that contains other views
+     * @param savedInstanceState a reference to a Bundle object that is passed into the onCreate method of MainActivity.
+     * @return a view to display on the sports facility map page
+     */
+
 
     private lateinit var sportsFacilityViewModel: SportsFacilityViewModel
     var mMapView: MapView? = null
@@ -90,7 +104,7 @@ GoogleMap.OnInfoWindowLongClickListener, GoogleMap.OnInfoWindowCloseListener{
             googleMap?.setMinZoomPreference(10.0f)
             googleMap?.setMaxZoomPreference(13.0f)
 
-            // For dropping a marker at a point on the Map
+            /** Drops a marker at the specified point on the map */
             val sg = LatLng(1.3521, 103.8198)
             // For dropping a marker at a point on the Map
 
@@ -98,7 +112,7 @@ GoogleMap.OnInfoWindowLongClickListener, GoogleMap.OnInfoWindowCloseListener{
 //                MarkerOptions().position(sg).title("Marker Title").snippet("Marker Description")
 //            )
 
-            // For zooming automatically to the location of the marker
+            /** Zooms in automatically to the position of the marker */
             val cameraPosition = CameraPosition.Builder().target(sg).zoom(12f).build()
             googleMap?.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
             addLayer()
@@ -107,6 +121,7 @@ GoogleMap.OnInfoWindowLongClickListener, GoogleMap.OnInfoWindowCloseListener{
         return rootView
     }
 
+    /** Passes the geoJson layer of sports facility onto the google map */
     fun addLayer() {
         super.onStart()
         val geoJsonLineLayer = GeoJsonLayer(googleMap, R.raw.sgsportfacilities, context )
