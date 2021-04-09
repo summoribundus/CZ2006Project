@@ -62,7 +62,7 @@ class HealthInfoRecordFragment: Fragment() {
 <<<<<<< Updated upstream
 =======
     /**
-     * Hides the keyboard
+     * Hides the keyboard when the user finishes the keyboard input.
      *
      */
 >>>>>>> Stashed changes
