@@ -18,7 +18,7 @@ data class HealthInfoHistory(val recordTime: Timestamp?= null,
                              val userName: String?=null
                             ){
     /**
-     * The user id for searching in firebase datastore.
+     * The user id for searching in firebase data store.
      */
     lateinit var id:String
 }

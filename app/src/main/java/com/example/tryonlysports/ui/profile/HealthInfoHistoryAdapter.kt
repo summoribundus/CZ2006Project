@@ -38,7 +38,7 @@ class HealthInfoHistoryAdapter: ListAdapter<HealthInfoHistory, HealthInfoHistory
     /**
      * This is the ViewHolder class that describes an item view and metadata about its place within the RecyclerView.
      *
-     * @property binding the databinding of the ListWeightHistory
+     * @property binding the data binding of the ListWeightHistory
      */
     class ViewHolder private constructor(val binding: ListWeightHistoryBinding): RecyclerView.ViewHolder(binding.root) {
         /**
@@ -67,7 +67,7 @@ class HealthInfoHistoryAdapter: ListAdapter<HealthInfoHistory, HealthInfoHistory
 }
 
 /**
- * This is the callback class to facilicate the HealthInfoHistory content recycler display by checking the difference.
+ * This is the callback class to facilitate the HealthInfoHistory content recycler display by checking the difference.
  *
  */
 class  HealthInfoHistoryDiffCallback : DiffUtil.ItemCallback<HealthInfoHistory>() {
