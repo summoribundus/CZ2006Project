@@ -16,6 +16,8 @@ import com.example.tryonlysports.databinding.FragmentProfileBinding
 
 /**
  * This is the Fragment for displaying the profile page
+ *
+ * @author Liu Zhixuan, Li Rui
  */
 class ProfileFragment : Fragment() {
     /**
@@ -89,8 +91,7 @@ class ProfileFragment : Fragment() {
     }
 
     /**
-     * TODO
-     *
+     * Operates when the fragment starts.
      */
     override fun onStart() {
         super.onStart()

@@ -12,6 +12,8 @@ import com.google.firebase.Timestamp
  * @property description name of the scheduled activity.
  * @property completed indicates whether the activity is completed or not.
  * @property outdoor indicates whether the activity is an outdoor activity.
+ *
+ * @author Liu Zhixuan,  Ye Ziyuan
  */
 data class ScheduleHistory(val startDateTime: Timestamp?=null,
                            val endDateTime: Timestamp?=null,
@@ -20,5 +22,8 @@ data class ScheduleHistory(val startDateTime: Timestamp?=null,
                            val description: String?=null,
                            val completed: Boolean?=null,
                            val outdoor: Boolean?=null){
+    /**
+     * The user email for searching in firebase.
+     */
     lateinit var id: String
 }

@@ -12,6 +12,8 @@ import com.google.firebase.firestore.ktx.toObject
  *
  * @property db the firebase database.
  * @property name the user name to get information from firebase database.
+ *
+ * @author Liu Zhixuan, Li Rui
  */
 class ProfileViewModel(val db: FirebaseFirestore, val name: String): ViewModel() {
     /**

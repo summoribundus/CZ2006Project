@@ -8,6 +8,8 @@ package com.example.tryonlysports.ui.profile
  * @property region region that the user is located.
  * @property userEmail email account of the user.
  * @property username username of the user.
+ *
+ * @author Liu Zhixuan, Ye Ziyuan
  */
 data class PersonalInfo(val birthday: String?=null,
 val phoneNumber: String?=null,

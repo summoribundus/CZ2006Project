@@ -13,6 +13,8 @@ import com.google.firebase.firestore.ktx.toObject
  *
  * @property db the firebase database.
  * @property emailID emailID of the user.
+ *
+ * @author Liu Zhixuan, Li Rui
  */
 class PersonalInfoViewModel(val db: FirebaseFirestore, val emailID: String): ViewModel() {
     /**

@@ -11,8 +11,17 @@ import java.lang.IllegalArgumentException
  *
  * @property db the firebase database.
  * @property userName the userName of the user.
+ *
+ * @author Liu Zhixuan, Li Rui
  */
 class WorkoutHistoryViewModelFactory(val db: FirebaseFirestore, val userName: String): ViewModelProvider.Factory {
+    /**
+     * Creates ViewModel for Workout History Fragment and passes the database reference and user Email info.
+     *
+     * @param T ViewModel type.
+     * @param modelClass general type of model class that we are going to assign.
+     * @return the created WorkoutHistoryViewModel given the useremail and firebase instance.
+     */
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(WorkoutHistoryViewModel::class.java)) {
             return WorkoutHistoryViewModel(db, userName) as T

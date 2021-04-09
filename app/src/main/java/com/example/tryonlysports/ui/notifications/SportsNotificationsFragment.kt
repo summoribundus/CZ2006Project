@@ -13,12 +13,31 @@ import androidx.navigation.fragment.findNavController
 import com.example.tryonlysports.R
 import com.example.tryonlysports.databinding.FragmentNotificationsBinding
 
+/**
+ * This is the Fragment to prompt user to choose one workout mode and then start workout.
+ *
+ * @author Ye Ziyuan
+ */
 class SportsNotificationsFragment : Fragment() {
+
+    /**
+     * Sports Prompt data binding.
+     */
     private var _binding: FragmentNotificationsBinding? = null
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+
+    /**
+     * The value of data binding.
+     */
     private val binding get() = _binding!!
 
+    /**
+     * Creates the fragment's portion of the view hierarchy and initializes Radio Groups and Buttons.
+     *
+     * @param inflater converts the xml file fragment_notifications into View objects.
+     * @param container a special view to contain other views.
+     * @param savedInstanceState a reference to a Bundle object that is passed into the onCreate method of MainActivity.
+     * @return a View to display on Sports Notification Page.
+     */
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -44,7 +63,11 @@ class SportsNotificationsFragment : Fragment() {
         return binding.root
     }
 
-
+    /**
+     * Proceeds with the radio button choice of workout type.
+     *
+     * @return a string indicating the workout type.
+     */
     private fun proceed(): String {
         return when(binding.tipOptions.checkedRadioButtonId) {
             R.id.jogging_opt -> "jogging"

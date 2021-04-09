@@ -10,6 +10,7 @@ import com.example.tryonlysports.databinding.ListWeightHistoryBinding
 /**
  * This is the custom adapter class for displaying the health info histories.
  *
+ * @author Liu Zhixuan, Li Rui, Ye Ziyuan
  */
 class HealthInfoHistoryAdapter: ListAdapter<HealthInfoHistory, HealthInfoHistoryAdapter.ViewHolder>(HealthInfoHistoryDiffCallback()) {
     /**

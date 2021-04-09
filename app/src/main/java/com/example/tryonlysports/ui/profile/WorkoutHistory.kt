@@ -12,6 +12,7 @@ import com.google.firebase.Timestamp
  * @property distance distance of the workout record.
  * @property calories calories burned of the workout record.
  * @property workoutType workout type (e.g. cycling) of the workout record.
+ * @author Liu Zhixuan, Ye Ziyuan
  */
 data class WorkoutHistory(val date: Timestamp?=null,
                           val avgSpeed: String?=null,
@@ -20,5 +21,8 @@ data class WorkoutHistory(val date: Timestamp?=null,
                           val distance: String?=null,
                           val calories: String?=null,
                         val workoutType: String?=null){
+    /**
+     * The user email for searching in firebase.
+     */
     lateinit var id: String
 }

@@ -15,6 +15,7 @@ import com.example.tryonlysports.databinding.FragmentPersonalInfoBinding
 /**
  * This is the Fragment for the displaying personal info function.
  *
+ * @author Liu Zhixuan, Li Rui
  */
 class PersonalInfoFragment: Fragment() {
     /**

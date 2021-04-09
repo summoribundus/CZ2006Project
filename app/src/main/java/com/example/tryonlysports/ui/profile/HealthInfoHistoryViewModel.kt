@@ -13,6 +13,8 @@ import com.google.firebase.firestore.ktx.toObject
  *
  * @property db the firebase database.
  * @property userName the userName to get information from firebase database.
+ *
+ * @author Liu Zhixuan, Li Rui, Ye Ziyuan
  */
 class HealthInfoHistoryViewModel(val db: FirebaseFirestore, val userName: String):ViewModel() {
     /**
@@ -33,7 +35,7 @@ class HealthInfoHistoryViewModel(val db: FirebaseFirestore, val userName: String
     }
 
     /**
-     * Get all of the health info histories of the user from Firebase
+     * Gets all of the health info histories of the user from Firebase
      *
      */
     fun getAllHealthHistoryFromFirebase(){
