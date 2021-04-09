@@ -14,6 +14,14 @@ import com.example.tryonlysports.MainActivity
 import com.example.tryonlysports.R
 import com.example.tryonlysports.databinding.FragmentHealthInfoRecordBinding
 
+<<<<<<< Updated upstream
+=======
+/**
+ * This is the Fragment for the recording health info function.
+ *
+ * @author Liu Zhixuan, Ye Ziyuan
+ */
+>>>>>>> Stashed changes
 class HealthInfoRecordFragment: Fragment() {
 
     lateinit var binding: FragmentHealthInfoRecordBinding
@@ -51,6 +59,13 @@ class HealthInfoRecordFragment: Fragment() {
         healthInfoRecordViewModel.saveToFirestore(binding.recorder.text.toString().toInt())
     }
 
+<<<<<<< Updated upstream
+=======
+    /**
+     * Hides the keyboard
+     *
+     */
+>>>>>>> Stashed changes
     fun hideKeyboard() {
         val imm: InputMethodManager =
             requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager

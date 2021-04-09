@@ -7,6 +7,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tryonlysports.databinding.ListWeightHistoryBinding
 
+<<<<<<< Updated upstream
+=======
+/**
+ * This is the custom adapter class for displaying the health info histories.
+ *
+ * @author Liu Zhixuan, Li Rui, Ye Ziyuan
+ */
+>>>>>>> Stashed changes
 class HealthInfoHistoryAdapter: ListAdapter<HealthInfoHistory, HealthInfoHistoryAdapter.ViewHolder>(HealthInfoHistoryDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HealthInfoHistoryAdapter.ViewHolder {

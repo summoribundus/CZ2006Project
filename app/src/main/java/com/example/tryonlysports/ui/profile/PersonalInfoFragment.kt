@@ -12,6 +12,14 @@ import com.example.tryonlysports.MainActivity
 import com.example.tryonlysports.R
 import com.example.tryonlysports.databinding.FragmentPersonalInfoBinding
 
+<<<<<<< Updated upstream
+=======
+/**
+ * This is the Fragment for the displaying personal info function.
+ *
+ * @author Liu Zhixuan, Li Rui
+ */
+>>>>>>> Stashed changes
 class PersonalInfoFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding: FragmentPersonalInfoBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_personal_info, container, false)

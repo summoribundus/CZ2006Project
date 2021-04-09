@@ -16,9 +16,15 @@ import com.example.tryonlysports.databinding.FragmentProfileBinding
 
 
 /**
+<<<<<<< Updated upstream
  * A simple [Fragment] subclass.
  * Use the [ProfileFragment.newInstance] factory method to
  * create an instance of this fragment.
+=======
+ * This is the Fragment for displaying the profile page
+ *
+ * @author Liu Zhixuan, Li Rui
+>>>>>>> Stashed changes
  */
 class ProfileFragment : Fragment() {
 
@@ -77,6 +83,12 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
+<<<<<<< Updated upstream
+=======
+    /**
+     * Operates when the fragment starts.
+     */
+>>>>>>> Stashed changes
     override fun onStart() {
         super.onStart()
         Log.i("MainActivity", "subscribeToService")

@@ -17,9 +17,15 @@ import com.example.tryonlysports.databinding.FragmentWeightHistoryBinding
 
 
 /**
+<<<<<<< Updated upstream
  * A simple [Fragment] subclass.
  * Use the [HealthInfoHistoryFragment.newInstance] factory method to
  * create an instance of this fragment.
+=======
+ * This is the Fragment for the displaying health info history function.
+ *
+ * @author Liu Zhixuan, Li Rui, Ye Ziyuan
+>>>>>>> Stashed changes
  */
 class HealthInfoHistoryFragment : Fragment() {
 

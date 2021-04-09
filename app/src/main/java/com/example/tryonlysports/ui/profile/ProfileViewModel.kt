@@ -7,6 +7,17 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 
+<<<<<<< Updated upstream
+=======
+/**
+ * This is the ViewModel that stores and manages UI related data in the lifecycle of the profile fragment.
+ *
+ * @property db the firebase database.
+ * @property name the user name to get information from firebase database.
+ *
+ * @author Liu Zhixuan, Li Rui
+ */
+>>>>>>> Stashed changes
 class ProfileViewModel(val db: FirebaseFirestore, val name: String): ViewModel() {
 
     private val _nearest_whistory = MutableLiveData<WorkoutHistory>()

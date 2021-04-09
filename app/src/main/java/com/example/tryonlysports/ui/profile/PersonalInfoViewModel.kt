@@ -8,6 +8,17 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObject
 
+<<<<<<< Updated upstream
+=======
+/**
+ * This is the ViewModel that stores and manages UI related data in the lifecycle of the Personal Info fragment.
+ *
+ * @property db the firebase database.
+ * @property emailID emailID of the user.
+ *
+ * @author Liu Zhixuan, Li Rui
+ */
+>>>>>>> Stashed changes
 class PersonalInfoViewModel(val db: FirebaseFirestore, val emailID: String): ViewModel() {
     private val _personalInfo = MutableLiveData<PersonalInfo>()
     val personalInfo : LiveData<PersonalInfo> get() = _personalInfo

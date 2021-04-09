@@ -12,7 +12,15 @@ import com.example.tryonlysports.MainActivity
 import com.example.tryonlysports.R
 import com.example.tryonlysports.databinding.FragmentScheduleHistoryBinding
 
+<<<<<<< Updated upstream
 
+=======
+/**
+ * This is the Fragment for the displaying schedule history function.
+ *
+ * @author Liu Zhixuan, Li Rui
+ */
+>>>>>>> Stashed changes
 class ScheduleHistoryFragment: Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,

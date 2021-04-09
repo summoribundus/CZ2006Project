@@ -8,6 +8,17 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObject
 
+<<<<<<< Updated upstream
+=======
+/**
+ * This is the ViewModel that stores and manages UI related data in the lifecycle of the Health Info History fragment.
+ *
+ * @property db the firebase database.
+ * @property userName the userName to get information from firebase database.
+ *
+ * @author Liu Zhixuan, Li Rui, Ye Ziyuan
+ */
+>>>>>>> Stashed changes
 class HealthInfoHistoryViewModel(val db: FirebaseFirestore, val userName: String):ViewModel() {
 
     private val _healthhistory = MutableLiveData<MutableList<HealthInfoHistory>>()
@@ -17,6 +28,13 @@ class HealthInfoHistoryViewModel(val db: FirebaseFirestore, val userName: String
         getAllHealthHistoryFromFirebase()
     }
 
+<<<<<<< Updated upstream
+=======
+    /**
+     * Gets all of the health info histories of the user from Firebase
+     *
+     */
+>>>>>>> Stashed changes
     fun getAllHealthHistoryFromFirebase(){
         Log.i("HealthHistory", "hello???")
         var list: MutableList<HealthInfoHistory> = mutableListOf()

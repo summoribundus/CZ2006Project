@@ -8,6 +8,17 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObject
 
+<<<<<<< Updated upstream
+=======
+/**
+ * This is the ViewModel that stores and manages UI related data in the lifecycle of the schedule history fragment.
+ *
+ * @property db the firebase database.
+ * @property userName the user name to get information from firebase database.
+ *
+ * @author Liu Zhixuan, Li Rui
+ */
+>>>>>>> Stashed changes
 class ScheduleHistoryViewModel(val db: FirebaseFirestore, val userName: String): ViewModel() {
 
     private val _shistory = MutableLiveData<MutableList<ScheduleHistory>>()

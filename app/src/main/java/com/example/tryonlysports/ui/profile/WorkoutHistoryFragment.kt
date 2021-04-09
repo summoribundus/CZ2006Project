@@ -13,6 +13,14 @@ import com.example.tryonlysports.R
 import com.example.tryonlysports.databinding.FragmentWorkoutHistoryBinding
 import com.example.tryonlysports.ui.profile.WorkoutHistoryAdapter
 
+<<<<<<< Updated upstream
+=======
+/**
+ * This is the Fragment for the displaying workout history function.
+ *
+ * @author Liu Zhixuan, Li Rui
+ */
+>>>>>>> Stashed changes
 class WorkoutHistoryFragment:Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = DataBindingUtil.inflate<FragmentWorkoutHistoryBinding>(inflater,
