@@ -75,7 +75,7 @@ class HealthInfoRecordFragment: Fragment() {
     }
 
     /**
-     * Hides the keyboard
+     * Hides the keyboard when the user finishes the keyboard input.
      *
      */
     fun hideKeyboard() {
