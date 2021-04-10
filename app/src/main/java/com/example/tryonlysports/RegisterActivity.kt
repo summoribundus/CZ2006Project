@@ -16,9 +16,23 @@ import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 
+/**
+ * This is the Activity for registering users
+ *
+ * @author LI YIBAI
+ */
 class RegisterActivity : AppCompatActivity() {
 
+    /**
+     * This is the binding of the activity_register layout
+     */
     private lateinit var binding: ActivityRegisterBinding
+
+    /**
+     * This is the function of setting up layouts, buttons, and text input fields
+     * @param savedInstanceState a reference to a Bundle object that is passed into the onCreate method of MainActivity.
+     * @return a View to display on the Register page.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -49,12 +63,12 @@ class RegisterActivity : AppCompatActivity() {
                     val toast = Toast.makeText(this@RegisterActivity, text, duration)
                     toast.show()
                 }
+
                 else -> {
 
                     val email: String = binding.etRegEmail.text.toString().trim { it <= ' ' }
                     val password: String = binding.etRegPassword.text.toString().trim { it <= ' ' }
 
-                    //Create an instance and register the user with email and password.
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(
                             OnCompleteListener<AuthResult> { task ->

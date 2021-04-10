@@ -14,7 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 /**
  * Main activity
  *
- * This class is used for hosting main fuctionalities
+ * This class is used for hosting main functionalities
  */
 class MainActivity : AppCompatActivity() {
 

@@ -24,25 +24,54 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_register.*
 
+/**
+ * The tag of current login page
+ */
 private const val TAG = "LoginActivity"
+
+/**
+ * Enable the foreground permission for map service
+ */
 private const val REQUEST_FOREGROUND_ONLY_PERMISSIONS_REQUEST_CODE = 34
 
+/**
+ * This is the Activity for login the users.
+ *
+ * @author LI Yibai
+ */
 class LoginActivity : AppCompatActivity() {
-
+    /**
+     * This is the binding of the activity_login layout
+     */
     private lateinit var binding: ActivityLoginBinding
 
+    /**
+     * This is the foreground location service bound.
+     */
     private var foregroundLocationServiceBound = false
 
-    // Provides location updates for while-in-use feature.
+    /**
+     * This is to provide location updates for while-in-use feature.
+     */
     private var foregroundLocationService: ForegroundLocationService? = null
 
-    // Listens for location broadcasts from ForegroundOnlyLocationService.
+    /**
+     * This is to listen for location broadcasts from ForegroundOnlyLocationService.
+     */
     private lateinit var foregroundBroadcastReceiver: ForegroundBroadcastReceiver
 
+    /**
+     * This is the email that the user inputs.
+     */
     private lateinit var email: String
 
     private val foregroundOnlyServiceConnection = object : ServiceConnection {
-
+        /**
+         * This function binds the service for location.
+         *
+         * @param name
+         * @param service
+         */
         override fun onServiceConnected(name: ComponentName, service: IBinder) {
             val binder = service as ForegroundLocationService.LocalBinder
             Log.i(TAG,"Connect to service.")
@@ -50,12 +79,22 @@ class LoginActivity : AppCompatActivity() {
             foregroundLocationServiceBound = true
         }
 
+        /**
+         * This function stop the binding of the service of location.
+         *
+         * @param name
+         */
         override fun onServiceDisconnected(name: ComponentName) {
             foregroundLocationService = null
             foregroundLocationServiceBound = false
         }
     }
 
+    /**
+     * This is the function of setting up layouts, buttons, and text input fields
+     * @param savedInstanceState a reference to a Bundle object that is passed into the onCreate method of MainActivity.
+     * @return a View to display on the Login page.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -104,15 +143,6 @@ class LoginActivity : AppCompatActivity() {
                                             "You were logged in successfully.",
                                             Toast.LENGTH_SHORT
                                     ).show()
-
-//                                    val intent =
-//                                            Intent(this@LoginActivity, MainActivity::class.java)
-//                                    intent.flags =
-//                                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-//                                    intent.putExtra("user_id", FirebaseAuth.getInstance().currentUser!!.uid)
-//                                    intent.putExtra("email_id", email)
-//                                    startActivity(intent)
-//                                    finish()
                                 } else {
                                     //If the login is not successful
                                     //The application shall display an error message
@@ -128,7 +158,11 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    public fun subscribeToService() {
+    /**
+     * This function asks the users permission for the location service.
+     *
+     */
+    fun subscribeToService() {
         Log.i(TAG, "Asking for permission")
         if (foregroundPermissionApproved()) {
             foregroundLocationService?.subscribeToLocationUpdates()
@@ -138,6 +172,10 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * This function intent the service.
+     *
+     */
     override fun onStart() {
         super.onStart()
         Log.d(TAG, "onStartCalled")
@@ -147,6 +185,10 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * This function receive the foreground broadcast when resume the process.
+     *
+     */
     override fun onResume() {
         super.onResume()
 
@@ -158,6 +200,10 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * This function receive the foreground broadcast when pause the process.
+     *
+     */
     override fun onPause() {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(
             foregroundBroadcastReceiver
@@ -165,6 +211,10 @@ class LoginActivity : AppCompatActivity() {
         super.onPause()
     }
 
+    /**
+     * This function unbinds the service when stop the process.
+     *
+     */
     override fun onStop() {
         if (foregroundLocationServiceBound) {
             unbindService(foregroundOnlyServiceConnection)
@@ -173,7 +223,10 @@ class LoginActivity : AppCompatActivity() {
         super.onStop()
     }
 
-
+    /**
+     * This function request foreground permissions.
+     *
+     */
     private fun requestForegroundPermissions() {
         Log.d(TAG, "RequestForegroundPermission")
         val provideRationale = foregroundPermissionApproved()
@@ -204,7 +257,11 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    // TODO: Step 1.0, Review Permissions: Method checks if permissions approved.
+    /**
+     * This function reviews if permissions are approved.
+     *
+     * @return the bool value of whether permits to the service.
+     */
     private fun foregroundPermissionApproved(): Boolean {
         Log.i(TAG, "CheckForegroundPermission")
         return PackageManager.PERMISSION_GRANTED == ActivityCompat.checkSelfPermission(
@@ -213,6 +270,13 @@ class LoginActivity : AppCompatActivity() {
         )
     }
 
+    /**
+     * This function requests the result of permissions
+     *
+     * @param requestCode is the permission code of the current permissions
+     * @param permissions is the name of the current permissions
+     * @param grantResults is an array of permission check result.
+     */
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>,
@@ -261,6 +325,12 @@ class LoginActivity : AppCompatActivity() {
      */
     private inner class ForegroundBroadcastReceiver : BroadcastReceiver() {
 
+        /**
+         * This is the function that passes relevant information into the main activity
+         *
+         * @param context is an interface to global information about an application environment.
+         * @param intent is an abstract description of an operation to be performed.
+         */
         override fun onReceive(context: Context, intent: Intent) {
             val location = intent.getParcelableExtra<Location>(
                 ForegroundLocationService.EXTRA_LOCATION
