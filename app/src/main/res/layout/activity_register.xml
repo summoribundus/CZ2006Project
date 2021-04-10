@@ -55,7 +55,7 @@
             android:id="@+id/et_reg_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none"
+            android:inputType="textPersonName"
             tools:text="HelloKitty" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -192,5 +192,7 @@
             android:textStyle="bold"
             tools:ignore="MissingConstraints" />
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
