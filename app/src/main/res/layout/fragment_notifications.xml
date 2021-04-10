@@ -14,53 +14,7 @@
         tools:context=".MainActivity">
 
 
-        <RadioGroup
-            android:id="@+id/tip_options"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/instruction1">
 
-        </RadioGroup>
-
-
-        <RadioButton
-            android:id="@+id/walking_opt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/string_walking"
-            android:textColor="#9E9A9A"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/cycling_opt"
-            app:layout_constraintEnd_toEndOf="@+id/jogging_opt"
-            app:layout_constraintStart_toStartOf="@+id/jogging_opt"
-            app:layout_constraintTop_toBottomOf="@+id/jogging_opt" />
-
-        <RadioButton
-            android:id="@+id/cycling_opt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cycling"
-            android:textColor="#9E9A9A"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/start_button"
-            app:layout_constraintEnd_toEndOf="@+id/walking_opt"
-            app:layout_constraintStart_toStartOf="@+id/walking_opt"
-            app:layout_constraintTop_toBottomOf="@+id/walking_opt" />
-
-        <Button
-            android:id="@+id/start_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:backgroundTint="#664A99"
-            android:paddingHorizontal="30dp"
-            android:text="@string/start"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -86,17 +40,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-        <RadioButton
-            android:id="@+id/jogging_opt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/jogging"
-            android:textColor="#9E9A9A"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/walking_opt"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <TextView
             android:id="@+id/textView"
@@ -110,6 +53,71 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/instruction1"
             app:layout_constraintTop_toBottomOf="@+id/instruction1" />
+
+
+        <RadioGroup
+            android:id="@+id/tip_options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView">
+            
+
+            <RadioButton
+                android:id="@+id/walking_opt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/string_walking"
+                android:textColor="#9E9A9A"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/cycling_opt"
+                app:layout_constraintEnd_toEndOf="@+id/jogging_opt"
+                app:layout_constraintStart_toStartOf="@+id/jogging_opt"
+                app:layout_constraintTop_toBottomOf="@+id/jogging_opt" />
+
+            <RadioButton
+                android:id="@+id/cycling_opt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cycling"
+                android:textColor="#9E9A9A"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/start_button"
+                app:layout_constraintEnd_toEndOf="@+id/walking_opt"
+                app:layout_constraintStart_toStartOf="@+id/walking_opt"
+                app:layout_constraintTop_toBottomOf="@+id/walking_opt" />
+
+
+            <RadioButton
+                android:id="@+id/jogging_opt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/jogging"
+                android:textColor="#9E9A9A"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/walking_opt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+        </RadioGroup>
+
+
+
+        <Button
+            android:id="@+id/start_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:backgroundTint="#664A99"
+            android:paddingHorizontal="30dp"
+            android:text="@string/start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
