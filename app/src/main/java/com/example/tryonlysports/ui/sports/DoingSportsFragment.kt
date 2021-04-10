@@ -129,6 +129,7 @@ class DoingSportsFragment : Fragment(),OnMapReadyCallback,GoogleApiClient.Connec
                 .addApi(LocationServices.API)
                 .build()
         }
+        binding.typeText.text =  type
 
         binding.terminateButton.setOnClickListener {terminate() }
         return binding.root
