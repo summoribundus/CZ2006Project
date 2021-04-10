@@ -1,16 +1,20 @@
 package com.example.tryonlysports.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.tryonlysports.LoginActivity
 import com.example.tryonlysports.MainActivity
 import com.example.tryonlysports.R
 import com.example.tryonlysports.databinding.FragmentPersonalInfoBinding
+import com.google.firebase.auth.FirebaseAuth
 
 /**
  * This is the Fragment for the displaying personal info function.
@@ -38,7 +42,6 @@ class PersonalInfoFragment: Fragment() {
                         this, viewModelFactory).get(PersonalInfoViewModel::class.java)
 
         personalInfoViewModel.personalInfo.observe(viewLifecycleOwner, {
-            binding.birthdayText.text = it.birthday
             binding.emailText.text = it.userEmail
             binding.mobileText.text = it.phoneNumber
             binding.regionText.text = it.region
@@ -47,6 +50,19 @@ class PersonalInfoFragment: Fragment() {
 
         binding.viewHistoryButton.setOnClickListener {
             this.findNavController().navigate(PersonalInfoFragmentDirections.actionPersonalInfoFragmentToNavigationProfile())
+        }
+
+        binding.btnLogout.setOnClickListener {
+            //Logout from app
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(context, LoginActivity::class.java)
+            startActivity(intent)
+            //Give a success toast message to users
+            Toast.makeText(
+                context,
+                "You were logged out successfully.",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         return binding.root

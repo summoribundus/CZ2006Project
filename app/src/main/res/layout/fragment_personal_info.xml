@@ -56,23 +56,13 @@
             android:textColor="#664A99"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/birthdayLabel"
+            app:layout_constraintBottom_toTopOf="@+id/MobileLabel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
 
-        <TextView
-            android:id="@+id/birthdayLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Birthday:"
-            android:textColor="#664A99"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/MobileLabel"
-            app:layout_constraintStart_toStartOf="@+id/emailLabel"
-            app:layout_constraintTop_toBottomOf="@+id/emailLabel" />
+
 
         <TextView
             android:id="@+id/MobileLabel"
@@ -83,8 +73,8 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/regionLabel"
-            app:layout_constraintStart_toStartOf="@+id/birthdayLabel"
-            app:layout_constraintTop_toBottomOf="@+id/birthdayLabel" />
+            app:layout_constraintStart_toStartOf="@+id/emailLabel"
+            app:layout_constraintTop_toBottomOf="@+id/emailLabel" />
 
         <TextView
             android:id="@+id/regionLabel"
@@ -104,21 +94,11 @@
             android:layout_height="wrap_content"
             android:text="..."
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/birthdayText"
+            app:layout_constraintBottom_toTopOf="@+id/mobileText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
-
-        <TextView
-            android:id="@+id/birthdayText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="..."
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/mobileText"
-            app:layout_constraintStart_toStartOf="@+id/emailText"
-            app:layout_constraintTop_toBottomOf="@+id/emailText" />
 
         <TextView
             android:id="@+id/mobileText"
@@ -127,8 +107,8 @@
             android:text="..."
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/regionText"
-            app:layout_constraintStart_toStartOf="@+id/birthdayText"
-            app:layout_constraintTop_toBottomOf="@+id/birthdayText" />
+            app:layout_constraintStart_toStartOf="@+id/emailText"
+            app:layout_constraintTop_toBottomOf="@+id/emailText" />
 
         <TextView
             android:id="@+id/regionText"
@@ -142,14 +122,28 @@
 
         <Button
             android:id="@+id/viewHistoryButton"
-            android:layout_width="wrap_content"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="20dp"
             android:backgroundTint="#664A99"
             android:paddingHorizontal="80dp"
             android:text="View History"
+            app:layout_constraintBottom_toTopOf="@id/btn_logout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="75dp"
+            android:backgroundTint="#0D4A52"
+            android:paddingHorizontal="80dp"
+            android:text="Log Out"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
