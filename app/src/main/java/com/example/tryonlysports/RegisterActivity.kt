@@ -80,7 +80,7 @@ class RegisterActivity : AppCompatActivity() {
                                     Log.i("Firebaseuser", "firebaseuser initialized")
                                     Toast.makeText(
                                         this@RegisterActivity,
-                                        "You were registered successfully.",
+                                        "You were registered successfully. Now please login...",
                                         Toast.LENGTH_SHORT
                                     ).show()
 
