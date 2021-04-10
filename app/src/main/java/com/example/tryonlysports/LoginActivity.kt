@@ -12,6 +12,9 @@ import android.os.IBinder
 import android.provider.Settings
 import android.text.TextUtils
 import android.util.Log
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -104,6 +107,16 @@ class LoginActivity : AppCompatActivity() {
 
         foregroundBroadcastReceiver = ForegroundBroadcastReceiver()
 
+//        binding.etLoginEmail.onFocusChangeListener = View.OnFocusChangeListener{ p0, p1->
+//            if (!p1) hideSoftkeyboard(binding.etLoginEmail)
+//        }
+//
+//        binding.etLoginPassword.onFocusChangeListener = View.OnFocusChangeListener{p0, p1 ->
+//            if (!p1) hideSoftkeyboard(binding.etLoginPassword)
+//        }
+
+
+
         binding.tvReg.setOnClickListener {
 
             startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
@@ -111,7 +124,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
-            subscribeToService()
             when {
                 TextUtils.isEmpty(binding.etLoginEmail.text.toString().trim { it <= ' ' }) -> {
                     val text = "Please enter email."
@@ -138,6 +150,7 @@ class LoginActivity : AppCompatActivity() {
                             .addOnCompleteListener { task ->
 
                                 if (task.isSuccessful) {
+                                    subscribeToService()
                                     Toast.makeText(
                                             this@LoginActivity,
                                             "You were logged in successfully.",
@@ -155,6 +168,12 @@ class LoginActivity : AppCompatActivity() {
                             }
                 }
             }
+        }
+    }
+
+    fun hideSoftkeyboard(editText: EditText) {
+        (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).apply {
+            hideSoftInputFromWindow(editText.windowToken, 0)
         }
     }
 
