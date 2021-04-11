@@ -145,12 +145,12 @@ class AddActivityFragment: Fragment(){
         }
 
         binding.saveActivityButton.setOnClickListener{
-            var valid=true;
+            var valid=true
             val alertDialog: AlertDialog? = activity?.let {
                 val builder = AlertDialog.Builder(it)
                 if(binding.descriptionText.text.isBlank()&&valid){
                     builder.apply{
-                        setMessage("Description is empty")
+                        setMessage("Please provide a description for your activity")
                         setPositiveButton("OK",
                             DialogInterface.OnClickListener { dialog, id ->
 
@@ -161,7 +161,7 @@ class AddActivityFragment: Fragment(){
                 }
                 if(binding.locationText.text.isBlank()&&valid){
                     builder.apply{
-                        setMessage("Location is empty")
+                        setMessage("Please provide a location for your activity")
                         setPositiveButton("OK",
                             DialogInterface.OnClickListener { dialog, id ->
 
