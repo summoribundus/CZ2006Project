@@ -104,7 +104,6 @@
             android:layout_width="193dp"
             android:layout_height="33dp"
             android:layout_marginStart="40dp"
-
             android:layout_marginTop="20dp"
             android:fontFamily="sans-serif-black"
             android:text="@string/start_time_text"
@@ -118,7 +117,6 @@
             android:layout_width="191dp"
             android:layout_height="33dp"
             android:layout_marginStart="40dp"
-
             android:layout_marginTop="28dp"
             android:fontFamily="sans-serif-black"
             android:includeFontPadding="true"
@@ -167,6 +165,8 @@
             android:hint="@string/location"
             android:inputType="textPersonName"
             android:padding="10dip"
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/white"
             android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

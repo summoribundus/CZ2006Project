@@ -10,7 +10,7 @@ import com.example.tryonlysports.databinding.ListWorkoutHistroyBinding
 /**
  * This is the custom adapter class for displaying the workout history.
  *
- * @author Liu Zhixuan, Li Rui, Ye Ziyuan
+ * @author Li Rui, Ye Ziyuan, Liu Zhixuan
  */
 class WorkoutHistoryAdapter: ListAdapter<WorkoutHistory, WorkoutHistoryAdapter.ViewHolder>(WorkoutHistoryDiffCallback()) {
     /**

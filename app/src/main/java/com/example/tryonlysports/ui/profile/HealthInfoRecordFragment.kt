@@ -17,7 +17,7 @@ import com.example.tryonlysports.databinding.FragmentHealthInfoRecordBinding
 /**
  * This is the Fragment for the recording health info function.
  *
- * @author Liu Zhixuan, Ye Ziyuan
+ * @author Ye Ziyuan, Liu Zhixuan
  */
 class HealthInfoRecordFragment: Fragment() {
     /**

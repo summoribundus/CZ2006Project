@@ -15,7 +15,7 @@ import com.example.tryonlysports.databinding.FragmentScheduleHistoryBinding
 /**
  * This is the Fragment for the displaying schedule history function.
  *
- * @author Liu Zhixuan, Li Rui
+ * @author Li Rui, Liu Zhixuan
  */
 class ScheduleHistoryFragment: Fragment() {
     /**
@@ -34,7 +34,7 @@ class ScheduleHistoryFragment: Fragment() {
         val binding: FragmentScheduleHistoryBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_schedule_history, container, false)
         val activity = activity as MainActivity
-        val viewModelFactory = ScheduleHistoryViewModelFactory(activity.db, activity.emailId)
+        val viewModelFactory = ScheduleHistoryViewModelFactory(activity.db, activity.userId)
 
         // Get a reference to the ViewModel associated with this fragment.
         val scheduleHistoryViewModel =

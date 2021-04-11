@@ -16,7 +16,7 @@ import com.example.tryonlysports.ui.profile.WorkoutHistoryAdapter
 /**
  * This is the Fragment for the displaying workout history function.
  *
- * @author Liu Zhixuan, Li Rui
+ * @author Li Rui, Liu Zhixuan
  */
 class WorkoutHistoryFragment:Fragment() {
     /**

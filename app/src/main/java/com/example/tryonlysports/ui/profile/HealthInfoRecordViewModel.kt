@@ -11,7 +11,7 @@ import com.google.firebase.firestore.FirebaseFirestore
  * @property db the firebase database.
  * @property userName the userName to get information from firebase database.
  *
- * @author Liu Zhixuan, Ye Ziyuan
+ * @author Ye Ziyuan, Liu Zhixuan
  */
 class HealthInfoRecordViewModel(val db: FirebaseFirestore, val userName: String): ViewModel()  {
     /**

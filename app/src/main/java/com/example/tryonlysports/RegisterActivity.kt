@@ -1,24 +1,40 @@
 package com.example.tryonlysports
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.content.Intent
-import android.os.Debug
+import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
-import com.example.tryonlysports.databinding.ActivityLoginBinding
+import androidx.appcompat.app.AppCompatActivity
 import com.example.tryonlysports.databinding.ActivityRegisterBinding
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.SetOptions
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.firestoreSettings
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 
+/**
+ * This is the Activity for registering users
+ *
+ * @author LI YIBAI
+ */
 class RegisterActivity : AppCompatActivity() {
 
+    /**
+     * This is the binding of the activity_register layout
+     */
     private lateinit var binding: ActivityRegisterBinding
+
+    /**
+     * This is the function of setting up layouts, buttons, and text input fields
+     * @param savedInstanceState a reference to a Bundle object that is passed into the onCreate method of MainActivity.
+     * @return a View to display on the Register page.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -49,12 +65,39 @@ class RegisterActivity : AppCompatActivity() {
                     val toast = Toast.makeText(this@RegisterActivity, text, duration)
                     toast.show()
                 }
+
+                TextUtils.isEmpty(binding.etRegPhone.text.toString().trim { it <= ' ' }) -> {
+                    val text = "Please enter your phone number."
+                    val duration = Toast.LENGTH_SHORT
+
+                    val toast = Toast.makeText(this@RegisterActivity, text, duration)
+                    toast.show()
+                }
+
+                TextUtils.isEmpty(binding.etRegRegion.text.toString().trim { it <= ' ' }) -> {
+                    val text = "Please enter your country/region."
+                    val duration = Toast.LENGTH_SHORT
+
+                    val toast = Toast.makeText(this@RegisterActivity, text, duration)
+                    toast.show()
+                }
+
+                TextUtils.isEmpty(binding.etRegUsername.text.toString().trim { it <= ' ' }) -> {
+                    val text = "Please enter your username."
+                    val duration = Toast.LENGTH_SHORT
+
+                    val toast = Toast.makeText(this@RegisterActivity, text, duration)
+                    toast.show()
+                }
+
                 else -> {
 
                     val email: String = binding.etRegEmail.text.toString().trim { it <= ' ' }
                     val password: String = binding.etRegPassword.text.toString().trim { it <= ' ' }
+                    val phoneNumber: String = binding.etRegPhone.text.toString().trim { it <= ' ' }
+                    val region: String = binding.etRegRegion.text.toString().trim { it <= ' ' }
+                    val username: String = binding.etRegUsername.text.toString().trim { it <= ' ' }
 
-                    //Create an instance and register the user with email and password.
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(
                             OnCompleteListener<AuthResult> { task ->
@@ -64,9 +107,24 @@ class RegisterActivity : AppCompatActivity() {
                                     //Firebase registers the user
                                     val firebaseUser: FirebaseUser = task.result!!.user!!
                                     Log.i("Firebaseuser", "firebaseuser initialized")
+                                    // Write personal information to the firestore database
+                                    val db = Firebase.firestore
+                                    val settings = firestoreSettings {
+                                        isPersistenceEnabled = true
+                                    }
+                                    db.firestoreSettings = settings
+                                    val newUser = hashMapOf(
+                                        "phoneNumber" to phoneNumber,
+                                        "region" to region,
+                                        "userEmail" to email,
+                                        "username" to username
+                                    )
+                                    db.collection("user").document(email)
+                                        .set(newUser, SetOptions.merge())
+                                    //Give a success toast message to users
                                     Toast.makeText(
                                         this@RegisterActivity,
-                                        "You were registered successfully.",
+                                        "You were registered successfully. Now please login...",
                                         Toast.LENGTH_SHORT
                                     ).show()
 

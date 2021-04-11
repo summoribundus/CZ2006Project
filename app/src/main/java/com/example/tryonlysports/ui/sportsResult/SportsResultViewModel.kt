@@ -117,11 +117,11 @@ class SportsResultViewModel(
     private fun initProperty() {
 
         speed = totalDistance * 1000 / TimeUnit.MILLISECONDS.toSeconds(passedTime)*2.23694
-        _avgSpeed.value = String.format("Average speed: %.0f mph", speed)
+        _avgSpeed.value = String.format("%.0f mph", speed)
         _loading.value = true
         getWeight(username)
         _passed_Time.value = String.format(
-            "Duration: %d min, %d sec", TimeUnit.MILLISECONDS.toMinutes(
+            "%d min, %d sec", TimeUnit.MILLISECONDS.toMinutes(
                 passedTime
             ),
             TimeUnit.MILLISECONDS.toSeconds(passedTime) -
@@ -157,7 +157,7 @@ class SportsResultViewModel(
         Log.i("Weight", weight.toString())
         if (speed == 0.0 || totalDistance == 0.0)
             cal = 0.0
-        _calories.value = String.format("Calories: %.2f Kcal", cal)
+        _calories.value = String.format("%.2f Kcal", cal)
     }
 
 
@@ -188,7 +188,7 @@ class SportsResultViewModel(
      * @param totalDistance the numerical value of total distance of the workout.
      */
     fun formatRouteLength(totalDistance: Double){
-        _total_Distance.value = String.format("Total Distance: %.3f km", totalDistance)
+        _total_Distance.value = String.format("%.3f km", totalDistance)
         //divided by 1000 to get the distance in km
     }
 

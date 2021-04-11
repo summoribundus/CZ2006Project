@@ -46,6 +46,7 @@ class SportsNotificationsFragment : Fragment() {
         _binding = DataBindingUtil.inflate(inflater,
                 R.layout.fragment_notifications, container, false)
 
+
         binding.startButton.setOnClickListener{
             val str:String = proceed()
             this.findNavController().navigate(SportsNotificationsFragmentDirections.actionNavigationNotificationsToDoingActivity(str))
