@@ -15,7 +15,7 @@ import com.example.tryonlysports.databinding.FragmentScheduleHistoryBinding
 /**
  * This is the Fragment for the displaying schedule history function.
  *
- * @author Liu Zhixuan, Li Rui
+ * @author Li Rui, Liu Zhixuan
  */
 class ScheduleHistoryFragment: Fragment() {
     /**

@@ -20,7 +20,7 @@ import java.util.*
  * @property db the firebase database.
  * @property userName the user name to get information from firebase database.
  *
- * @author Liu Zhixuan, Li Rui
+ * @author Li Rui, Liu Zhixuan
  */
 class ScheduleHistoryViewModel(val db: FirebaseFirestore, val userName: String): ViewModel() {
     /**

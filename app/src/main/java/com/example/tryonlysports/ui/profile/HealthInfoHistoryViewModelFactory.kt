@@ -11,7 +11,7 @@ import java.lang.IllegalArgumentException
  * @property db the firebase database.
  * @property userName the userName of the user.
  *
- * @author Liu Zhixuan, Li Rui
+ * @author Li Rui, Liu Zhixuan
  */
 class HealthInfoHistoryViewModelFactory (val db: FirebaseFirestore, val userName: String): ViewModelProvider.Factory {
     /**

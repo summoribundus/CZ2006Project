@@ -8,7 +8,7 @@ package com.example.tryonlysports.ui.profile
  * @property userEmail email account of the user.
  * @property username username of the user.
  *
- * @author Liu Zhixuan, Ye Ziyuan
+ * @author Ye Ziyuan, Liu Zhixuan
  */
 data class PersonalInfo(
 val phoneNumber: String?=null,
