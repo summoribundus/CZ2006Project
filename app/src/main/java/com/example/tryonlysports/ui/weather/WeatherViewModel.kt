@@ -396,7 +396,7 @@ class WeatherViewModel(application: Application, val location: Location) : Andro
         if (_temperature.value!! in 27.0..32.0) {
             _heatWarningSuggestion.value = "Fatigue possible with prolonged activity."
         } else if (_temperature.value!! in 33.0..40.0) {
-            _heatWarningSuggestion.value = "Heatstroke possible with prolonged activity."
+            _heatWarningSuggestion.value = "Heatstroke possible with prolonged \nactivity."
         } else {
             _heatWarningSuggestion.value = "Not specific suggestion"
         }
