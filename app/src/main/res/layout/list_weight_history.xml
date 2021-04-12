@@ -11,7 +11,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/dateWeightHistoryListText"
@@ -19,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="TextView"
-            android:textSize="10sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/weightHistoryListText"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,9 +33,11 @@
             android:id="@+id/weightHistoryListText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="TextView"
             android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#664A99"
             app:layout_constraintBottom_toBottomOf="@+id/dateWeightHistoryListText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
