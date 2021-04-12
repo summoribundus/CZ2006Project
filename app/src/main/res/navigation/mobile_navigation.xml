@@ -128,7 +128,7 @@
     <fragment
         android:id="@+id/personalInfoFragment"
         android:name="com.example.tryonlysports.ui.profile.PersonalInfoFragment"
-        android:label="PersonalInfoFragment" >
+        android:label="Personal Information">
         <action
             android:id="@+id/action_personalInfoFragment_to_navigation_profile"
             app:destination="@id/navigation_profile" />
