@@ -10,7 +10,7 @@ import com.example.tryonlysports.databinding.ListScheduleHistoryBinding
 /**
  * This is the custom adapter class for displaying the schedule history.
  *
- * @author Liu Zhixuan, Li Rui, Ye Ziyuan
+ * @author Li Rui, Ye Ziyuan, Liu Zhixuan
  */
 class ScheduleHistoryAdapter: ListAdapter<ScheduleHistory, ScheduleHistoryAdapter.ViewHolder>(ScheduleHistoryDiffCallback()) {
     /**

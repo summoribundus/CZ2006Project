@@ -14,7 +14,7 @@ import com.google.firebase.firestore.ktx.toObject
  * @property db the firebase database.
  * @property userName the user name to get information from firebase database.
  *
- * @author Liu Zhixuan, Li Rui
+ * @author Ye Ziyuan, Liu Zhixuan
  */
 class WorkoutHistoryViewModel(val db: FirebaseFirestore, val userName: String): ViewModel() {
     /**

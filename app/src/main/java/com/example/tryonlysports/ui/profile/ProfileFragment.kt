@@ -17,7 +17,7 @@ import com.example.tryonlysports.databinding.FragmentProfileBinding
 /**
  * This is the Fragment for displaying the profile page
  *
- * @author Liu Zhixuan, Li Rui
+ * @author Li Rui, Liu Zhixuan
  */
 class ProfileFragment : Fragment() {
     /**

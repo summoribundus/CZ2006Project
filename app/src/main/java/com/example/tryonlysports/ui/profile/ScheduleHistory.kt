@@ -13,7 +13,7 @@ import com.google.firebase.Timestamp
  * @property completed indicates whether the activity is completed or not.
  * @property outdoor indicates whether the activity is an outdoor activity.
  *
- * @author Liu Zhixuan,  Ye Ziyuan
+ * @author Ye Ziyuan, Wang Qiaochu, Liu Zhixuan
  */
 data class ScheduleHistory(val startDateTime: Timestamp?=null,
                            val endDateTime: Timestamp?=null,

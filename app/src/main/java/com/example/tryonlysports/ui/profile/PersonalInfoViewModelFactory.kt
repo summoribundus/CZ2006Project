@@ -11,7 +11,7 @@ import java.lang.IllegalArgumentException
  * @property db the firebase database.
  * @property emailID the emailID of the user.
  *
- * @author Liu Zhixuan, Li Rui
+ * @author Li Rui, Liu Zhixuan
  */
 class PersonalInfoViewModelFactory (val db: FirebaseFirestore, val emailID: String): ViewModelProvider.Factory {
     /**

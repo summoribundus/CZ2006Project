@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth
 /**
  * This is the Fragment for the displaying personal info function.
  *
- * @author Liu Zhixuan, Li Rui
+ * @author Li Rui, Liu Zhixuan
  */
 class PersonalInfoFragment: Fragment() {
     /**

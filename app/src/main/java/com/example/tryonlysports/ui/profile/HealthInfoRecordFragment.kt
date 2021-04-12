@@ -2,10 +2,14 @@ package com.example.tryonlysports.ui.profile
 
 import android.app.Activity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextUtils
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,10 +18,11 @@ import com.example.tryonlysports.MainActivity
 import com.example.tryonlysports.R
 import com.example.tryonlysports.databinding.FragmentHealthInfoRecordBinding
 
+
 /**
  * This is the Fragment for the recording health info function.
  *
- * @author Liu Zhixuan, Ye Ziyuan
+ * @author Ye Ziyuan, Liu Zhixuan
  */
 class HealthInfoRecordFragment: Fragment() {
     /**
@@ -57,10 +62,23 @@ class HealthInfoRecordFragment: Fragment() {
                 this, viewModelFactory
             ).get(HealthInfoRecordViewModel::class.java)
 
+
         binding.button2.setOnClickListener {
-            saveWeight()
-            hideKeyboard()
-            this.findNavController().navigate(HealthInfoRecordFragmentDirections.actionHealthInfoRecordFragmentToHealthInfoHistoryFragment())
+            when {
+                TextUtils.isEmpty(binding.recorder.text.toString().trim { it <= ' ' }) -> {
+                    val text = "Please enter a valid number."
+                    val duration = Toast.LENGTH_SHORT
+
+                    val toast = Toast.makeText(this.requireContext(), text, duration)
+                    toast.show()
+                }
+                else ->{
+                    saveWeight()
+                    hideKeyboard()
+                    this.findNavController().navigate(HealthInfoRecordFragmentDirections.actionHealthInfoRecordFragmentToHealthInfoHistoryFragment())
+                }
+            }
+
         }
 
         return binding.root

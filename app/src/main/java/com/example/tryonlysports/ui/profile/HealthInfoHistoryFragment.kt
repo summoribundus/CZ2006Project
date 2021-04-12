@@ -19,7 +19,7 @@ import com.example.tryonlysports.databinding.FragmentWeightHistoryBinding
 /**
  * This is the Fragment for the displaying health info history function.
  *
- * @author Liu Zhixuan, Li Rui, Ye Ziyuan
+ * @author Ye Ziyuan, Li Rui, Liu Zhixuan
  */
 
 class HealthInfoHistoryFragment : Fragment() {
