@@ -32,14 +32,15 @@
             android:id="@+id/healthHistory_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/health_history"
+            android:text="@string/weight_history"
             android:textColor="#664A99"
+            android:textStyle="bold"
             android:textSize="24sp"
             android:layout_marginLeft="16dp"
             app:layout_constraintStart_toStartOf="@+id/layout1"
             app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintTop_toTopOf="@+id/layout1"
-            tools:text="Health History" />
+            tools:text="Weight History" />
 
         <TextView
             android:id="@+id/healthHistory_text"
@@ -98,6 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/workout_history"
+            android:textStyle="bold"
             android:textColor="#664A99"
             android:textSize="24sp"
             android:layout_marginLeft="16dp"
@@ -185,6 +187,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/schedule_history"
+            android:textStyle="bold"
             android:textColor="#664A99"
             android:textSize="24sp"
             android:layout_marginStart="16dp"
