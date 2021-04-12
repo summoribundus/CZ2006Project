@@ -14,7 +14,20 @@ import androidx.fragment.app.FragmentActivity
 import com.example.tryonlysports.R
 import com.google.maps.android.ktx.utils.heatmaps.heatmapTileProviderWithData
 
+/**
+ * This is the Fragment for the displaying Detailed facility information on sports facility google map
+ *
+ * @property description the string value containing the html format facility information to display.
+ *
+ * @author Li Rui
+ */
 class LocationDialogFragment(val description: String):DialogFragment(){
+    /**
+     * Retrieves the facility information and Creates the dialog to display the facility information.
+     *
+     * @param savedInstanceState a reference to a Bundle object that is passed into the onCreate method of MainActivity.
+     * @return a Dialog object to display.
+     */
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             // Use the Builder class for convenient dialog construction

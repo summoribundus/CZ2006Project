@@ -44,10 +44,25 @@ import org.json.JSONObject
 /**
  * This is the Fragment for the displaying sports facility on a google map
  *
- * @author Wan Qian
+ * @author Li Rui, Ye Ziyuan, Wan Qian
  */
 class SportsFacilityFragment : Fragment(), GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener,
 GoogleMap.OnInfoWindowLongClickListener, GoogleMap.OnInfoWindowCloseListener{
+
+    /**
+     * The SportsFacilityViewModel.
+     */
+    private lateinit var sportsFacilityViewModel: SportsFacilityViewModel
+
+    /**
+     * The MapView to display GoogleMap on sports facility fragment.
+     */
+    var mMapView: MapView? = null
+
+    /**
+     * The GoogleMap object to display the sports facility map.
+     */
+    private var googleMap: GoogleMap? = null
 
     /**
      * Creates fragment portion of the view hierarchy that initiates the SportsFacilityViewModel
@@ -57,12 +72,6 @@ GoogleMap.OnInfoWindowLongClickListener, GoogleMap.OnInfoWindowCloseListener{
      * @param savedInstanceState a reference to a Bundle object that is passed into the onCreate method of MainActivity.
      * @return a view to display on the sports facility map page
      */
-
-
-    private lateinit var sportsFacilityViewModel: SportsFacilityViewModel
-    var mMapView: MapView? = null
-    private var googleMap: GoogleMap? = null
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -104,15 +113,9 @@ GoogleMap.OnInfoWindowLongClickListener, GoogleMap.OnInfoWindowCloseListener{
             googleMap?.setMinZoomPreference(10.0f)
             googleMap?.setMaxZoomPreference(13.0f)
 
-            /** Drops a marker at the specified point on the map */
             val sg = LatLng(1.3521, 103.8198)
-            // For dropping a marker at a point on the Map
 
-//            googleMap?.addMarker(
-//                MarkerOptions().position(sg).title("Marker Title").snippet("Marker Description")
-//            )
 
-            /** Zooms in automatically to the position of the marker */
             val cameraPosition = CameraPosition.Builder().target(sg).zoom(12f).build()
             googleMap?.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
             addLayer()
@@ -121,7 +124,10 @@ GoogleMap.OnInfoWindowLongClickListener, GoogleMap.OnInfoWindowCloseListener{
         return rootView
     }
 
-    /** Passes the geoJson layer of sports facility onto the google map */
+    /**
+     * Adds a GeoJson layer onto the sports facility map.
+     *
+     */
     fun addLayer() {
         super.onStart()
         val geoJsonLineLayer = GeoJsonLayer(googleMap, R.raw.sgsportfacilities, context )
@@ -135,98 +141,43 @@ GoogleMap.OnInfoWindowLongClickListener, GoogleMap.OnInfoWindowCloseListener{
 
     }
 
-    inner class MyItem(
-        lat: Double,
-        lng: Double,
-        title: String,
-        snippet: String
-    ) : ClusterItem {
-
-        private val position: LatLng
-        private val title: String
-        private val snippet: String
-
-        override fun getPosition(): LatLng {
-            return position
-        }
-
-        override fun getTitle(): String? {
-            return title
-        }
-
-        override fun getSnippet(): String? {
-            return snippet
-        }
-
-        init {
-            position = LatLng(lat, lng)
-            this.title = title
-            this.snippet = snippet
-        }
-    }
-
-
+    /**
+     * Performs actions once the function is clicked.
+     *
+     * @param p0 the marker object that has been clicked.
+     * @return boolean indicating whether the marker is clicked.
+     */
     override fun onMarkerClick(p0: Marker?): Boolean {
         TODO("Not yet implemented")
     }
 
+    /**
+     * Performs actions once the info window is clicked.
+     *
+     * @param p0 the marker object which generates the info window.
+     */
     override fun onInfoWindowClick(p0: Marker?) {
         TODO("Not yet implemented")
     }
 
+    /**
+     * Performs actions once the info window is long clicked.
+     *
+     * @param p0 the marker object which generates the info window.
+     */
     override fun onInfoWindowLongClick(p0: Marker?) {
         TODO("Not yet implemented")
     }
 
+    /**
+     * Performs actions once the info window is closed.
+     *
+     * @param p0 the marker object which generates the info window.
+     */
     override fun onInfoWindowClose(p0: Marker?) {
         TODO("Not yet implemented")
     }
 
-//    internal inner class CustomInfoWindowAdapter : GoogleMap.InfoWindowAdapter {
-//        private val window: View = layoutInflater.inflate(R.layout.custom_info_window, null)
-//        // These are both view groups containing an ImageView with id "badge" and two
-//        // TextViews with id "title" and "snippet".
-//        private val contents: View = layoutInflater.inflate(R.layout.custom_info_contents, null)
-//
-//        override fun getInfoWindow(marker: Marker): View? {
-//            render(marker, window)
-//            return window
-//        }
-//
-//        override fun getInfoContents(marker: Marker): View? {
-//
-//            render(marker, contents)
-//            return contents
-//        }
-//
-//        private fun render(marker: Marker, view: View) {
-//
-//            // Set the title and snippet for the custom info window
-//            val title: String? = marker.title
-//            val titleUi = view.findViewById<TextView>(R.id.title)
-//
-//            if (title != null) {
-//                // Spannable string allows us to edit the formatting of the text.
-//                titleUi.text = SpannableString(title).apply {
-//                    setSpan(ForegroundColorSpan(RED), 0, length, 0)
-//                }
-//            } else {
-//                titleUi.text = ""
-//            }
-//
-//            val snippet: String? = marker.snippet
-//            val snippetUi = view.findViewById<TextView>(R.id.snippet)
-//            if (snippet != null && snippet.length > 12) {
-//                snippetUi.text = SpannableString(snippet).apply {
-//                    setSpan(ForegroundColorSpan(MAGENTA), 0, 10, 0)
-//                    setSpan(ForegroundColorSpan(BLUE), 12, snippet.length, 0)
-//                }
-//            } else {
-//                snippetUi.text = ""
-//            }
-//        }
-//
-//}
 
 
 }
