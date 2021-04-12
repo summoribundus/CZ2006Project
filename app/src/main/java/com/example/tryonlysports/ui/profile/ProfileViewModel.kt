@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
+import java.util.*
 
 /**
  * This is the ViewModel that stores and manages UI related data in the lifecycle of the profile fragment.
@@ -108,5 +109,6 @@ class ProfileViewModel(val db: FirebaseFirestore, val name: String): ViewModel()
             Log.d("nearest_HealthDAO", "Why failed?")
         }
     }
+
 
 }
