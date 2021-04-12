@@ -11,7 +11,40 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="Avg Speed:"
+            android:textColor="#664A99"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.67"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="Distance"
+            android:textColor="#664A99"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/distanceWorkoutHistoryText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
         <TextView
             android:id="@+id/dateWorkoutHistoryText"
@@ -20,10 +53,11 @@
             android:layout_marginTop="8dp"
             android:text="TextView"
             android:textSize="10sp"
+            app:dateWorkoutHistoryText="@{workout}"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/typeWorkoutHistoryText"
-            app:dateWorkoutHistoryText="@{workout}"
             tools:text="25/01/2021" />
 
         <TextView
@@ -32,8 +66,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="TextView"
-            android:textSize="18sp"
+            android:textColor="#664A99"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:typeWorkoutHistoryText="@{workout}"
@@ -48,38 +85,31 @@
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/distanceWorkoutHistoryText"
+            app:layout_constraintStart_toEndOf="@+id/textView15"
             app:layout_constraintTop_toBottomOf="@+id/caloriesWorkHistoryText"
             app:speedWorkoutHistoryText="@{workout}"
-            app:layout_constraintVertical_bias="0.058"
             tools:text="7.8km/h" />
 
         <TextView
             android:id="@+id/durationWorkoutHistoryText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="TextView"
-            app:layout_constraintEnd_toStartOf="@+id/caloriesWorkHistoryText"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
             app:durationWorkoutHistoryText="@{workout}"
-            app:layout_constraintTop_toBottomOf="@+id/dateWorkoutHistoryText"
+            app:layout_constraintBottom_toTopOf="@+id/distanceWorkoutHistoryText"
+            app:layout_constraintStart_toStartOf="@+id/distanceWorkoutHistoryText"
+            app:layout_constraintTop_toTopOf="@+id/textView12"
             tools:text="30min" />
 
         <TextView
             android:id="@+id/caloriesWorkHistoryText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/durationWorkoutHistoryText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:caloriesWorkoutHistoryText="@{workout}"
-            app:layout_constraintStart_toEndOf="@+id/durationWorkoutHistoryText"
-            app:layout_constraintTop_toBottomOf="@+id/dateWorkoutHistoryText"
+            app:layout_constraintBottom_toTopOf="@+id/speedWorkoutHistoryText"
+            app:layout_constraintStart_toStartOf="@+id/speedWorkoutHistoryText"
+            app:layout_constraintTop_toTopOf="@+id/textView14"
             tools:text="100kCal" />
 
         <TextView
@@ -89,12 +119,36 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
             android:text="TextView"
+            app:distanceWorkoutHistoryText="@{workout}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/speedWorkoutHistoryText"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.38"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/durationWorkoutHistoryText"
-            app:distanceWorkoutHistoryText="@{workout}"
             tools:text="5km" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Duration:"
+            android:textColor="#664A99"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView13"
+            app:layout_constraintStart_toStartOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/dateWorkoutHistoryText" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Calories:"
+            android:textColor="#664A99"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView15"
+            app:layout_constraintStart_toStartOf="@+id/textView15"
+            app:layout_constraintTop_toBottomOf="@+id/dateWorkoutHistoryText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
