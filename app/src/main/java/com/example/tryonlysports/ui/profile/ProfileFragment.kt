@@ -47,7 +47,7 @@ class ProfileFragment : Fragment() {
 
         mainActivity = activity as MainActivity
 
-        val viewModelFactory = ProfileViewModelFactory(mainActivity.db, mainActivity.emailId)
+        val viewModelFactory = ProfileViewModelFactory(mainActivity.db, mainActivity.emailId,mainActivity.userId)
 
         // Get a reference to the ViewModel associated with this fragment.
         val profileViewModel =

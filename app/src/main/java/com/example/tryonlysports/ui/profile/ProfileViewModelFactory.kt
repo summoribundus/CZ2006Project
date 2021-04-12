@@ -13,7 +13,7 @@ import java.lang.IllegalArgumentException
  *
  * @author Li Rui, Liu Zhixuan
  */
-class ProfileViewModelFactory(val db: FirebaseFirestore, val userName: String): ViewModelProvider.Factory {
+class ProfileViewModelFactory(val db: FirebaseFirestore, val userName: String,val userId:String): ViewModelProvider.Factory {
     /**
      * Creates ViewModel for Profile Fragment and passes the database reference and user Email info.
      *
@@ -23,7 +23,7 @@ class ProfileViewModelFactory(val db: FirebaseFirestore, val userName: String): 
      */
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
-            return ProfileViewModel(db, userName) as T
+            return ProfileViewModel(db, userName,userId) as T
         }
         throw IllegalArgumentException("Unknown view class")
     }

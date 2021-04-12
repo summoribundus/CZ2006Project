@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
+import java.util.*
 
 /**
  * This is the ViewModel that stores and manages UI related data in the lifecycle of the profile fragment.
@@ -15,7 +16,7 @@ import com.google.firebase.firestore.ktx.toObject
  *
  * @author Li Rui, Liu Zhixuan
  */
-class ProfileViewModel(val db: FirebaseFirestore, val name: String): ViewModel() {
+class ProfileViewModel(val db: FirebaseFirestore, val name: String,val userId:String): ViewModel() {
     /**
      * The workoutHistory as mutable live private data.
      */
@@ -81,13 +82,19 @@ class ProfileViewModel(val db: FirebaseFirestore, val name: String): ViewModel()
      *
      */
     fun getNearestScheduleHistoryFromFirebase(){
-        db.collection("schedule").whereEqualTo("userName", name).orderBy("startDateTime").limit(1).get().addOnSuccessListener { documents ->
-            for (doc in documents) {
-                val sh: ScheduleHistory = doc.toObject()
-                sh.id = doc.id
-                _nearest_shistory.value = sh
-                Log.i("NearestScheduleHistory", sh.toString())
-            }
+        db.collection("schedule")
+                .document(userId)
+                .collection("activities")
+
+                .get().addOnSuccessListener { documents ->
+                    if(!documents.isEmpty){
+                        val doc=documents.last()
+                        val sh = toScheduleHistory(doc.data)
+                        sh.id = doc.id
+                        _nearest_shistory.value = sh
+                    }
+
+
         }.addOnFailureListener {
             Log.d("nearest_ScheduleDAO", "Why failed?")
         }
@@ -107,6 +114,23 @@ class ProfileViewModel(val db: FirebaseFirestore, val name: String): ViewModel()
         }.addOnFailureListener {
             Log.d("nearest_HealthDAO", "Why failed?")
         }
+    }
+    private fun toScheduleHistory(map:Map<String, Any>):ScheduleHistory{
+        val location=map.get("location") as String
+        val description=map.get("description") as String
+        val outdoor=map.get("isOutdoor") as Boolean
+        val completed=map.get("completed") as Boolean
+        val start=stringToDateTime(map.get("startTime") as String)
+        val end=stringToDateTime(map.get("endTime") as String)
+        return ScheduleHistory(start,end,location,"",description,completed,outdoor)
+    }
+
+    private fun stringToDateTime(str:String):com.google.firebase.Timestamp {
+        val nums = str.split("/").map { it.toInt() }.toTypedArray()
+        val cal= Calendar.getInstance()
+        cal.set(nums[2], nums[1], nums[0], nums[3], nums[4])
+        val dt=cal.time
+        return com.google.firebase.Timestamp(dt)
     }
 
 }
