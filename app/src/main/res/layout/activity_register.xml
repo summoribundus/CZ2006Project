@@ -55,7 +55,11 @@
             android:id="@+id/et_reg_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_roundcorner"
+            android:backgroundTint="#E8EBEF"
+            android:defaultFocusHighlightEnabled="true"
             android:inputType="textPersonName"
+            android:textColor="#959699"
             tools:text="HelloKitty" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,6 +72,7 @@
         android:layout_marginTop="35dp"
         android:layout_marginEnd="15dp"
         android:hint="Email Id"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_reg_username">
@@ -76,7 +81,10 @@
             android:id="@+id/et_reg_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_roundcorner"
+            android:backgroundTint="#E8EBEF"
             android:inputType="textEmailAddress"
+            android:textColor="#959699"
             tools:text="abc@gmail.com" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,6 +97,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="15dp"
         android:hint="Password"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_reg_email">
@@ -97,7 +106,10 @@
             android:id="@+id/et_reg_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_roundcorner"
+            android:backgroundTint="#E8EBEF"
             android:inputType="textPassword"
+            android:textColor="#959699"
             tools:text="123456" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -119,7 +131,10 @@
             android:id="@+id/et_reg_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_roundcorner"
+            android:backgroundTint="#E8EBEF"
             android:inputType="number"
+            android:textColor="#959699"
             tools:text="123" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -139,8 +154,11 @@
         <EditText
             android:id="@+id/et_reg_region"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_roundcorner"
+            android:backgroundTint="#E8EBEF"
             android:inputType="textCapCharacters"
+            android:textColor="#959699"
             tools:text="Singapore" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -152,8 +170,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="16dp"
-        android:background="#A88ABA"
-        android:foreground="?attr/selectableItemBackground"
+
+        android:background="@drawable/bg_roundcorner"
+        app:backgroundTint="#664A99"
+
         android:gravity="center"
         android:text="Register"
         android:textColor="#FFFFFF"
@@ -192,7 +212,6 @@
             android:textStyle="bold"
             tools:ignore="MissingConstraints" />
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

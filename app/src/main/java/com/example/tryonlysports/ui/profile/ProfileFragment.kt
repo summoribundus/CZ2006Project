@@ -58,20 +58,24 @@ class ProfileFragment : Fragment() {
 
         profileViewModel.nearest_hhistory.observe(viewLifecycleOwner, Observer {
             binding.healthHistoryWeightText.text = it.value.toString()
-            binding.healthHistoryText.text = it.recordTime?.toDate().toString()
+            binding.healthHistoryText.text = it.recordTime?.toDate().toString().substring(4,10)+
+                    it.recordTime?.toDate().toString().substring(29)
         })
 
-        profileViewModel.nearest_whistory.observe(viewLifecycleOwner, {
+        profileViewModel.nearest_whistory.observe(viewLifecycleOwner, Observer{
             binding.workoutHistoryCaloriesText.text = it.calories
             binding.workoutHistoryDurationText.text = it.duration
             binding.workoutHistoryTypeText.text = it.workoutType
-            binding.workoutHistoryTimeText.text = it.date?.toDate().toString()
+            binding.workoutHistoryTimeText.text = it.date?.toDate().toString().substring(4,10)+
+                    it.date?.toDate().toString().substring(29)
         })
 
-        profileViewModel.nearest_shistory.observe(viewLifecycleOwner, {
+        profileViewModel.nearest_shistory.observe(viewLifecycleOwner, Observer{
             binding.scheduleHistoryDescriptionText.text = it.description
-            binding.scheduleHistoryEndDateText.text = it.endDateTime?.toDate().toString()
-            binding.scheduleHistoryStartDateText.text = it.startDateTime?.toDate().toString()
+            binding.scheduleHistoryEndDateText.text = it.endDateTime?.toDate().toString().substring(4,10)+
+                    it.endDateTime?.toDate().toString().substring(29)
+            binding.scheduleHistoryStartDateText.text = it.startDateTime?.toDate().toString().substring(4,10)+
+                    it.startDateTime?.toDate().toString().substring(29)
             binding.scheduleHistoryLocationText.text = it.location
         })
 

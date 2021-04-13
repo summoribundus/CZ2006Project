@@ -38,6 +38,7 @@ class HealthInfoHistoryFragment : Fragment() {
     ): View? {
         val binding: FragmentWeightHistoryBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_weight_history, container, false)
+
         val activity = activity as MainActivity
         val viewModelFactory = HealthInfoHistoryViewModelFactory(activity.db, activity.emailId)
 
@@ -53,6 +54,14 @@ class HealthInfoHistoryFragment : Fragment() {
             it?.let {
                 Log.i("InfohistoryFragment", "called??")
                 adapter.submitList(it)
+                if(it.isEmpty()){
+                    binding.weightHistoryList.visibility=View.GONE
+                    binding.emptyView.visibility=View.VISIBLE
+                }
+                else{
+                    binding.weightHistoryList.visibility=View.VISIBLE
+                    binding.emptyView.visibility=View.GONE
+                }
             }
         })
 

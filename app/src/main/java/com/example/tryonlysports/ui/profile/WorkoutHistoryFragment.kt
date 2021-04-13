@@ -45,6 +45,14 @@ class WorkoutHistoryFragment:Fragment() {
         workoutHistoryViewModel.whistory.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
+                if(it.isEmpty()){
+                    binding.workoutList.visibility=View.GONE
+                    binding.emptyView.visibility=View.VISIBLE
+                }
+                else{
+                    binding.workoutList.visibility=View.VISIBLE
+                    binding.emptyView.visibility=View.GONE
+                }
             }
         })
 
