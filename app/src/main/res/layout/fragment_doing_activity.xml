@@ -87,6 +87,7 @@
             android:id="@+id/distance_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="183dp"
             android:text="@{doingSportsViewModel.totalDistance}"
             android:textColor="#9E9A9A"
             android:textSize="18sp"
@@ -105,8 +106,11 @@
             android:layout_marginBottom="75dp"
             android:backgroundTint="#664A99"
             android:text="Terminate"
+            android:background="@drawable/bg_roundcorner_btn1"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
+            app:backgroundTint="#664A99"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -153,12 +157,13 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
             android:text="Start time:"
             android:textColor="#664A99"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/textView2"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/type_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
