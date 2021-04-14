@@ -7,10 +7,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.maps.model.Polyline
 import com.google.maps.android.SphericalUtil
+import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.math.floor
+
 
 /**
  * This is the ViewModel that stores and manages UI related data in the lifecycle of the Doing Sports fragment.
@@ -19,7 +21,7 @@ import kotlin.math.floor
  *
  * @author Ye Ziyuan
  */
-class DoingSportsViewModel(val type:String): ViewModel() {
+class DoingSportsViewModel(val type: String): ViewModel() {
 
     /**
      * The workout type string as mutable live private data.
@@ -119,7 +121,11 @@ class DoingSportsViewModel(val type:String): ViewModel() {
      *
      */
     private fun initProperty() {
-        _startTime.value = LocalDateTime.now().toString()
+        val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+        val formatter = SimpleDateFormat("dd.MM.yyyy HH:mm")
+        val output: String = formatter.format(parser.parse( LocalDateTime.now().toString()))
+        _startTime.value = output
+        //_startTime.value = LocalDateTime.now().toString()
         updateTimePassed()
         _speed.value= "0 mph"
         _totalDistance.value = "0 km"
@@ -133,8 +139,8 @@ class DoingSportsViewModel(val type:String): ViewModel() {
         val tPassed: Long = System.currentTimeMillis() - tStart
         _passedTimeValue.value = tPassed
         _timePassed.value = String.format("%d min, %d sec", TimeUnit.MILLISECONDS.toMinutes(tPassed),
-            TimeUnit.MILLISECONDS.toSeconds(tPassed) -
-                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(tPassed)))
+                TimeUnit.MILLISECONDS.toSeconds(tPassed) -
+                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(tPassed)))
     }
 
     /**

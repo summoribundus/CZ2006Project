@@ -54,7 +54,7 @@
             app:layout_constraintBottom_toTopOf="@+id/timePassed_text"
             app:layout_constraintStart_toStartOf="@+id/timePassed_text"
             app:layout_constraintTop_toBottomOf="@+id/type_text"
-            tools:text="12:30" />
+            tools:text="dd.MM.yyyy HH:mm" />
 
         <TextView
             android:id="@+id/timePassed_text"
@@ -94,7 +94,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/terminate_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.52"
+            app:layout_constraintHorizontal_bias="0.28"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/speed_text"
             tools:text="30km" />
