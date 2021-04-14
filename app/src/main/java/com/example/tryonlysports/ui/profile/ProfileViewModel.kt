@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObject
 import java.util.*
 
@@ -66,7 +67,7 @@ class ProfileViewModel(val db: FirebaseFirestore, val name: String,val userId:St
      *
      */
     fun getNearestWorkoutHistoryFromFirebase(){
-        db.collection("workoutHistory").whereEqualTo("userName", name).orderBy("date").limit(1).get().addOnSuccessListener { documents ->
+        db.collection("workoutHistory").whereEqualTo("userName", name).orderBy("date", Query.Direction.DESCENDING).limit(1).get().addOnSuccessListener { documents ->
             for (doc in documents) {
                 val wh: WorkoutHistory = doc.toObject()
                 wh.id = doc.id
@@ -104,7 +105,7 @@ class ProfileViewModel(val db: FirebaseFirestore, val name: String,val userId:St
      *
      */
     fun getNearestHealthHistoryFromFirebase(){
-        db.collection("healthInfo").whereEqualTo("userName", name).orderBy("recordTime").limit(1).get().addOnSuccessListener { documents ->
+        db.collection("healthInfo").whereEqualTo("userName", name).orderBy("recordTime", Query.Direction.DESCENDING).limit(1).get().addOnSuccessListener { documents ->
             for (doc in documents) {
                 val hh: HealthInfoHistory = doc.toObject()
                 hh.id = doc.id
