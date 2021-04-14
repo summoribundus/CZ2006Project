@@ -10,7 +10,8 @@ import androidx.databinding.BindingAdapter
  */
 @BindingAdapter("dateWorkoutHistoryText")
 fun TextView.setDateWorkoutHistoryText(item: WorkoutHistory) {
-    text = item.date?.toDate().toString()
+    text = item.date?.toDate().toString().substring(4,10)+
+            item.date?.toDate().toString().substring(29)
 }
 
 /**

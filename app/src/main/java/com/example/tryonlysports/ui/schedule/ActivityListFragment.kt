@@ -90,8 +90,24 @@ class ActivityListFragment:Fragment(){
                     val directions=ActivityListFragmentDirections.toAddActivityFragment()
                     findNavController().navigate(directions)
                 } else if (itemId == R.id.complete) {
-                    activityData.completeActivity(position)
-                    adapter.notifyDataSetChanged()
+                    val alertDialog: AlertDialog? = activity?.let {
+                        val builder = AlertDialog.Builder(it)
+                        builder.apply {
+                            setPositiveButton("Confirm",
+                                    DialogInterface.OnClickListener { dialog, id ->
+                                        println(position)
+                                        activityData.completeActivity(position)
+                                        adapter.notifyDataSetChanged()
+                                    })
+                            setNegativeButton("Cancel",
+                                    DialogInterface.OnClickListener { dialog, id ->
+
+                                    })
+                            setMessage("Comfirm to complete the activity?")
+                        }
+                        builder.show()
+                    }
+
                 } else {
                     val alertDialog: AlertDialog? = activity?.let {
                         val builder = AlertDialog.Builder(it)
@@ -108,8 +124,6 @@ class ActivityListFragment:Fragment(){
                                 })
                             setMessage(R.string.delete_alert)
                         }
-
-                        // Create the AlertDialog
                         builder.show()
                     }
 

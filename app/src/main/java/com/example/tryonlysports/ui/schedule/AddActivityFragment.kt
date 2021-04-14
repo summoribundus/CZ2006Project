@@ -17,6 +17,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.tryonlysports.R
 import com.example.tryonlysports.databinding.ActivityAddActivityBinding
+import java.time.LocalDateTime
 import java.util.*
 enum class State{EDIT,ADD}
 
@@ -82,9 +83,9 @@ class AddActivityFragment: Fragment(){
             val datePickerDialog =
                 DatePickerDialog(requireParentFragment().requireContext(),
                     { view: DatePicker, year:Int, month: Int, date: Int->
-                        binding.selectStartDateButton.setHint(""+date+"/"+month+"/"+year)
+                        binding.selectStartDateButton.setHint(""+date+"/"+(month+1)+"/"+year)
                         newActivity.start.year=year
-                        newActivity.start.month=month
+                        newActivity.start.month=month+1
                         newActivity.start.day=date
                     },
                     calendar.get(Calendar.YEAR),
@@ -98,9 +99,9 @@ class AddActivityFragment: Fragment(){
             val datePickerDialog =
                 DatePickerDialog(requireParentFragment().requireContext(),
                     { view: DatePicker, year:Int, month: Int, date: Int->
-                        binding.selectEndDateButton.setHint(""+date+"/"+month+"/"+year)
+                        binding.selectEndDateButton.setHint(""+date+"/"+(month+1)+"/"+year)
                         newActivity.end.year=year
-                        newActivity.end.month=month
+                        newActivity.end.month=month+1
                         newActivity.end.day=date
                     },
                     calendar.get(Calendar.YEAR),
@@ -145,66 +146,7 @@ class AddActivityFragment: Fragment(){
         }
 
         binding.saveActivityButton.setOnClickListener{
-            var valid=true
-            val alertDialog: AlertDialog? = activity?.let {
-                val builder = AlertDialog.Builder(it)
-                if(binding.descriptionText.text.isBlank()&&valid){
-                    builder.apply{
-                        setMessage("Please provide a description for your activity")
-                        setPositiveButton("OK",
-                            DialogInterface.OnClickListener { dialog, id ->
-
-                            })
-                        valid=false
-                        builder.show()
-                    }
-                }
-                if(binding.locationText.text.isBlank()&&valid){
-                    builder.apply{
-                        setMessage("Please provide a location for your activity")
-                        setPositiveButton("OK",
-                            DialogInterface.OnClickListener { dialog, id ->
-
-                            })
-                    }
-                    valid=false
-                    builder.show()
-                }
-                if(newActivity.start.isEmpty()&&valid){
-                    builder.apply{
-                        setMessage("start datetime is empty")
-                        setPositiveButton("OK",
-                                DialogInterface.OnClickListener { dialog, id ->
-
-                                })
-                    }
-                    valid=false
-                    builder.show()
-                }
-                if(newActivity.end.isEmpty()&&valid){
-                    builder.apply{
-                        setMessage("end datetime is empty")
-                        setPositiveButton("OK",
-                                DialogInterface.OnClickListener { dialog, id ->
-
-                                })
-                    }
-                    valid=false
-                    builder.show()
-                }
-                if(newActivity.start.biggerThan(newActivity.end)&&valid){
-                    builder.apply{
-                        setMessage("end time is bigger than start time")
-                        setPositiveButton("OK",
-                                DialogInterface.OnClickListener { dialog, id ->
-
-                                })
-                    }
-                    valid=false
-                    builder.show()
-                }
-                builder.create()
-            }
+            var valid=validateInput()
             if(valid){
                 newActivity.description=binding.descriptionText.text.toString()
                 newActivity.location=binding.locationText.text.toString()
@@ -215,5 +157,88 @@ class AddActivityFragment: Fragment(){
             }
 
         }
+    }
+
+    /**
+     * Function to validate input, if any input field is invalid, it creates a dialog box to display error message.
+     * @return whether the input is valid or not.
+     */
+    private fun validateInput():Boolean {
+        var valid = true
+        val alertDialog: AlertDialog? = activity?.let {
+            val builder = AlertDialog.Builder(it)
+            if (binding.descriptionText.text.isBlank() && valid) {
+                builder.apply {
+                    setMessage("Please provide a description for your activity")
+                    setPositiveButton("OK",
+                            DialogInterface.OnClickListener { dialog, id ->
+                            })
+                    valid = false
+                    builder.show()
+                }
+            }
+            if (binding.locationText.text.isBlank() && valid) {
+                builder.apply {
+                    setMessage("Please provide a location for your activity")
+                    setPositiveButton("OK",
+                            DialogInterface.OnClickListener { dialog, id ->
+                            })
+                }
+                valid = false
+                builder.show()
+            }
+            if (newActivity.start.isEmpty() && valid) {
+                builder.apply {
+                    setMessage("start datetime is empty")
+                    setPositiveButton("OK",
+                            DialogInterface.OnClickListener { dialog, id ->
+
+                            })
+                }
+                valid = false
+                builder.show()
+            }
+            if (newActivity.end.isEmpty() && valid) {
+                builder.apply {
+                    setMessage("end datetime is empty")
+                    setPositiveButton("OK",
+                            DialogInterface.OnClickListener { dialog, id ->
+
+                            })
+                }
+                valid = false
+                builder.show()
+            }
+            val now = DateTime(LocalDateTime.now().year,
+                    LocalDateTime.now().monthValue,
+                    LocalDateTime.now().dayOfMonth,
+                    LocalDateTime.now().hour,
+                    LocalDateTime.now().minute)
+            println(now)
+            if (now.biggerThan(newActivity.start) && valid) {
+                builder.apply {
+                    setMessage("start time is earlier than now")
+                    setPositiveButton("OK",
+                            DialogInterface.OnClickListener { dialog, id ->
+
+                            })
+                }
+                valid = false
+                builder.show()
+            }
+            if (newActivity.start.biggerThan(newActivity.end) && valid) {
+                builder.apply {
+                    setMessage("end time is bigger than start time")
+                    setPositiveButton("OK",
+                            DialogInterface.OnClickListener { dialog, id ->
+
+                            })
+                }
+                valid = false
+                builder.show()
+            }
+            builder.create()
+        }
+        return valid
     }
 }
