@@ -13,7 +13,9 @@
 
             android:id="@+id/activity_list"
             android:layout_width="match_parent"
-            android:layout_height="500dp"></ListView>
+            android:layout_height="500dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10sp"></ListView>
         <LinearLayout
             android:id="@android:id/empty"
             android:layout_width="match_parent"
