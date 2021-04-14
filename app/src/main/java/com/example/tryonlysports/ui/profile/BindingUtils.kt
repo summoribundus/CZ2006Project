@@ -10,7 +10,8 @@ import androidx.databinding.BindingAdapter
  */
 @BindingAdapter("dateWorkoutHistoryText")
 fun TextView.setDateWorkoutHistoryText(item: WorkoutHistory) {
-    text = item.date?.toDate().toString()
+    text = item.date?.toDate().toString().substring(4,10)+
+            item.date?.toDate().toString().substring(29)
 }
 
 /**
@@ -70,7 +71,8 @@ fun TextView.setDistanceWorkoutHistoryText(item: WorkoutHistory) {
  */
 @BindingAdapter("dateWeightHistoryListText")
 fun TextView.setDateWeightHistoryListText(item: HealthInfoHistory) {
-    text = item.recordTime?.toDate().toString()
+    text = item.recordTime?.toDate().toString().substring(4,10)+
+            item.recordTime?.toDate().toString().substring(29)
 }
 
 /**
@@ -110,7 +112,8 @@ fun TextView.setLocation(item: ScheduleHistory) {
  */
 @BindingAdapter("starttime")
 fun TextView.setStartTime(item: ScheduleHistory) {
-    text = item.startDateTime?.toDate().toString()
+    text = item.startDateTime?.toDate().toString().substring(4,10)+
+            item.startDateTime?.toDate().toString().substring(29)
 }
 
 /**
@@ -120,5 +123,6 @@ fun TextView.setStartTime(item: ScheduleHistory) {
  */
 @BindingAdapter("endtime")
 fun TextView.setEndTime(item: ScheduleHistory) {
-    text = item.endDateTime?.toDate().toString()
+    text = item.startDateTime?.toDate().toString().substring(4,10)+
+            item.startDateTime?.toDate().toString().substring(29)
 }

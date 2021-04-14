@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.tryonlysports.LoginActivity
@@ -41,7 +42,7 @@ class PersonalInfoFragment: Fragment() {
                 ViewModelProvider(
                         this, viewModelFactory).get(PersonalInfoViewModel::class.java)
 
-        personalInfoViewModel.personalInfo.observe(viewLifecycleOwner, {
+        personalInfoViewModel.personalInfo.observe(viewLifecycleOwner, Observer{
             binding.emailText.text = it.userEmail
             binding.mobileText.text = it.phoneNumber
             binding.regionText.text = it.region

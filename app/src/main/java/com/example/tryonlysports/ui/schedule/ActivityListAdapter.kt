@@ -43,8 +43,8 @@ class ActivityListAdapter(a: LiveData<MutableList<Activity>>, context:Context)
         val activity=getItem(position) as Activity
         descriptionTextView.text=activity.description
         locationTextView.text=activity.location
-        startTextView.text=activity.start.toString()
-        endTextView.text=activity.end.toString()
+        startTextView.text=activity.start.toDateString()+" "+activity.start.toTimeString()
+        endTextView.text=activity.end.toDateString()+" "+activity.end.toTimeString()
         if(activity.isOutdoor) outdoorTextView.text="Outdoor"
         else outdoorTextView.text="Indoor"
         return view

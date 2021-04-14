@@ -101,7 +101,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="8dp"
-                    android:background="@drawable/border">
+                    android:background="@drawable/bg_roundcorner">
 
                     <ImageView
                         android:id="@+id/sun_protection_icon"
@@ -148,7 +148,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="8dp"
-                    android:background="@drawable/border">
+                    android:background="@drawable/bg_roundcorner">
 
                     <ImageView
                         android:id="@+id/outdoor_activity_icon"
@@ -195,7 +195,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="8dp"
-                    android:background="@drawable/border">
+                    android:background="@drawable/bg_roundcorner">
 
                     <ImageView
                         android:id="@+id/activity_duration_icon"
@@ -241,7 +241,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="50dp"
-                    android:background="@drawable/border">
+                    android:background="@drawable/bg_roundcorner">
 
                     <ImageView
                         android:id="@+id/heat_waring_icon"

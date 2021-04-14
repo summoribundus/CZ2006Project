@@ -12,44 +12,67 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/border">
+        android:background="@drawable/bg_roundcorner">
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Date"
+            android:textColor="#4F3382"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Weight"
+            android:textColor="#4F3382"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/dateWeightHistoryListText"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/dateWeightHistoryListText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:text="TextView"
             android:textSize="18sp"
+            app:dateWeightHistoryListText="@{health_info}"
+
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/weightHistoryListText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            tools:text="25/01/2021"
-            app:dateWeightHistoryListText="@{health_info}"/>
+            tools:text="25/01/2021" />
 
         <TextView
             android:id="@+id/weightHistoryListText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
             android:text="TextView"
+            android:textColor="#664A99"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="#664A99"
-            app:layout_constraintBottom_toBottomOf="@+id/dateWeightHistoryListText"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/dateWeightHistoryListText"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:text="50kg"
-            app:weightHistoryListText="@{health_info}"/>
+            app:weightHistoryListText="@{health_info}"
+            tools:text="50kg" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

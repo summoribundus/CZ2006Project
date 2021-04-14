@@ -125,9 +125,10 @@
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:backgroundTint="#664A99"
+            app:backgroundTint="#664A99"
             android:paddingHorizontal="80dp"
             android:text="View History"
+            android:background="@drawable/bg_roundcorner_btn1"
             app:layout_constraintBottom_toTopOf="@id/btn_logout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -137,9 +138,10 @@
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="75dp"
-            android:backgroundTint="#0D4A52"
+            app:backgroundTint="#0D4A52"
             android:paddingHorizontal="80dp"
             android:text="Log Out"
+            android:background="@drawable/bg_roundcorner_btn1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

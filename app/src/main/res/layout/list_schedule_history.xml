@@ -15,7 +15,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/border"
+        android:background="@drawable/bg_roundcorner"
         android:orientation="vertical">
 
         <TextView
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/location"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="68dp"
             android:layout_weight="0.5"
             android:text="outdoor"
             android:textSize="14sp"
@@ -73,7 +73,7 @@
             android:textSize="14sp"
             app:endtime="@{schedule}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.057"
             app:layout_constraintStart_toEndOf="@+id/textView20"
             app:layout_constraintTop_toTopOf="@+id/textView20"
             tools:text="Hello" />
@@ -88,6 +88,7 @@
             android:textColor="#664A99"
             android:textSize="18sp"
             android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@id/description"
             app:layout_constraintBottom_toTopOf="@+id/textView18"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.05"
@@ -98,22 +99,26 @@
             android:id="@+id/textView18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:text="Location:"
             android:textColor="#664A99"
             android:textSize="18sp"
             android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@id/location"
             app:layout_constraintBottom_toTopOf="@+id/startTime"
-            app:layout_constraintStart_toStartOf="@+id/textView17"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
         <TextView
             android:id="@+id/textView19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
             android:text="Start:"
             android:textColor="#664A99"
             android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@id/startTime"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/startTime" />
 
@@ -121,7 +126,7 @@
             android:id="@+id/textView20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:text="End:"
@@ -129,6 +134,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+            app:layout_constraintTop_toBottomOf="@+id/textView19"
+            app:layout_constraintVertical_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

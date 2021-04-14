@@ -78,7 +78,7 @@ class ScheduleHistoryViewModel(val db: FirebaseFirestore, val userName: String):
     private fun stringToDateTime(str:String):com.google.firebase.Timestamp {
         val nums = str.split("/").map { it.toInt() }.toTypedArray()
         val cal=Calendar.getInstance()
-        cal.set(nums[2], nums[1], nums[0], nums[3], nums[4])
+        cal.set(nums[2], nums[1]-1, nums[0], nums[3], nums[4])
         val dt=cal.time
         return com.google.firebase.Timestamp(dt)
     }
