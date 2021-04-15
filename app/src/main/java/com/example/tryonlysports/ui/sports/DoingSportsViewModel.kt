@@ -125,6 +125,7 @@ class DoingSportsViewModel(val type: String): ViewModel() {
         val formatter = SimpleDateFormat("dd.MM.yyyy HH:mm")
         val output: String = formatter.format(parser.parse( LocalDateTime.now().toString()))
         _startTime.value = output
+        //Log.i("systemtime",LocalDateTime.now().toString() )
         //_startTime.value = LocalDateTime.now().toString()
         updateTimePassed()
         _speed.value= "0 mph"
