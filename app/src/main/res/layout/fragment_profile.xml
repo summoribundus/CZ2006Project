@@ -45,13 +45,11 @@
                 android:id="@+id/healthHistory_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="175dp"
                 android:text="..."
                 android:textColor="#9E9A9A"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView21"
+                app:layout_constraintStart_toStartOf="@+id/healthHistory_weight_text"
                 app:layout_constraintTop_toBottomOf="@+id/healthHistory_header"
                 tools:text="timestamp" />
 
