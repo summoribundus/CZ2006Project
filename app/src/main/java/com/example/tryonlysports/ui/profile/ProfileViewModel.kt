@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObject
@@ -44,6 +45,8 @@ class ProfileViewModel(val db: FirebaseFirestore, val name: String,val userId:St
      * The healthInfoHistory as live data.
      */
     val nearest_hhistory : LiveData<HealthInfoHistory> get() = _nearest_hhistory
+
+    val nearest_history_list = mutableListOf<ScheduleHistory>()
 
     /**
      * Will be called when initialized.
@@ -89,10 +92,12 @@ class ProfileViewModel(val db: FirebaseFirestore, val name: String,val userId:St
 
                 .get().addOnSuccessListener { documents ->
                     if(!documents.isEmpty){
-                        val doc=documents.last()
-                        val sh = toScheduleHistory(doc.data)
-                        sh.id = doc.id
-                        _nearest_shistory.value = sh
+                        for (doc in documents) {
+                            val sh  = toScheduleHistory(doc.data)
+                            nearest_history_list.add(sh)
+                        }
+                        val sorted = nearest_history_list.toList().sortedBy { it.startDateTime }
+                        _nearest_shistory.value = sorted.last()
                     }
 
 

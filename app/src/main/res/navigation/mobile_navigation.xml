@@ -82,7 +82,7 @@
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.tryonlysports.ui.profile.ProfileFragment"
-        android:label="Profile"
+        android:label="Latest Record"
         tools:layout="@layout/fragment_profile">
 
         <action
