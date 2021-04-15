@@ -3,14 +3,18 @@ package com.example.tryonlysports.ui.schedule
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
+import android.widget.EditText
 import android.widget.TimePicker
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -31,10 +35,10 @@ enum class State{EDIT,ADD}
  * @property binding UI binding of the fragment, used for accessing the UI widgets.
  * @author Wang Qiaochu
  */
-class AddActivityFragment: Fragment(){
-    private val activityData:ActivityList by activityViewModels()
-    private lateinit var newActivity:Activity
-    private var state=State.ADD
+class AddActivityFragment: Fragment() {
+    private val activityData: ActivityList by activityViewModels()
+    private lateinit var newActivity: Activity
+    private var state = State.ADD
     lateinit var binding: ActivityAddActivityBinding
 
 
@@ -44,10 +48,10 @@ class AddActivityFragment: Fragment(){
      * @return the view of AddActivityFragment
      */
     override fun onCreateView(inflater: LayoutInflater,
-                             container: ViewGroup?,
-                             savedInstanceState: Bundle?): View?{
-        binding= DataBindingUtil.inflate<ActivityAddActivityBinding>(
-            inflater, R.layout.activity_add_activity,container,false
+                              container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        binding = DataBindingUtil.inflate<ActivityAddActivityBinding>(
+                inflater, R.layout.activity_add_activity, container, false
         )
 
 
@@ -59,186 +63,207 @@ class AddActivityFragment: Fragment(){
      * The function that gets the activity data from the view model, set listeners for buttons,
      * initializing field values if the the fragment is in EDIT state
      */
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
-        state=State.ADD
-        if(activityData.selected.value!=-1){
-            state=State.EDIT
-            newActivity=activityData.getSelected()
-        }
-        else newActivity=Activity("","", DateTime(0,0,0),
-            DateTime(0,0,0),false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        state = State.ADD
+        if (activityData.selected.value != -1) {
+            state = State.EDIT
+            newActivity = activityData.getSelected()
+        } else newActivity = Activity("", "", DateTime(0, 0, 0),
+                DateTime(0, 0, 0), false)
 
-        if(state==State.EDIT){
+        if (state == State.EDIT) {
             binding.descriptionText.setText(newActivity.description)
             binding.locationText.setText(newActivity.location)
             binding.selectStartDateButton.setHint(newActivity.start.toDateString())
             binding.selectStartTimeButton.setHint(newActivity.start.toTimeString())
             binding.selectEndDateButton.setHint(newActivity.end.toDateString())
             binding.selectEndTimeButton.setHint(newActivity.end.toTimeString())
-            binding.indoor.isChecked=newActivity.isOutdoor
+            binding.indoor.isChecked = newActivity.isOutdoor
         }
 
-        binding.selectStartDateButton.setOnClickListener{
+        binding.selectStartDateButton.setOnClickListener {
             val calendar = Calendar.getInstance()
             val datePickerDialog =
-                DatePickerDialog(requireParentFragment().requireContext(),
-                    { view: DatePicker, year:Int, month: Int, date: Int->
-                        binding.selectStartDateButton.setHint(""+date+"/"+(month+1)+"/"+year)
-                        newActivity.start.year=year
-                        newActivity.start.month=month+1
-                        newActivity.start.day=date
-                    },
-                    calendar.get(Calendar.YEAR),
-                    calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DAY_OF_MONTH))
+                    DatePickerDialog(requireParentFragment().requireContext(),
+                            { view: DatePicker, year: Int, month: Int, date: Int ->
+                                binding.selectStartDateButton.setHint("" + date + "/" + (month + 1) + "/" + year)
+                                newActivity.start.year = year
+                                newActivity.start.month = month + 1
+                                newActivity.start.day = date
+                            },
+                            calendar.get(Calendar.YEAR),
+                            calendar.get(Calendar.MONTH),
+                            calendar.get(Calendar.DAY_OF_MONTH))
             datePickerDialog.show()
         }
 
-        binding.selectEndDateButton.setOnClickListener{
+        binding.selectEndDateButton.setOnClickListener {
             val calendar = Calendar.getInstance()
             val datePickerDialog =
-                DatePickerDialog(requireParentFragment().requireContext(),
-                    { view: DatePicker, year:Int, month: Int, date: Int->
-                        binding.selectEndDateButton.setHint(""+date+"/"+(month+1)+"/"+year)
-                        newActivity.end.year=year
-                        newActivity.end.month=month+1
-                        newActivity.end.day=date
-                    },
-                    calendar.get(Calendar.YEAR),
-                    calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DAY_OF_MONTH))
+                    DatePickerDialog(requireParentFragment().requireContext(),
+                            { view: DatePicker, year: Int, month: Int, date: Int ->
+                                binding.selectEndDateButton.setHint("" + date + "/" + (month + 1) + "/" + year)
+                                newActivity.end.year = year
+                                newActivity.end.month = month + 1
+                                newActivity.end.day = date
+                            },
+                            calendar.get(Calendar.YEAR),
+                            calendar.get(Calendar.MONTH),
+                            calendar.get(Calendar.DAY_OF_MONTH))
             datePickerDialog.show()
         }
 
-        binding.selectStartTimeButton.setOnClickListener{
+        binding.selectStartTimeButton.setOnClickListener {
             val calendar = Calendar.getInstance()
             val timePickerDialog =
-                TimePickerDialog(requireParentFragment().requireContext(),
-                    { view: TimePicker, hour:Int, minute: Int->
-                        binding.selectStartTimeButton.setHint(""+hour+":"+minute)
-                        newActivity.start.hour=hour
-                        newActivity.start.minute=minute
-                    },
-                    calendar.get(Calendar.HOUR_OF_DAY),
-                    calendar.get(Calendar.MINUTE),
-                    DateFormat.is24HourFormat(requireActivity().applicationContext))
+                    TimePickerDialog(requireParentFragment().requireContext(),
+                            { view: TimePicker, hour: Int, minute: Int ->
+                                binding.selectStartTimeButton.setHint("" + hour + ":" + minute)
+                                newActivity.start.hour = hour
+                                newActivity.start.minute = minute
+                            },
+                            calendar.get(Calendar.HOUR_OF_DAY),
+                            calendar.get(Calendar.MINUTE),
+                            DateFormat.is24HourFormat(requireActivity().applicationContext))
             timePickerDialog.show()
         }
 
-        binding.selectEndTimeButton.setOnClickListener{
+        binding.selectEndTimeButton.setOnClickListener {
             val calendar = Calendar.getInstance()
             val timePickerDialog =
-                TimePickerDialog(requireParentFragment().requireContext(),
-                    { view: TimePicker, hour:Int, minute: Int->
-                        binding.selectEndTimeButton.setHint(""+hour+":"+minute)
-                        newActivity.end.hour=hour
-                        newActivity.end.minute=minute
-                    },
-                    calendar.get(Calendar.HOUR_OF_DAY),
-                    calendar.get(Calendar.MINUTE),
-                    DateFormat.is24HourFormat(requireActivity().applicationContext))
+                    TimePickerDialog(requireParentFragment().requireContext(),
+                            { view: TimePicker, hour: Int, minute: Int ->
+                                binding.selectEndTimeButton.setHint("" + hour + ":" + minute)
+                                newActivity.end.hour = hour
+                                newActivity.end.minute = minute
+                            },
+                            calendar.get(Calendar.HOUR_OF_DAY),
+                            calendar.get(Calendar.MINUTE),
+                            DateFormat.is24HourFormat(requireActivity().applicationContext))
             timePickerDialog.show()
         }
 
-        binding.cancelButton.setOnClickListener{
-           val directions=AddActivityFragmentDirections.toActivityListFragment()
+        binding.cancelButton.setOnClickListener {
+            val directions = AddActivityFragmentDirections.toActivityListFragment()
             findNavController().navigate(directions)
         }
 
-        binding.saveActivityButton.setOnClickListener{
-            var valid=validateInput()
-            if(valid){
-                newActivity.description=binding.descriptionText.text.toString()
-                newActivity.location=binding.locationText.text.toString()
-                newActivity.isOutdoor=binding.indoor.isChecked
-                activityData.updateActivities(activityData.selected.value!!,newActivity)
-                val directions=AddActivityFragmentDirections.toActivityListFragment()
+        binding.saveActivityButton.setOnClickListener {
+            var valid = validateInput()
+            if (valid) {
+                newActivity.description = binding.descriptionText.text.toString()
+                newActivity.location = binding.locationText.text.toString()
+                newActivity.isOutdoor = binding.indoor.isChecked
+                activityData.updateActivities(activityData.selected.value!!, newActivity)
+                val directions = AddActivityFragmentDirections.toActivityListFragment()
                 findNavController().navigate(directions)
             }
 
         }
+
+        binding.descriptionText.onFocusChangeListener = View.OnFocusChangeListener { p0, p1 ->
+            if (!p1) hideKeyboard()
+        }
+
+        binding.locationText.onFocusChangeListener = View.OnFocusChangeListener {
+            p0, p1 -> if (!p1) hideKeyboard()
+        }
     }
 
-    /**
-     * Function to validate input, if any input field is invalid, it creates a dialog box to display error message.
-     * @return whether the input is valid or not.
-     */
-    private fun validateInput():Boolean {
-        var valid = true
-        val alertDialog: AlertDialog? = activity?.let {
-            val builder = AlertDialog.Builder(it)
-            if (binding.descriptionText.text.isBlank() && valid) {
-                builder.apply {
-                    setMessage("Please provide a description for your activity")
-                    setPositiveButton("OK",
-                            DialogInterface.OnClickListener { dialog, id ->
-                            })
+        /**
+         * Function to validate input, if any input field is invalid, it creates a dialog box to display error message.
+         * @return whether the input is valid or not.
+         */
+        private fun validateInput(): Boolean {
+            var valid = true
+            val alertDialog: AlertDialog? = activity?.let {
+                val builder = AlertDialog.Builder(it)
+                if (binding.descriptionText.text.isBlank() && valid) {
+                    builder.apply {
+                        setMessage("Please provide a description for your activity")
+                        setPositiveButton("OK",
+                                DialogInterface.OnClickListener { dialog, id ->
+                                })
+                        valid = false
+                        builder.show()
+                    }
+                }
+                if (binding.locationText.text.isBlank() && valid) {
+                    builder.apply {
+                        setMessage("Please provide a location for your activity")
+                        setPositiveButton("OK",
+                                DialogInterface.OnClickListener { dialog, id ->
+                                })
+                    }
                     valid = false
                     builder.show()
                 }
-            }
-            if (binding.locationText.text.isBlank() && valid) {
-                builder.apply {
-                    setMessage("Please provide a location for your activity")
-                    setPositiveButton("OK",
-                            DialogInterface.OnClickListener { dialog, id ->
-                            })
-                }
-                valid = false
-                builder.show()
-            }
-            if (newActivity.start.isEmpty() && valid) {
-                builder.apply {
-                    setMessage("start datetime is empty")
-                    setPositiveButton("OK",
-                            DialogInterface.OnClickListener { dialog, id ->
+                if (newActivity.start.isEmpty() && valid) {
+                    builder.apply {
+                        setMessage("start datetime is empty")
+                        setPositiveButton("OK",
+                                DialogInterface.OnClickListener { dialog, id ->
 
-                            })
+                                })
+                    }
+                    valid = false
+                    builder.show()
                 }
-                valid = false
-                builder.show()
-            }
-            if (newActivity.end.isEmpty() && valid) {
-                builder.apply {
-                    setMessage("end datetime is empty")
-                    setPositiveButton("OK",
-                            DialogInterface.OnClickListener { dialog, id ->
+                if (newActivity.end.isEmpty() && valid) {
+                    builder.apply {
+                        setMessage("end datetime is empty")
+                        setPositiveButton("OK",
+                                DialogInterface.OnClickListener { dialog, id ->
 
-                            })
+                                })
+                    }
+                    valid = false
+                    builder.show()
                 }
-                valid = false
-                builder.show()
-            }
-            val now = DateTime(LocalDateTime.now().year,
-                    LocalDateTime.now().monthValue,
-                    LocalDateTime.now().dayOfMonth,
-                    LocalDateTime.now().hour,
-                    LocalDateTime.now().minute)
-            println(now)
-            if (now.biggerThan(newActivity.start) && valid) {
-                builder.apply {
-                    setMessage("start time is earlier than now")
-                    setPositiveButton("OK",
-                            DialogInterface.OnClickListener { dialog, id ->
+                val now = DateTime(LocalDateTime.now().year,
+                        LocalDateTime.now().monthValue,
+                        LocalDateTime.now().dayOfMonth,
+                        LocalDateTime.now().hour,
+                        LocalDateTime.now().minute)
+                println(now)
+                if (now.biggerThan(newActivity.start) && valid) {
+                    builder.apply {
+                        setMessage("start time is earlier than now")
+                        setPositiveButton("OK",
+                                DialogInterface.OnClickListener { dialog, id ->
 
-                            })
+                                })
+                    }
+                    valid = false
+                    builder.show()
                 }
-                valid = false
-                builder.show()
-            }
-            if (newActivity.start.biggerThan(newActivity.end) && valid) {
-                builder.apply {
-                    setMessage("end time is bigger than start time")
-                    setPositiveButton("OK",
-                            DialogInterface.OnClickListener { dialog, id ->
+                if (newActivity.start.biggerThan(newActivity.end) && valid) {
+                    builder.apply {
+                        setMessage("end time is bigger than start time")
+                        setPositiveButton("OK",
+                                DialogInterface.OnClickListener { dialog, id ->
 
-                            })
+                                })
+                    }
+                    valid = false
+                    builder.show()
                 }
-                valid = false
-                builder.show()
+                builder.create()
             }
-            builder.create()
+            return valid
         }
-        return valid
-    }
+
+        fun hideKeyboard() {
+            val imm: InputMethodManager =
+                    requireActivity().getSystemService(android.app.Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+            //Find the currently focused view, so we can grab the correct window token from it.
+            //Find the currently focused view, so we can grab the correct window token from it.
+            var view = requireActivity().currentFocus
+            //If no view currently has focus, create a new one, just so we can grab a window token from it
+            //If no view currently has focus, create a new one, just so we can grab a window token from it
+            if (view == null) {
+                view = View(activity)
+            }
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
 }
