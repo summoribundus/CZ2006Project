@@ -71,8 +71,7 @@ class ProfileFragment : Fragment() {
             val sfd = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
             val date1 = sfd.format(date)
             Log.i("systemdateconverted", date1)
-//            binding.healthHistoryText.text = it.recordTime?.toDate().toString().substring(4, 10) +
-//                    it.recordTime?.toDate().toString().substring(29)
+
             binding.healthHistoryText.text = date1
 
         })
@@ -87,8 +86,7 @@ class ProfileFragment : Fragment() {
             val date = it.date?.seconds?.let { it1 -> Date(it1.toLong()*1000) }
             val sfd = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
             val date1 = sfd.format(date)
-//            binding.workoutHistoryTimeText.text = it.date?.toDate().toString().substring(4, 10) +
-//                    it.date?.toDate().toString().substring(29)
+
             binding.workoutHistoryTimeText.text = date1
         })
 
@@ -98,20 +96,11 @@ class ProfileFragment : Fragment() {
             val date = it.startDateTime?.seconds?.let { it1 -> Date(it1.toLong()*1000) }
             val sfd = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
             val date1 = sfd.format(date)
-//            binding.scheduleHistoryEndDateText.text = it.endDateTime?.toDate().toString().substring(
-//                4,
-//                10
-//            ) +
-//                    it.endDateTime?.toDate().toString().substring(29)
+
             binding.scheduleHistoryStartDateText.text = date1
             val date2 = it.endDateTime?.seconds?.let { it1 -> Date(it1.toLong()*1000) }
             val date3 = sfd.format(date2)
-//            binding.scheduleHistoryStartDateText.text =
-//                it.startDateTime?.toDate().toString().substring(
-//                    4,
-//                    10
-//                ) +
-//                        it.startDateTime?.toDate().toString().substring(29)
+
             binding.scheduleHistoryEndDateText.text = date3
             binding.scheduleHistoryLocationText.text = it.location
         })

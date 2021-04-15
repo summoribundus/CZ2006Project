@@ -1,7 +1,10 @@
 package com.example.tryonlysports.ui.profile
 
+import android.util.Log
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * This is the util function to bind the WorkoutHistory date to the display text.
@@ -10,8 +13,10 @@ import androidx.databinding.BindingAdapter
  */
 @BindingAdapter("dateWorkoutHistoryText")
 fun TextView.setDateWorkoutHistoryText(item: WorkoutHistory) {
-    text = item.date?.toDate().toString().substring(4,10)+
-            item.date?.toDate().toString().substring(29)
+    val date = item.date?.seconds?.let { it1 -> Date(it1.toLong()*1000) }
+    val sfd = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
+    val date1 = sfd.format(date)
+    text = date1
 }
 
 /**
@@ -71,8 +76,11 @@ fun TextView.setDistanceWorkoutHistoryText(item: WorkoutHistory) {
  */
 @BindingAdapter("dateWeightHistoryListText")
 fun TextView.setDateWeightHistoryListText(item: HealthInfoHistory) {
-    text = item.recordTime?.toDate().toString().substring(4,10)+
-            item.recordTime?.toDate().toString().substring(29)
+    val date = item.recordTime?.seconds?.let { it1 -> Date(it1.toLong()*1000) }
+    val sfd = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
+    val date1 = sfd.format(date)
+    Log.i("systemdateconverted", date1)
+    text = date1
 }
 
 /**
@@ -112,8 +120,10 @@ fun TextView.setLocation(item: ScheduleHistory) {
  */
 @BindingAdapter("starttime")
 fun TextView.setStartTime(item: ScheduleHistory) {
-    text = item.startDateTime?.toDate().toString().substring(4,10)+
-            item.startDateTime?.toDate().toString().substring(29)
+    val date = item.startDateTime?.seconds?.let { it1 -> Date(it1.toLong()*1000) }
+    val sfd = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
+    val date1 = sfd.format(date)
+    text = date1
 }
 
 /**
@@ -123,6 +133,8 @@ fun TextView.setStartTime(item: ScheduleHistory) {
  */
 @BindingAdapter("endtime")
 fun TextView.setEndTime(item: ScheduleHistory) {
-    text = item.startDateTime?.toDate().toString().substring(4,10)+
-            item.startDateTime?.toDate().toString().substring(29)
+    val sfd = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
+    val date2 = item.endDateTime?.seconds?.let { it1 -> Date(it1.toLong()*1000) }
+    val date3 = sfd.format(date2)
+    text = date3
 }
