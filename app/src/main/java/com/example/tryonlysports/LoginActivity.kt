@@ -103,16 +103,7 @@ class LoginActivity : AppCompatActivity() {
 
         foregroundBroadcastReceiver = ForegroundBroadcastReceiver()
 
-//        binding.etLoginEmail.onFocusChangeListener = View.OnFocusChangeListener{ p0, p1->
-//            if (!p1) hideSoftkeyboard(binding.etLoginEmail)
-//        }
-//
-//        binding.etLoginPassword.onFocusChangeListener = View.OnFocusChangeListener{p0, p1 ->
-//            if (!p1) hideSoftkeyboard(binding.etLoginPassword)
-//        }
-
-
-
+        
         binding.tvReg.setOnClickListener {
 
             startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
@@ -164,12 +155,6 @@ class LoginActivity : AppCompatActivity() {
                             }
                 }
             }
-        }
-    }
-
-    fun hideSoftkeyboard(editText: EditText) {
-        (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).apply {
-            hideSoftInputFromWindow(editText.windowToken, 0)
         }
     }
 

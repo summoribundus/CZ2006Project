@@ -253,6 +253,11 @@ class AddActivityFragment: Fragment() {
             return valid
         }
 
+
+    /**
+     * Hides the keyboard when the user finishes the keyboard input.
+     *
+     */
         fun hideKeyboard() {
             val imm: InputMethodManager =
                     requireActivity().getSystemService(android.app.Activity.INPUT_METHOD_SERVICE) as InputMethodManager
